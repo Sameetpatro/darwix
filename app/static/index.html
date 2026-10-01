@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darwix — AI Business Loan Voice Agent</title>
+  <meta name="description" content="AI Voice Agent for Business Loan Qualification with DeepSeek LLM, Edge-TTS, and real-time latency tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-group">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" y1="19" x2="12" y2="22" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">Darwix</h1>
+          <p class="brand-subtitle">AI Business Loan Voice Agent &bull; Powered by Vani</p>
+        </div>
+      </div>
+      <div class="system-status-badges">
+        <div class="status-pill" id="badge-llm" title="LLM Provider">
+          <span class="dot"></span>
+          <span class="label">LLM: DeepSeek</span>
+        </div>
+        <div class="status-pill" id="badge-tts" title="Neural TTS Provider">
+          <span class="dot"></span>
+          <span class="label">TTS: Edge Neural</span>
+        </div>
+        <div class="status-pill" id="badge-asr" title="Speech Recognition">
+          <span class="dot"></span>
+          <span class="label">ASR: Web Speech</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Notice Banner for DeepSeek Balance Notice (auto displays if needed) -->
+    <div id="notice-banner" class="notice-banner hidden">
+      <div class="notice-icon">&#9888;</div>
+      <div class="notice-content">
+        <strong>Notice:</strong> <span id="notice-message">DeepSeek Account Balance is 0. Running in intelligent fallback simulation mode for seamless testing.</span>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <main class="main-grid">
+      <!-- Left Column: Softphone & Call Center -->
+      <section class="phone-card">
+        <div class="card-glass-header">
+          <div class="caller-id-wrapper">
+            <span class="id-label">Agent:</span>
+            <span class="id-val">Vani (Loan Specialist)</span>
+          </div>
+          <div class="call-timer-box">
+            <span class="timer-dot" id="call-timer-dot"></span>
+            <span class="timer-display" id="call-timer">00:00</span>
+          </div>
+        </div>
+
+        <!-- Call Visualizer & Avatar Area -->
+        <div class="visualizer-stage">
+          <div class="agent-avatar-ring" id="avatar-ring">
+            <div class="agent-avatar-inner">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="call-status-text" id="call-status-label">Ready to Call</div>
+          <canvas id="waveform-canvas" width="340" height="60"></canvas>
+          <div class="sub-status" id="sub-status-label">Click 'Start Call' to test the voice pipeline</div>
+        </div>
+
+        <!-- Phone Action Controls -->
+        <div class="phone-controls">
+          <button id="btn-call" class="btn-action btn-call" title="Start Voice Call">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Start Call</span>
+          </button>
+
+          <button id="btn-hangup" class="btn-action btn-hangup hidden" title="End Voice Call">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91" />
+              <line x1="23" y1="1" x2="1" y2="23" />
+            </svg>
+            <span>Hang Up</span>
+          </button>
+
+          <button id="btn-mic" class="btn-secondary" disabled title="Microphone Status">
+            <span id="mic-icon">&#127908;</span>
+            <span id="mic-text">Mic Ready</span>
+          </button>
+        </div>
+
+        <!-- Optional Text Input Fallback (for testing without microphone) -->
+        <form id="text-speech-form" class="text-speech-bar">
+          <input type="text" id="manual-text-input" placeholder="Type here if you prefer not to speak..." disabled />
+          <button type="submit" id="btn-manual-send" class="btn-send" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Latency HUD -->
+        <div class="metrics-hud">
+          <div class="hud-item">
+            <span class="hud-label">ASR Time</span>
+            <span class="hud-value" id="hud-asr">-- ms</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">LLM Time</span>
+            <span class="hud-value" id="hud-llm">-- ms</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">TTS Time</span>
+            <span class="hud-value" id="hud-tts">-- ms</span>
+          </div>
+          <div class="hud-item highlight">
+            <span class="hud-label">Turnaround</span>
+            <span class="hud-value" id="hud-total">-- ms</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Live Transcript & Call Details -->
+      <section class="transcript-card">
+        <div class="card-glass-header">
+          <div class="header-left">
+            <h2>Live Call Transcript</h2>
+            <span class="call-id-badge" id="active-call-id">No active call</span>
+          </div>
+          <div class="header-right">
+            <button id="btn-download-transcript" class="btn-sm" disabled title="Download JSON Transcript">
+              &#128190; Export Transcript
+            </button>
+          </div>
+        </div>
+
+        <!-- Transcript Messages Flow -->
+        <div class="messages-container" id="messages-container">
+          <div class="empty-state" id="empty-transcript">
+            <div class="empty-icon">&#128222;</div>
+            <p>Ready to connect. When the call begins, speech from both caller and the AI agent will appear here with timestamps, audio playback, and latency metrics.</p>
+          </div>
+        </div>
+
+        <!-- Audio Player Element (Hidden, plays agent TTS speech) -->
+        <audio id="agent-audio-player" preload="auto"></audio>
+      </section>
+
+      <!-- Right Column: Real-Time Loan Qualification Checklist -->
+      <section class="qualification-card">
+        <div class="card-glass-header">
+          <div class="header-left">
+            <h2>Loan Qualification</h2>
+            <span class="decision-pill" id="qualification-badge">Collecting (0/9)</span>
+          </div>
+          <div class="header-right">
+            <span class="progress-percent" id="qualification-progress-text">0%</span>
+          </div>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="qualification-progress-fill" style="width: 0%"></div>
+        </div>
+
+        <!-- Real-Time Conflict / Objection Alert Bar -->
+        <div id="qualification-alert" class="qual-alert hidden">
+          <span class="qual-alert-icon">&#9888;</span>
+          <span id="qualification-alert-text">Conflict detected</span>
+        </div>
+
+        <div class="slots-list">
+          <div class="slot-item" id="slot-customer_name">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Customer Name</span>
+              <span class="slot-value" id="val-customer_name">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-business_name">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Business Name</span>
+              <span class="slot-value" id="val-business_name">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-business_type">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Business Type / Entity</span>
+              <span class="slot-value" id="val-business_type">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-business_age">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Business Age</span>
+              <span class="slot-value" id="val-business_age">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-monthly_revenue">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Monthly Revenue</span>
+              <span class="slot-value" id="val-monthly_revenue">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-requested_amount">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Requested Loan</span>
+              <span class="slot-value" id="val-requested_amount">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-loan_purpose">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Loan Purpose</span>
+              <span class="slot-value" id="val-loan_purpose">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-existing_loans">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Existing Debt / Loans</span>
+              <span class="slot-value" id="val-existing_loans">Pending...</span>
+            </div>
+          </div>
+
+          <div class="slot-item" id="slot-location">
+            <div class="slot-status-icon">&#9675;</div>
+            <div class="slot-info">
+              <span class="slot-name">Location (City, State)</span>
+              <span class="slot-value" id="val-location">Pending...</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom History Section -->
+    <section class="history-section">
+      <div class="section-title-row">
+        <h3>Call History & Recordings</h3>
+        <button id="btn-refresh-history" class="btn-sm">&#8635; Refresh</button>
+      </div>
+      <div class="history-table-container">
+        <table class="history-table" id="history-table">
+          <thead>
+            <tr>
+              <th>Call ID</th>
+              <th>Status</th>
+              <th>Turns</th>
+              <th>Avg Turnaround</th>
+              <th>Avg LLM</th>
+              <th>Avg TTS</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body">
+            <tr>
+              <td colspan="7" class="text-center">No completed calls yet. Make your first test call above!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

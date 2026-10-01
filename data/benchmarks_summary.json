@@ -1,0 +1,336 @@
+{
+  "timestamp": 1790886715.605786,
+  "date": "2026-10-02 02:01:55 UTC",
+  "company": "Darwix",
+  "agent": "Vani",
+  "total_scenarios_evaluated": 3,
+  "scenarios": [
+    {
+      "scenario_id": "call_1_cooperative_prequal",
+      "title": "Scenario 1: Cooperative Customer Pre-Qualification",
+      "expected_behavior": "Agent greets caller as Vani from Darwix, systematically collects all 9 qualification fields, confirms details, and delivers an instant PRE_QUALIFIED underwriting decision.",
+      "total_turns": 11,
+      "customer_turns": 5,
+      "agent_turns": 6,
+      "avg_roundtrip_latency_ms": 2949.0,
+      "avg_llm_latency_ms": 6.1,
+      "avg_tts_latency_ms": 2943.3,
+      "loan_application": {
+        "customer_name": "Michael Chang",
+        "business_name": "Horizon Tech Services LLC",
+        "business_type": "LLC",
+        "business_age": "36 months",
+        "monthly_revenue": "$65,000",
+        "requested_amount": "$150,000",
+        "loan_purpose": "Equipment",
+        "existing_loans": "No",
+        "location": "Austin, TX",
+        "missing_fields": [],
+        "collected_count": 9,
+        "total_fields": 9,
+        "is_escalated": false,
+        "escalation_reason": null
+      },
+      "audio_recordings": [
+        "/recordings/call_1_cooperative_prequal_turn_3.mp3",
+        "/recordings/call_1_cooperative_prequal_turn_5.mp3",
+        "/recordings/call_1_cooperative_prequal_turn_7.mp3",
+        "/recordings/call_1_cooperative_prequal_turn_9.mp3",
+        "/recordings/call_1_cooperative_prequal_turn_11.mp3"
+      ],
+      "json_transcript_path": "/Users/sameetpatro/Desktop/darwix/transcripts/call_1_cooperative_prequal.json",
+      "txt_transcript_path": "/Users/sameetpatro/Desktop/darwix/transcripts/call_1_cooperative_prequal_transcript.txt",
+      "turns": [
+        {
+          "turn_index": 1,
+          "customer_text": "Hello! My name is Michael Chang and my business is Horizon Tech Services LLC.",
+          "agent_text": "Understood. How long has your business been in operation?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_1_cooperative_prequal_turn_3.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 25.0,
+            "tts_ms": 1423.8,
+            "total_roundtrip_ms": 1449.1
+          }
+        },
+        {
+          "turn_index": 2,
+          "customer_text": "We have been operating for 3 years and our average monthly revenue is $65,000.",
+          "agent_text": "Great. How much financing are you looking to secure today?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_1_cooperative_prequal_turn_5.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 2.1,
+            "tts_ms": 2518.7,
+            "total_roundtrip_ms": 2521.5
+          }
+        },
+        {
+          "turn_index": 3,
+          "customer_text": "We are looking for $150,000 to invest in equipment upgrades and team expansion.",
+          "agent_text": "Understood. Do you currently carry any existing commercial business loans or debt balances?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_1_cooperative_prequal_turn_7.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 1.8,
+            "tts_ms": 1082.2,
+            "total_roundtrip_ms": 1084.6
+          }
+        },
+        {
+          "turn_index": 4,
+          "customer_text": "We have no existing debt loans, and we are based in Austin, Texas.",
+          "agent_text": "Thank you, Michael Chang. Just to confirm all details: you are requesting $150,000 for Horizon Tech Services LLC, generating about $65,000 monthly for Equipment. Does that all sound accurate?",
+          "dialog_action": "confirm_details",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_1_cooperative_prequal_turn_9.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 0.7,
+            "tts_ms": 4906.9,
+            "total_roundtrip_ms": 4908.0
+          }
+        },
+        {
+          "turn_index": 5,
+          "customer_text": "Yes, all those details are completely accurate.",
+          "agent_text": "Excellent news! Based on your 36 months in business and monthly revenue of $65,000, your business pre-qualifies for our Prime Commercial Term Loan. I will prepare your preliminary approval paperwork right away.",
+          "dialog_action": "underwriting_decision",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_1_cooperative_prequal_turn_11.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 1.1,
+            "tts_ms": 6538.1,
+            "total_roundtrip_ms": 6540.2
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "call_2_objections_and_faqs",
+      "title": "Scenario 2: Objection Handling & Knowledge Base Inquiries",
+      "expected_behavior": "Agent answers prepayment penalty FAQ and funding timeline FAQ with exact knowledge base citations, then seamlessly transitions to collecting qualification data and pre-qualifies the applicant.",
+      "total_turns": 11,
+      "customer_turns": 5,
+      "agent_turns": 6,
+      "avg_roundtrip_latency_ms": 2258.4,
+      "avg_llm_latency_ms": 1.9,
+      "avg_tts_latency_ms": 2256.4,
+      "loan_application": {
+        "customer_name": "Elena Rostova",
+        "business_name": "My Name Is Elena Rostova With Bluewave Logistics",
+        "business_type": "Logistics Business",
+        "business_age": "60 months",
+        "monthly_revenue": "$80,000",
+        "requested_amount": "$80,000",
+        "loan_purpose": "Expansion",
+        "existing_loans": "No",
+        "location": "Monthly, IN",
+        "missing_fields": [],
+        "collected_count": 9,
+        "total_fields": 9,
+        "is_escalated": false,
+        "escalation_reason": null
+      },
+      "audio_recordings": [
+        "/recordings/call_2_objections_and_faqs_turn_3.mp3",
+        "/recordings/call_2_objections_and_faqs_turn_5.mp3",
+        "/recordings/call_2_objections_and_faqs_turn_7.mp3",
+        "/recordings/call_2_objections_and_faqs_turn_9.mp3",
+        "/recordings/call_2_objections_and_faqs_turn_11.mp3"
+      ],
+      "json_transcript_path": "/Users/sameetpatro/Desktop/darwix/transcripts/call_2_objections_and_faqs.json",
+      "txt_transcript_path": "/Users/sameetpatro/Desktop/darwix/transcripts/call_2_objections_and_faqs_transcript.txt",
+      "turns": [
+        {
+          "turn_index": 1,
+          "customer_text": "Hi there, before I apply, are there any prepayment penalties if I pay off the loan early?",
+          "agent_text": "Yes. All Darwix Commercial Term Loans and Revolving Lines of Credit have zero prepayment penalties. In fact, borrowers who pay off their loan early often receive a discount on remaining interest charges or fee rebates. Could you please tell me your name and your business name?",
+          "dialog_action": "kb_and_ask_field",
+          "kb_citation": "Darwix KB: faqs.md (faq-prepayment-penalty)",
+          "audio_url": "/recordings/call_2_objections_and_faqs_turn_3.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 3.4,
+            "tts_ms": 1225.4,
+            "total_roundtrip_ms": 1229.2
+          }
+        },
+        {
+          "turn_index": 2,
+          "customer_text": "And how fast can I get funded once I submit everything?",
+          "agent_text": "Initial qualification is instant over the phone. Official underwriting approvals are provided within 2 to 4 hours of document submission. Once loan contracts are e-signed, funds are wired via same-day ACH or direct wire transfer in as little as 24 to 48 hours. Could you please tell me your name and your business name?",
+          "dialog_action": "kb_and_ask_field",
+          "kb_citation": "Darwix KB: faqs.md (faq-funding-speed)",
+          "audio_url": "/recordings/call_2_objections_and_faqs_turn_5.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 3.1,
+            "tts_ms": 1416.5,
+            "total_roundtrip_ms": 1420.2
+          }
+        },
+        {
+          "turn_index": 3,
+          "customer_text": "That is wonderful. My name is Elena Rostova with BlueWave Logistics Corp.",
+          "agent_text": "Understood. How long has your business been in operation?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_2_objections_and_faqs_turn_7.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 1.7,
+            "tts_ms": 1036.3,
+            "total_roundtrip_ms": 1038.6
+          }
+        },
+        {
+          "turn_index": 4,
+          "customer_text": "We do $80,000 monthly, in business 5 years, need $200,000 for fleet expansion in Seattle, Washington, no existing loans.",
+          "agent_text": "Thank you, Elena Rostova. Just to confirm all details: you are requesting $80,000 for My Name Is Elena Rostova With Bluewave Logistics, generating about $80,000 monthly for Expansion. Does that all sound accurate?",
+          "dialog_action": "confirm_details",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_2_objections_and_faqs_turn_9.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 0.7,
+            "tts_ms": 3919.3,
+            "total_roundtrip_ms": 3920.5
+          }
+        },
+        {
+          "turn_index": 5,
+          "customer_text": "Yes, that sounds correct.",
+          "agent_text": "Excellent news! Based on your 60 months in business and monthly revenue of $80,000, your business pre-qualifies for our Prime Commercial Term Loan. I will prepare your preliminary approval paperwork right away.",
+          "dialog_action": "underwriting_decision",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_2_objections_and_faqs_turn_11.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 0.6,
+            "tts_ms": 4708.4,
+            "total_roundtrip_ms": 4709.4
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "call_3_fallback_and_high_leverage",
+      "title": "Scenario 3: Out-of-Scope Strict Fallback & Unrealistic Loan Leverage",
+      "expected_behavior": "Agent strictly delivers non-hallucination fallback on cryptocurrency inquiry, detects excessive loan-to-revenue leverage ratio ($1.5M requested on $12k/mo revenue = 125x), flags conflict, and routes application to NEEDS_REVIEW.",
+      "total_turns": 11,
+      "customer_turns": 5,
+      "agent_turns": 6,
+      "avg_roundtrip_latency_ms": 1860.8,
+      "avg_llm_latency_ms": 1.4,
+      "avg_tts_latency_ms": 1859.1,
+      "loan_application": {
+        "customer_name": "Daniel Price",
+        "business_name": "Swift Retail LLC",
+        "business_type": "LLC",
+        "business_age": "8 months",
+        "monthly_revenue": "$12,000",
+        "requested_amount": null,
+        "loan_purpose": null,
+        "existing_loans": "No",
+        "location": "Chicago, IL",
+        "missing_fields": [
+          "requested_amount",
+          "loan_purpose"
+        ],
+        "collected_count": 7,
+        "total_fields": 9,
+        "is_escalated": false,
+        "escalation_reason": null
+      },
+      "audio_recordings": [
+        "/recordings/call_3_fallback_and_high_leverage_turn_3.mp3",
+        "/recordings/call_3_fallback_and_high_leverage_turn_5.mp3",
+        "/recordings/call_3_fallback_and_high_leverage_turn_7.mp3",
+        "/recordings/call_3_fallback_and_high_leverage_turn_9.mp3",
+        "/recordings/call_3_fallback_and_high_leverage_turn_11.mp3"
+      ],
+      "json_transcript_path": "/Users/sameetpatro/Desktop/darwix/transcripts/call_3_fallback_and_high_leverage.json",
+      "txt_transcript_path": "/Users/sameetpatro/Desktop/darwix/transcripts/call_3_fallback_and_high_leverage_transcript.txt",
+      "turns": [
+        {
+          "turn_index": 1,
+          "customer_text": "Can I use this loan to invest in cryptocurrency tokens and Bitcoin mining?",
+          "agent_text": "I don't have reliable information about that at the moment. I can connect you with a human representative if you'd like.",
+          "dialog_action": "kb_fallback",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_3_fallback_and_high_leverage_turn_3.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 2.9,
+            "tts_ms": 1182.1,
+            "total_roundtrip_ms": 1185.4
+          }
+        },
+        {
+          "turn_index": 2,
+          "customer_text": "Okay, I understand. My name is Daniel Price, company is Swift Retail LLC in Chicago, Illinois.",
+          "agent_text": "Understood. How long has your business been in operation?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_3_fallback_and_high_leverage_turn_5.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 0.6,
+            "tts_ms": 1080.3,
+            "total_roundtrip_ms": 1081.2
+          }
+        },
+        {
+          "turn_index": 3,
+          "customer_text": "We have been in business for 8 months and make about $12,000 monthly revenue.",
+          "agent_text": "Great. How much financing are you looking to secure today?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_3_fallback_and_high_leverage_turn_7.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 1.4,
+            "tts_ms": 1148.3,
+            "total_roundtrip_ms": 1150.2
+          }
+        },
+        {
+          "turn_index": 4,
+          "customer_text": "We want to borrow $1,500,000 for working capital.",
+          "agent_text": "I noticed a slight discrepancy: A requested loan of $1,500,000 is significantly higher than monthly revenue of $12,000 (over 125x monthly revenue). Could you please clarify which number is accurate for your records?",
+          "dialog_action": "resolve_conflict",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_3_fallback_and_high_leverage_turn_9.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 1.2,
+            "tts_ms": 5636.5,
+            "total_roundtrip_ms": 5638.3
+          }
+        },
+        {
+          "turn_index": 5,
+          "customer_text": "No existing loans.",
+          "agent_text": "Great. How much financing are you looking to secure today?",
+          "dialog_action": "ask_field",
+          "kb_citation": null,
+          "audio_url": "/recordings/call_3_fallback_and_high_leverage_turn_11.mp3",
+          "latencies": {
+            "asr_ms": 110.0,
+            "llm_ms": 0.9,
+            "tts_ms": 1091.5,
+            "total_roundtrip_ms": 1093.1
+          }
+        }
+      ]
+    }
+  ]
+}
