@@ -1,0 +1,39 @@
+{
+  "record_id": "krec_0495d2a5cd",
+  "source_doc_id": "doc_4bf2550ab4",
+  "title": "Darwix Equipment Financing & Machinery Leasing — Equipment Financing Term Structures",
+  "cleaned_content": "Equipment Financing Term Structures\nEquipment Category\nMax Amount\nMax Term\nCollateral Required\nConstruction Machinery\n,000,000\n84 Months\nEquipment Itself\nMedical & Dental Hardware\n,000\n60 Months\nEquipment Itself\nCommercial Fleet Vehicles\n,000\n60 Months\nVehicle Title Lien\nRestaurant Commercial Kitchen\n,000\n48 Months\nEquipment Itself",
+  "original_content_hash": "f57ebcabd6149b4c88bd1ea5532dad44207c4e9f2239156c6a6eed94c4209bc9",
+  "cleaned_content_hash": "59f6a8e3225ef9288e841861433b61b929b32e80a06f06fa3cf2f5f1d94431b2",
+  "category": "product",
+  "product": "Equipment Financing",
+  "source": "equipment_financing_portal.html",
+  "source_location": {
+    "page": 2,
+    "section": "Equipment Financing Term Structures"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [
+      "Equipment Financing"
+    ],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790925190.520843
+}

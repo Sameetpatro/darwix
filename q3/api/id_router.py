@@ -27,9 +27,14 @@ class IDTurnRequest(BaseModel):
 
 
 @id_router.post("/call/start")
-def start_id_call(req: IDStartCallRequest):
+async def start_id_call(req: IDStartCallRequest):
     session_id = req.session_id or f"id_{int(time.time() * 1000)}"
     res = id_voice_agent.start_call(session_id, req.dialect_style or "colloquial")
+    if res.get("text"):
+        fname = f"{session_id}_greeting.mp3"
+        audio_path, _ = await id_voice_agent.tts.synthesize(text=res["text"], output_filename=fname)
+        res["audio_path"] = audio_path
+        res["audio_url"] = f"/id/audio/{fname}"
     return res
 
 
@@ -42,6 +47,8 @@ async def process_id_turn(req: IDTurnRequest):
         user_utterance=req.utterance,
         synthesize_audio=req.synthesize_audio
     )
+    if res.get("audio_path"):
+        res["audio_url"] = f"/id/audio/{Path(res['audio_path']).name}"
     return res
 
 

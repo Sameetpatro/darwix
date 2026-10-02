@@ -18,6 +18,7 @@ class TTSEngine:
         text: str,
         call_id: Optional[str] = None,
         turn_id: Optional[int] = None,
+        voice: Optional[str] = None,
     ) -> Tuple[str, str, float]:
         """
         Synthesizes text into MP3 audio using Edge-TTS neural voice.
@@ -34,11 +35,12 @@ class TTSEngine:
         file_stem = f"{call_id or 'call'}_turn_{turn_id or uuid.uuid4().hex[:6]}"
         file_name = f"{file_stem}.mp3"
         dest_path = settings.recordings_dir / file_name
+        selected_voice = voice or self.voice
 
         try:
             communicate = edge_tts.Communicate(
                 text=clean_text,
-                voice=self.voice,
+                voice=selected_voice,
                 rate=self.rate,
                 pitch=self.pitch,
             )

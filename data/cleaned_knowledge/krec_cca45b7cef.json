@@ -1,0 +1,41 @@
+{
+  "record_id": "krec_cca45b7cef",
+  "source_doc_id": "doc_test_123",
+  "title": "Test Policy Record",
+  "cleaned_content": "Darwix Commercial loans require at least 12 months operating history and $15,000 monthly revenue.",
+  "original_content_hash": "test_raw_hash_abc",
+  "cleaned_content_hash": "test_clean_hash_xyz",
+  "category": "qualification",
+  "product": "Term Loan",
+  "source": "test_policy.txt",
+  "source_location": {
+    "page": 1,
+    "section": "Eligibility"
+  },
+  "version": "1.0",
+  "effective_date": "2026-01-01",
+  "normalized_entities": {
+    "loan_products": [
+      "Term Loan"
+    ],
+    "entity_types": [],
+    "time_in_business_months": 12,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": 15000.0,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {
+    "email": 0
+  },
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790928198.312423
+}

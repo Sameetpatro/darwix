@@ -110,9 +110,9 @@ class LayaSignalClassifier:
 
         # First-person customer ownership
         first_person_patterns = [
-            r"\b(i\s+have|i\s+got|i\s+own|we\s+have|we\s+own|my\s+other|my\s+second)\b.*\b(car|vehicle|truck|suv|motorcycle|auto|policy|coverage)\b",
-            r"\b(another\s+(car|vehicle|truck|automobile))\b",
-            r"\b(two\s+cars|second\s+car|additional\s+vehicle)\b"
+            r"\b(i|we)\s+(\w+\s+){0,3}(have|got|own|operate|drive)\b.*\b(car|vehicle|truck|suv|motorcycle|auto|policy|coverage|fleet)\b",
+            r"\b(another|second|additional|other)\s+(car|vehicle|truck|automobile|van|unit)\b",
+            r"\b(two\s+cars|second\s+car|second\s+vehicle|additional\s+vehicle|fleet\s+vehicles)\b"
         ]
         for pattern in first_person_patterns:
             if re.search(pattern, lowered):

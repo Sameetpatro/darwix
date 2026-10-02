@@ -199,6 +199,27 @@ body {
   color: #ffffff;
 }
 
+.market-select-dropdown {
+  background: rgba(15, 23, 42, 0.85);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.market-select-dropdown:hover,
+.market-select-dropdown:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+  background: rgba(15, 23, 42, 0.95);
+}
+
 .call-timer-box {
   display: flex;
   align-items: center;

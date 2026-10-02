@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790923095.653763,
+  "timestamp": 1790928224.1079261,
   "total_cases": 18,
   "metrics": {
     "true_positives": 9,
@@ -22,9 +22,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_4288cd8d",
+          "signal_id": "sig_189084c6",
           "call_id": "eval_cross_sell_true_01",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.91,
@@ -32,7 +32,7 @@
           "topic": "vehicle_insurance",
           "severity": "medium",
           "status": "new",
-          "detection_latency_ms": 0.1,
+          "detection_latency_ms": 0.04,
           "metadata": {
             "classifier": "laya_system_one",
             "reason": "Direct customer ownership of additional vehicle",
@@ -42,7 +42,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_e3b93e9b",
+        "nudge_id": "ndg_cd901e53",
         "call_id": "eval_cross_sell_true_01",
         "priority": "medium",
         "type": "cross_sell_opportunity",
@@ -51,8 +51,8 @@
         "message": "Ask if they'd like multi-vehicle coverage.",
         "confidence": 0.91,
         "expires_in": 25,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_4288cd8d",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_189084c6",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -68,9 +68,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_09f60f07",
+          "signal_id": "sig_92d04876",
           "call_id": "eval_cross_sell_true_02",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.91,
@@ -88,7 +88,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_664e3f87",
+        "nudge_id": "ndg_598bf305",
         "call_id": "eval_cross_sell_true_02",
         "priority": "medium",
         "type": "cross_sell_opportunity",
@@ -97,8 +97,8 @@
         "message": "Ask if they'd like multi-vehicle coverage.",
         "confidence": 0.91,
         "expires_in": 25,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_09f60f07",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_92d04876",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -114,9 +114,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_828237e3",
+          "signal_id": "sig_f103a503",
           "call_id": "eval_cross_sell_true_03",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.91,
@@ -124,7 +124,7 @@
           "topic": "vehicle_insurance",
           "severity": "medium",
           "status": "new",
-          "detection_latency_ms": 0.08,
+          "detection_latency_ms": 0.21,
           "metadata": {
             "classifier": "laya_system_one",
             "reason": "Direct customer ownership of additional vehicle",
@@ -134,7 +134,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_217ff926",
+        "nudge_id": "ndg_234a1ee0",
         "call_id": "eval_cross_sell_true_03",
         "priority": "medium",
         "type": "cross_sell_opportunity",
@@ -143,8 +143,8 @@
         "message": "Ask if they'd like multi-vehicle coverage.",
         "confidence": 0.91,
         "expires_in": 25,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_828237e3",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_f103a503",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -160,9 +160,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_733fa030",
+          "signal_id": "sig_2893b59d",
           "call_id": "eval_compliance_true_01",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "compliance_gap",
           "speaker": "customer",
           "confidence": 0.96,
@@ -170,7 +170,7 @@
           "topic": "compliance",
           "severity": "high",
           "status": "new",
-          "detection_latency_ms": 0.01,
+          "detection_latency_ms": 0.02,
           "metadata": {
             "rule": "MANDATORY_STAGE_DISCLOSURE",
             "missing_disclosure": "mandatory_disclosure",
@@ -181,7 +181,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_096c2c60",
+        "nudge_id": "ndg_325eb563",
         "call_id": "eval_compliance_true_01",
         "priority": "high",
         "type": "compliance_gap",
@@ -190,8 +190,8 @@
         "message": "Provide the required disclosure before continuing.",
         "confidence": 0.96,
         "expires_in": 15,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_733fa030",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_2893b59d",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -207,9 +207,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_83d75e23",
+          "signal_id": "sig_6f656bb1",
           "call_id": "eval_compliance_true_02",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.72,
@@ -217,7 +217,7 @@
           "topic": "vehicle_insurance",
           "severity": "medium",
           "status": "new",
-          "detection_latency_ms": 0.03,
+          "detection_latency_ms": 0.04,
           "metadata": {
             "classifier": "laya_system_one",
             "reason": "General vehicle mention",
@@ -225,9 +225,9 @@
           }
         },
         {
-          "signal_id": "sig_e8405038",
+          "signal_id": "sig_3fc2f4a1",
           "call_id": "eval_compliance_true_02",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "compliance_gap",
           "speaker": "customer",
           "confidence": 0.96,
@@ -235,7 +235,7 @@
           "topic": "compliance",
           "severity": "high",
           "status": "new",
-          "detection_latency_ms": 0.03,
+          "detection_latency_ms": 0.04,
           "metadata": {
             "rule": "MANDATORY_STAGE_DISCLOSURE",
             "missing_disclosure": "mandatory_disclosure",
@@ -246,7 +246,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_0cf8dd77",
+        "nudge_id": "ndg_82aa13ce",
         "call_id": "eval_compliance_true_02",
         "priority": "high",
         "type": "compliance_gap",
@@ -255,8 +255,8 @@
         "message": "Provide the required disclosure before continuing.",
         "confidence": 0.96,
         "expires_in": 15,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_e8405038",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_3fc2f4a1",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -272,9 +272,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_2996cce0",
+          "signal_id": "sig_0de2d233",
           "call_id": "eval_frustration_true_01",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "frustration",
           "speaker": "customer",
           "confidence": 0.88,
@@ -292,7 +292,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_c41c0b8a",
+        "nudge_id": "ndg_9ac91860",
         "call_id": "eval_frustration_true_01",
         "priority": "high",
         "type": "frustration",
@@ -301,8 +301,8 @@
         "message": "Acknowledge the concern before continuing.",
         "confidence": 0.88,
         "expires_in": 20,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_2996cce0",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_0de2d233",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -318,9 +318,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_241bed04",
+          "signal_id": "sig_abab6c99",
           "call_id": "eval_frustration_true_02",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "frustration",
           "speaker": "customer",
           "confidence": 0.88,
@@ -328,7 +328,7 @@
           "topic": "customer_satisfaction",
           "severity": "high",
           "status": "new",
-          "detection_latency_ms": 0.01,
+          "detection_latency_ms": 0.02,
           "metadata": {
             "classifier": "laya_system_one",
             "reason": "Customer explicitly complaining about repetitive questions",
@@ -338,7 +338,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_32e79b79",
+        "nudge_id": "ndg_01dd0741",
         "call_id": "eval_frustration_true_02",
         "priority": "high",
         "type": "frustration",
@@ -347,8 +347,8 @@
         "message": "Acknowledge the concern before continuing.",
         "confidence": 0.88,
         "expires_in": 20,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_241bed04",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_abab6c99",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -364,9 +364,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_422af5d3",
+          "signal_id": "sig_bc946fcd",
           "call_id": "eval_payment_true_01",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "payment_difficulty",
           "speaker": "customer",
           "confidence": 0.93,
@@ -384,7 +384,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_042e3e1f",
+        "nudge_id": "ndg_f3579ab7",
         "call_id": "eval_payment_true_01",
         "priority": "high",
         "type": "payment_difficulty",
@@ -393,8 +393,8 @@
         "message": "Offer payment relief options or installment grace period.",
         "confidence": 0.93,
         "expires_in": 25,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_422af5d3",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_bc946fcd",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -410,9 +410,9 @@
       "outcome": "TP",
       "signals_detected": [
         {
-          "signal_id": "sig_dffea444",
+          "signal_id": "sig_4ab3e458",
           "call_id": "eval_payment_true_02",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "payment_difficulty",
           "speaker": "customer",
           "confidence": 0.93,
@@ -430,7 +430,7 @@
       ],
       "nudge": {
         "event": "nudge",
-        "nudge_id": "ndg_fba46e80",
+        "nudge_id": "ndg_4d8dc901",
         "call_id": "eval_payment_true_02",
         "priority": "high",
         "type": "payment_difficulty",
@@ -439,8 +439,8 @@
         "message": "Offer payment relief options or installment grace period.",
         "confidence": 0.93,
         "expires_in": 25,
-        "timestamp": 1790923095.65,
-        "signal_id": "sig_dffea444",
+        "timestamp": 1790928224.11,
+        "signal_id": "sig_4ab3e458",
         "generation_latency_ms": 0.0,
         "status": "active"
       },
@@ -456,9 +456,9 @@
       "outcome": "TN",
       "signals_detected": [
         {
-          "signal_id": "sig_7f09ba50",
+          "signal_id": "sig_3a01f009",
           "call_id": "eval_cross_sell_false_01",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.25,
@@ -487,9 +487,9 @@
       "outcome": "TN",
       "signals_detected": [
         {
-          "signal_id": "sig_7e017321",
+          "signal_id": "sig_d32f34d9",
           "call_id": "eval_cross_sell_false_02",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.25,
@@ -518,9 +518,9 @@
       "outcome": "TN",
       "signals_detected": [
         {
-          "signal_id": "sig_74327b08",
+          "signal_id": "sig_e1487880",
           "call_id": "eval_cross_sell_false_03",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.25,
@@ -549,9 +549,9 @@
       "outcome": "TN",
       "signals_detected": [
         {
-          "signal_id": "sig_a102dfc3",
+          "signal_id": "sig_e6955324",
           "call_id": "eval_compliance_false_01",
-          "timestamp": 1790923095.65,
+          "timestamp": 1790928224.11,
           "type": "cross_sell_opportunity",
           "speaker": "customer",
           "confidence": 0.3,

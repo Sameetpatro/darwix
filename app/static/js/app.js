@@ -229,7 +229,7 @@ function initSpeechRecognition() {
   speechRecognition = new SpeechRecognition();
   speechRecognition.continuous = true;
   speechRecognition.interimResults = false;
-  speechRecognition.lang = "en-US";
+  speechRecognition.lang = currentMarket === "id" ? "id-ID" : "en-US";
 
   speechRecognition.onstart = () => {
     isListening = true;
@@ -380,11 +380,12 @@ function updateLatencyHud(latencies) {
 }
 
 // 7. Core Call Actions
+// 7. Core Call Actions
 async function startCall() {
   btnCall.classList.add("hidden");
   btnHangup.classList.remove("hidden");
   callStatusLabel.textContent = "Connecting...";
-  subStatusLabel.textContent = "Dialing agent & synthesizing greeting...";
+  subStatusLabel.textContent = "Connecting to Vani...";
 
   try {
     const res = await fetch("/api/call/start", {
@@ -437,8 +438,8 @@ async function handleUserSpeechTurn(userText, durationMs = 0, confidence = 1.0) 
   // Append user message immediately
   appendTurn("customer", userText, null, null);
 
-  callStatusLabel.textContent = "Thinking...";
-  subStatusLabel.textContent = "Processing qualification rules & synthesizing response...";
+  callStatusLabel.textContent = "Analyzing intent...";
+  subStatusLabel.textContent = "Autonomous language, intent & domain reasoning...";
   avatarRing.className = "agent-avatar-ring";
 
   try {
@@ -457,7 +458,18 @@ async function handleUserSpeechTurn(userText, durationMs = 0, confidence = 1.0) 
 
     const data = await res.json();
 
-    // Update Qualification Checklist in real-time
+    // Adapt speech recognition language for subsequent mic input
+    if (speechRecognition && data.language) {
+      if (data.language === "id") {
+        speechRecognition.lang = "id-ID";
+      } else if (data.language === "tl") {
+        speechRecognition.lang = "fil-PH";
+      } else {
+        speechRecognition.lang = "en-US";
+      }
+    }
+
+    // Update Qualification Checklist in real-time if available
     if (data.qualification) {
       updateQualificationUI(data.qualification, data.dialog_action);
     }

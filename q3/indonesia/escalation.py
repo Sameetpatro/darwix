@@ -19,8 +19,13 @@ class IndonesianEscalationHandler:
         ]
         return any(bool(re.search(p, clean)) for p in patterns)
 
-    def get_escalation_response(self, dialect_style: str = "colloquial") -> str:
-        if dialect_style == "formal":
+    def get_escalation_response(self, dialect_style: str = "colloquial", language: str = "id") -> str:
+        if language == "en":
+            return (
+                "Certainly! I am transferring your call directly to a Darwix Multifinance Customer Service officer. "
+                "Please hold on for just a moment while we connect you."
+            )
+        elif dialect_style == "formal":
             return (
                 "Baik Bapak/Ibu, saya segera sambungkan Anda dengan Petugas Layanan Konsumen Darwix Multifinance. "
                 "Mohon ditunggu sebentar ya, panggilan Anda sedang kami alihkan agar dapat dibantu secara langsung."

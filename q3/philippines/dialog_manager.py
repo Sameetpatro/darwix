@@ -72,7 +72,7 @@ class PhilippinesDialogManager:
         })
         return greeting
 
-    def process_utterance(self, session_id: str, utterance: str) -> Dict[str, Any]:
+    def process_utterance(self, session_id: str, utterance: str, language: Optional[str] = None) -> Dict[str, Any]:
         """
         Processes a customer utterance in English, Filipino, or Taglish.
         Returns:
@@ -91,7 +91,7 @@ class PhilippinesDialogManager:
         
         # 1. Detect language and intent
         intent_res = ph_intent_detector.detect_intent(utterance)
-        detected_lang = intent_res.language
+        detected_lang = language if language in ("en", "fil", "taglish") else intent_res.language
         session.language = detected_lang  # adaptively align to caller's language
 
         logger.info(

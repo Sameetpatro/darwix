@@ -31,6 +31,12 @@ class LiveCallState:
         sig_data = signal.model_dump() if hasattr(signal, "model_dump") else signal
         self.signals.append(sig_data)
 
+    def add_turn(self, turn: ConversationTurn):
+        """Adds a finalized turn directly to conversation history."""
+        self.buffer.turns.append(turn)
+        self.turn_count += 1
+        self._update_stage_from_turn(turn)
+
     def ingest_transcript_chunk(self, chunk: TranscriptChunk) -> Optional[ConversationTurn]:
         """Ingests a streaming ASR chunk and updates call state."""
         self.chunk_latencies.append(chunk.asr_latency_ms)

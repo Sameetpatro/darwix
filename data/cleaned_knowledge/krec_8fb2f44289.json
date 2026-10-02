@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_8fb2f44289",
+  "source_doc_id": "doc_424a61c6aa",
+  "title": "Faq And Objections — FAQ 1: Prepayment Penalties",
+  "cleaned_content": "## FAQ 1: Prepayment Penalties\nQuestion: Are there prepayment penalties if a borrower settles the loan early?\nAnswer: Absolutely not. All Darwix Commercial Term Loans and Revolving Lines of Credit have zero prepayment penalties. Borrowers can pay off the full balance at any time and receive a discount on unaccrued interest charges.",
+  "original_content_hash": "d48117bb70dab650e4df5c95d097f3d16ee44cce35a143d459be816947653a6d",
+  "cleaned_content_hash": "e89fa56bba48c0cd340eb986a0590e21412994b27579457466d7e23c92b624bd",
+  "category": "faq",
+  "product": null,
+  "source": "faq_and_objections.txt",
+  "source_location": {
+    "page": 2,
+    "section": "FAQ 1: Prepayment Penalties"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": false,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790925711.327341
+}

@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_cc5aed0e91",
+  "source_doc_id": "doc_8024b8507a",
+  "title": "Faq And Objections — FAQ 3: Soft Credit Check Guarantee",
+  "cleaned_content": "## FAQ 3: Soft Credit Check Guarantee\nQuestion: Does applying hurt the business owner credit score?\nAnswer: No. Darwix performs only a soft credit pull to generate loan offers and pre-qualifications. A soft inquiry has zero impact on credit scores.",
+  "original_content_hash": "c589115a94b499262adbb2a9b3a6f6e088a8e02915d996ec1afdcb8809701922",
+  "cleaned_content_hash": "6795d3144269ad0d38323dd4e2bd72734fcdeaf13f866327fd54b49b76bade0e",
+  "category": "faq",
+  "product": null,
+  "source": "faq_and_objections.txt",
+  "source_location": {
+    "page": 4,
+    "section": "FAQ 3: Soft Credit Check Guarantee"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790925713.266179
+}
