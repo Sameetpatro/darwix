@@ -84,6 +84,16 @@ async def get_index():
     return FileResponse(str(index_file))
 
 
+@app.get("/dashboard")
+async def get_agent_dashboard():
+    """Serves the Q4 Real-Time Agent Copilot & Live Nudges Dashboard."""
+    dashboard_file = Path(__file__).parent.parent / "dashboard" / "index.html"
+    if not dashboard_file.exists():
+        raise HTTPException(status_code=404, detail="Dashboard page not found")
+    return FileResponse(str(dashboard_file))
+
+
+
 @app.get("/api/health")
 async def health_check():
     """System diagnostic and provider readiness check."""
