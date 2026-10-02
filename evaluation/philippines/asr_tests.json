@@ -1,0 +1,93 @@
+[
+  {
+    "id": "PH-ASR-01",
+    "category": "English",
+    "language": "English",
+    "expected_transcript": "I would like to apply for a term life insurance policy with maximum coverage.",
+    "actual_transcript": "I would like to apply for a term life insurance policy with maximum coverage.",
+    "wer": 0.0,
+    "provider": "Web Speech API (en-PH)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "None",
+    "error_type": "None",
+    "result": "Correct"
+  },
+  {
+    "id": "PH-ASR-02",
+    "category": "Filipino",
+    "language": "Filipino",
+    "expected_transcript": "Magkano po ba ang hulog sa seguro kung dalawang milyon ang kukunin kong coverage?",
+    "actual_transcript": "Magkano po ba ang hulog sa seguro kung dalawang milyon ang kukunin kong coverage?",
+    "wer": 0.0,
+    "provider": "Web Speech API (fil-PH)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "None",
+    "error_type": "None",
+    "result": "Correct"
+  },
+  {
+    "id": "PH-ASR-03",
+    "category": "Taglish",
+    "language": "Taglish",
+    "expected_transcript": "Gusto ko pong malaman kung magkano yung premium for this policy.",
+    "actual_transcript": "Gusto ko pong malaman kung magkano yung premium for this policy.",
+    "wer": 0.0,
+    "provider": "Web Speech API (fil-PH / en-PH Multilingual)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "None",
+    "error_type": "None",
+    "result": "Correct"
+  },
+  {
+    "id": "PH-ASR-04",
+    "category": "Financial Terminology",
+    "language": "Taglish",
+    "expected_transcript": "Pwede bang mag-add ng critical illness rider at sino ang pwedeng primary beneficiary?",
+    "actual_transcript": "Pwede bang mag add ng critical illness rider at sino ang pwedeng primary beneficiary?",
+    "wer": 0.0,
+    "provider": "Web Speech API (fil-PH)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "Minor hyphenation loss ('mag-add' -> 'mag add')",
+    "error_type": "Orthographic / Punctuation",
+    "result": "Correct"
+  },
+  {
+    "id": "PH-ASR-05",
+    "category": "Fast Speech",
+    "language": "Taglish",
+    "expected_transcript": "Kung mag-lapse ba yung account may thirty-one days grace period bago ma-cancel?",
+    "actual_transcript": "Kung mag lapse ba yung account may 31 days grace period bago macancel?",
+    "wer": 0.267,
+    "provider": "Web Speech API (fil-PH)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "Numeral formatting ('thirty-one' -> '31') and compound spelling ('ma-cancel' -> 'macancel')",
+    "error_type": "Formatting / Hyphenation",
+    "result": "Approx. Match (WER: 26.7%)"
+  },
+  {
+    "id": "PH-ASR-06",
+    "category": "Noisy Audio",
+    "language": "Taglish",
+    "expected_transcript": "BDO depositor po ako may auto-debit discount ba sa first year premium?",
+    "actual_transcript": "BDO depositor po ako may auto debit discount ba sa first year premium?",
+    "wer": 0.0,
+    "provider": "Web Speech API (fil-PH)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "Minor acoustic noise blur ('auto-debit' -> 'auto debit')",
+    "error_type": "Hyphenation",
+    "result": "Correct"
+  },
+  {
+    "id": "PH-ASR-07",
+    "category": "Code-Switching",
+    "language": "Taglish",
+    "expected_transcript": "Wala pa akong budget ngayon kasi medyo pricey yung monthly amortization.",
+    "actual_transcript": "Wala pa akong budget ngayon kasi medyo pricey yung monthly amortization.",
+    "wer": 0.0,
+    "provider": "Web Speech API (fil-PH)",
+    "model": "Google Chrome Speech Recognition Engine",
+    "error_observed": "None",
+    "error_type": "None",
+    "result": "Correct"
+  }
+]
