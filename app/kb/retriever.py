@@ -188,5 +188,36 @@ class KnowledgeRetriever:
             voice_answer=voice_clean,
         )
 
+    def query_q2(self, query: str, top_k: int = 3, customer_context: Optional[dict] = None) -> List[dict]:
+        """
+        Executes Q2 Hybrid Retrieval (Dense pgvector + Sparse BM25 + RRF)
+        with customer context re-ranking and conflict citations.
+        """
+        from q2.retrieval.hybrid_search import hybrid_search_engine
+        from q2.api.retrieval_router import rerank_with_context, format_citation
+
+        results = hybrid_search_engine.search(query=query, top_k=top_k * 2 if customer_context else top_k)
+        if customer_context:
+            results = rerank_with_context(results, customer_context)[:top_k]
+        else:
+            results = results[:top_k]
+
+        output = []
+        for r in results:
+            cit = format_citation(r.chunk.source, r.chunk.title, r.chunk.source_location)
+            output.append({
+                "chunk_id": r.chunk.chunk_id,
+                "title": r.chunk.title,
+                "content": r.chunk.content,
+                "citation": cit,
+                "source": r.chunk.source,
+                "category": r.chunk.category,
+                "product": r.chunk.product,
+                "score": r.fused_score,
+                "has_conflict": len(r.conflicts) > 0,
+                "conflicts": [c.model_dump() for c in r.conflicts],
+            })
+        return output
+
 
 retriever = KnowledgeRetriever()

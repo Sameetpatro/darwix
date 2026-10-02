@@ -36,6 +36,18 @@ static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 app.mount("/recordings", StaticFiles(directory=str(settings.recordings_dir)), name="recordings")
 
+# Mount Question 2 Enterprise Knowledge Retrieval Router
+from q2.api import retrieval_router
+app.include_router(retrieval_router)
+
+# Mount Question 3 Philippines Voice Bot Router
+from q3.api.ph_router import ph_router
+app.include_router(ph_router)
+
+# Mount Question 3 Indonesia Voice Bot Router
+from q3.api.id_router import id_router
+app.include_router(id_router)
+
 
 # =====================================================================
 # Request / Response Schemas
