@@ -1,0 +1,24 @@
+{
+  "scenario": "call_payment_difficulty",
+  "generated_at": 1790923398.359804,
+  "turns_count": 2,
+  "total_duration_sec": 10.7,
+  "turns": [
+    {
+      "turn_index": 1,
+      "speaker": "agent",
+      "start_time": 0.0,
+      "end_time": 4.8,
+      "duration": 4.8,
+      "text": "Your monthly premium installment of three hundred dollars is due this Friday."
+    },
+    {
+      "turn_index": 2,
+      "speaker": "customer",
+      "start_time": 4.8,
+      "end_time": 10.7,
+      "duration": 5.9,
+      "text": "I don't think I can make the payment this month due to unexpected medical bills."
+    }
+  ]
+}

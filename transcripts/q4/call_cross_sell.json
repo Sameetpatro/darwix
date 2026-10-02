@@ -1,0 +1,48 @@
+{
+  "scenario": "call_cross_sell",
+  "generated_at": 1790923383.528712,
+  "turns_count": 5,
+  "total_duration_sec": 21.1,
+  "turns": [
+    {
+      "turn_index": 1,
+      "speaker": "agent",
+      "start_time": 0.0,
+      "end_time": 6.6,
+      "duration": 6.6,
+      "text": "Thank you for calling Darwix Insurance. I can see you are reviewing your Honda Civic policy today."
+    },
+    {
+      "turn_index": 2,
+      "speaker": "customer",
+      "start_time": 6.6,
+      "end_time": 10.3,
+      "duration": 3.7,
+      "text": "Yes, that's right. Actually, I have another vehicle too."
+    },
+    {
+      "turn_index": 3,
+      "speaker": "agent",
+      "start_time": 10.3,
+      "end_time": 14.4,
+      "duration": 4.1,
+      "text": "Let me look at your current deductible for the Civic."
+    },
+    {
+      "turn_index": 4,
+      "speaker": "customer",
+      "start_time": 14.4,
+      "end_time": 18.1,
+      "duration": 3.7,
+      "text": "Can I add it to the policy as well?"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "agent",
+      "start_time": 18.1,
+      "end_time": 21.1,
+      "duration": 3.0,
+      "text": "Sure, let's look into multi-vehicle coverage options."
+    }
+  ]
+}

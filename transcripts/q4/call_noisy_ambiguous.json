@@ -1,0 +1,24 @@
+{
+  "scenario": "call_noisy_ambiguous",
+  "generated_at": 1790923400.818824,
+  "turns_count": 2,
+  "total_duration_sec": 5.3,
+  "turns": [
+    {
+      "turn_index": 1,
+      "speaker": "agent",
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "duration": 3.0,
+      "text": "Hello, how can I help you today?"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "customer",
+      "start_time": 3.0,
+      "end_time": 5.3,
+      "duration": 2.3,
+      "text": "I... uh... maybe... another... mumble..."
+    }
+  ]
+}

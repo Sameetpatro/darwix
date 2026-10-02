@@ -1,0 +1,40 @@
+{
+  "scenario": "call_rising_frustration",
+  "generated_at": 1790923395.3681831,
+  "turns_count": 4,
+  "total_duration_sec": 17.4,
+  "turns": [
+    {
+      "turn_index": 1,
+      "speaker": "agent",
+      "start_time": 0.0,
+      "end_time": 4.4,
+      "duration": 4.4,
+      "text": "Could you please confirm your date of birth and policy number?"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "customer",
+      "start_time": 4.4,
+      "end_time": 7.8,
+      "duration": 3.4,
+      "text": "I've already explained this twice to your colleague."
+    },
+    {
+      "turn_index": 3,
+      "speaker": "agent",
+      "start_time": 7.8,
+      "end_time": 11.9,
+      "duration": 4.1,
+      "text": "I apologize, my system reloaded so I need it again."
+    },
+    {
+      "turn_index": 4,
+      "speaker": "customer",
+      "start_time": 11.9,
+      "end_time": 17.4,
+      "duration": 5.5,
+      "text": "I already told you this three times! I don't understand why you're asking again!"
+    }
+  ]
+}

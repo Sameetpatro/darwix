@@ -1,0 +1,24 @@
+{
+  "scenario": "call_false_positive_cross_sell",
+  "generated_at": 1790923403.5556,
+  "turns_count": 2,
+  "total_duration_sec": 9.2,
+  "turns": [
+    {
+      "turn_index": 1,
+      "speaker": "agent",
+      "start_time": 0.0,
+      "end_time": 3.7,
+      "duration": 3.7,
+      "text": "Are you the only driver registered on this vehicle?"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "customer",
+      "start_time": 3.7,
+      "end_time": 9.2,
+      "duration": 5.5,
+      "text": "Yes, my brother has another vehicle in Seattle, but I only drive this one."
+    }
+  ]
+}
