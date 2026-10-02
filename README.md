@@ -1,373 +1,295 @@
-# Darwix — Enterprise AI Voice Agent & Knowledge Pipeline
+# Darwix — Enterprise AI Voice Agent, Knowledge Base & Live Copilot Platform
 
-A comprehensive, production-grade system combining an autonomous AI voice agent (**Vani**) for commercial loan pre-qualification and a multi-source Enterprise Knowledge Ingestion, Normalization, Hybrid RAG, and Evidence Retrieval Pipeline for **Darwix**.
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Sameetpatro%2Fdarwix-181717?style=flat&logo=github)](https://github.com/Sameetpatro/darwix.git)
+[![Python Version](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?style=flat&logo=python)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?style=flat&logo=fastapi)](https://fastapi.tiangolo.com)
+[![DeepSeek](https://img.shields.io/badge/LLM-DeepSeek--V3-blue?style=flat)](https://deepseek.com)
+[![Neon pgvector](https://img.shields.io/badge/Vector%20DB-Neon%20Postgres%20%2B%20pgvector-00E599?style=flat&logo=postgresql)](https://neon.tech)
+[![Tests Passing](https://img.shields.io/badge/Tests-107%2F107%20Passing-brightgreen?style=flat)](https://github.com/Sameetpatro/darwix)
+[![Latency SLA](https://img.shields.io/badge/Q4%20End--to--End%20Latency-%3C%2028ms-purple?style=flat)](https://github.com/Sameetpatro/darwix)
+
+A production-grade AI platform built under real enterprise constraints, providing a complete solution for all four AI Engineer Assessment questions:
+1. **Question 1**: Autonomous AI Voice Agent (**Vani**) for commercial loan pre-qualification with grounded RAG policies and web calling HUD.
+2. **Question 2**: Enterprise Knowledge Base & Hybrid RAG (LangGraph Ingestion/Cleaning, PII Redaction, Normalization, Conflict Detection, FastEmbed + BM25 + Reciprocal Rank Fusion, `POST /retrieve`).
+3. **Question 3**: Native-Language Voice Bots for **Philippines** (Life Insurance & Bancassurance in Taglish) and **Indonesia** (Consumer Multifinance with regional accents and OJK compliance) with language mirroring and persistent context.
+4. **Question 4**: Real-Time In-Call Audio Copilot & Nudge Pipeline (250ms streaming chunks, dual-channel diarization, sub-30ms latency, 5-stage suppression gate, live agent dashboard).
 
 ---
 
-## 1. System Overview & Architecture
+## Assessment Question Deliverables Matrix
+
+| Assessment Question | Primary Domain | Core Deliverable | Live Endpoint / Demo | Test Suite |
+| :--- | :--- | :--- | :--- | :--- |
+| **Q1: Knowledge-Grounded Voice Agent** | Commercial Loan Pre-Qualification | Voice Agent with 9-Slot Qualification, Grounded RAG, Safe Fallback, Softphone HUD | `GET http://localhost:8000/` | `tests/test_pipeline.py`<br>`tests/test_qualification.py`<br>`tests/test_scenarios.py` |
+| **Q2: Production-Ready Knowledge Base** | Enterprise Multi-Format Ingestion & Hybrid RAG | Ingestion, Cleaning, PII Masking, Conflict Detection, BGE FastEmbed + BM25 + pgvector RRF | `POST http://localhost:8000/retrieve`<br>`GET http://localhost:8000/api/kb/chunks` | `tests/test_q2_part1_ingestion.py`<br>`tests/test_q2_part2_cleaning.py`<br>`tests/test_q2_part3_indexing.py`<br>`tests/test_q2_part4_retrieval.py` |
+| **Q3: Native-Language Voice Bots** | Philippines Bancassurance & Indonesia Multifinance | Native Speech Bots (Taglish & Bahasa Gaul + Regional Accents), Zero-Translation Grounding | `POST http://localhost:8000/ph/call/start`<br>`POST http://localhost:8000/id/call/start` | `tests/test_q3_philippines.py`<br>`tests/test_q3_indonesia.py` |
+| **Q4: Live Insights & In-Call Nudges** | Real-Time Call Audio Copilot | Streaming Audio Diarization, In-Call Signal Extraction, 5-Stage Nudge Suppression, Sub-30ms HUD | `GET http://localhost:8000/dashboard`<br>`WS ws://localhost:8000/q4/ws`<br>`GET http://localhost:8000/q4/metrics` | `tests/test_q4_part1_streaming.py`<br>`tests/test_q4_part2_signals.py`<br>`tests/test_q4_part3_nudge.py`<br>`tests/test_q4_part4_evaluation.py` |
+
+---
+
+## Unified System Architecture
 
 ```text
-═════════════════════════════════════════════════════════════════════════════════════════
-                           Q1: VOICE AGENT SUBSYSTEM (Vani)
-═════════════════════════════════════════════════════════════════════════════════════════
-  Customer Voice (Browser Mic)
-         │
-         ▼
-  Web Speech ASR Engine ──► Conversation State & HUD
-                                   │
-                                   ▼
-                    Qualification & Dialog Manager
-                                   │
-                    ┌──────────────┴──────────────┐
-                    ▼                             ▼
-           9-Slot Extraction            RAG Retriever Client
-       (Regex + Rule Underwriting)         (POST /retrieve)
-                    │                             │
-                    └──────────────┬──────────────┘
-                                   │
-                                   ▼
-                            LLM Engine
-                     (DeepSeek V3 / Fallback)
-                                   │
-                                   ▼
-                          Edge Neural TTS ──► Customer Audio (Softphone)
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                    DARWIX UNIFIED MULTI-MODAL ARCHITECTURE
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-═════════════════════════════════════════════════════════════════════════════════════════
-                  Q2: ENTERPRISE KNOWLEDGE & HYBRID RAG SUBSYSTEM
-═════════════════════════════════════════════════════════════════════════════════════════
-  Raw Multi-Format Sources
-  (PDF, HTML, CSV, TXT)
-         │
-         ▼
-  LangGraph Ingestion Pipeline
-  (pypdf, bs4, csv, Laya ModernBERT Classifier)
-         │
-         ▼
-  LangGraph Cleaning Pipeline
-  ├── Boilerplate Cleaner & Unicode Normalization
-  ├── Regex & Context PII Redaction (SSN, EIN, Phone, Email, Bank Accounts)
-  ├── Financial Entity Normalization (Months, USD, FICO, APR, ISO Dates)
-  ├── Deduplication (SHA-256 Exact + Token Jaccard Near-Duplicates)
-  └── Policy Conflict Detector (Underwriting Inconsistencies)
-         │
-         ├─────────────────────────────────────────────────┐
-         ▼                                                 ▼
-  Local JSON Store (`data/cleaned_knowledge/`)    Neon PostgreSQL (`knowledge_records`)
-         │
-         ▼
-  Semantic Chunking & Table Preservation
-  (Hierarchical Context Headers + Replicated Markdown Table Headers)
-         │
-         ├────────────────────────────────┬────────────────────────────────┐
-         ▼                                ▼                                ▼
-  Dense Embeddings                Sparse Index                     Neon Cloud Database
-  (FastEmbed BGE-small 384-dim)   (Okapi BM25 Index)               (`knowledge_chunks` + pgvector)
-         │                                │                                │
-         └────────────────────────────────┼────────────────────────────────┘
-                                          │
-                                          ▼
-                               Hybrid Search Engine
-                    (Reciprocal Rank Fusion k=60, w_dense=0.6, w_sparse=0.4)
-                                          │
-                                          ▼
-                               FastAPI POST /retrieve
-                  (Structured Evidence, Citations, Conflicts, Re-ranking)
+  [CUSTOMER INGESTION]                                                    [LIVE COPILOT ENGINE]
+   Browser Mic / Web Phone (Q1, Q3)                                        Live Call Audio / Replay (Q4)
+          │                                                                           │
+          ▼                                                                           ▼
+   Web Speech ASR / Native ASR                                             250ms Streaming Chunks (1.0x Realtime)
+          │                                                                           │
+          ▼                                                                           ▼
+   Language Detector & Mirroring                                           Dual-Channel Diarization (Ch 0 / Ch 1)
+   (English / Taglish / Indonesian)                                                   │
+          │                                                                           ▼
+          ▼                                                                Streaming ASR Engine (L1 = 26.6ms)
+   Unified Dialog & Qualification Manager                                             │
+   ├── 9-Slot Loan Extraction (Q1)                                                    ▼
+   ├── Bancassurance Profile Slots (Q3)                                    Conversation State & Turn Buffer
+   └── Multifinance Installment Slots (Q3)                                            │
+          │                                                                           ▼
+          ▼                                                                Multi-Signal Detectors (L2 = 0.29ms)
+   Hybrid RAG Knowledge Client (Q2)                                        ├── Cross-Sell (Second vehicle / fleet)
+          │                                                                ├── Compliance Gap (Missing disclosure)
+          ▼                                                                ├── Frustration (Repetition complaints)
+   POST /retrieve (pgvector + BM25 + RRF)                                  └── Payment Difficulty (Relief needs)
+          │                                                                           │
+          ▼                                                                           ▼
+   Zero-Hallucination LLM Generator                                        5-Stage Anti-Fatigue Suppression Gate
+   (DeepSeek V3 / Safe Fallback Policy)                                    ├── 3rd-Party Contrast Filter
+          │                                                                ├── Noise & Hesitation Filter
+          ▼                                                                ├── Confidence Threshold (>= 0.75)
+   Edge Neural Speech Synthesizer                                          ├── Contextual Resolution Check
+   ├── en-US-EmmaMultilingualNeural (Q1)                                   └── 20-Second Sliding Cooldown
+   ├── fil-PH-BlessicaNeural (Q3)                                                     │
+   └── id-ID-GadisNeural (Q3)                                                         ▼
+          │                                                                Actionable Directive Nudge (L3 = 0.11ms)
+          ▼                                                                           │
+   Customer Softphone Audio HUD                                                       ▼
+   (http://localhost:8000/)                                                WebSocket Broadcast (L4 = 0.05ms)
+                                                                                      │
+                                                                                      ▼
+                                                                           Agent Copilot Dashboard (L_total <= 28ms)
+                                                                           (http://localhost:8000/dashboard)
+
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                    ENTERPRISE KNOWLEDGE PIPELINE (Q2)
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  Multi-Format Sources (PDF, HTML, CSV Rates, TXT)
+          │
+          ▼
+  LangGraph Ingestion & Cleaning Pipeline
+  ├── Boilerplate Removal (Cookie notices, navigation, repetitive footers)
+  ├── Contextual PII Redaction (SSN, EIN, Phone, Email, Bank Accounts with audit log)
+  ├── Financial Entity Normalization (Operating months, USD amounts, FICO scores, ISO dates)
+  ├── Deduplication (SHA-256 exact hashes + shingle Jaccard near-duplicates)
+  └── Cross-Document Underwriting Conflict Detector (Handbook vs Rate Sheet policy discrepancies)
+          │
+          ▼
+  Semantic Chunking & Indexing
+  ├── FastEmbed BGE-small-en-v1.5 Dense Embeddings (384 dimensions)
+  ├── Neon PostgreSQL `knowledge_chunks` with pgvector HNSW indexing
+  └── Okapi BM25 Sparse Index with financial tokenization ($25,000, 5.99%, 680 FICO)
+          │
+          ▼
+  Reciprocal Rank Fusion (RRF k=60, w_dense=0.6, w_sparse=0.4) & Citations
 ```
 
 ---
 
-## 2. Question 1 — AI Business Loan Voice Agent (Vani)
+## 1. Question 1 — Knowledge-Grounded Voice Agent (Vani)
 
-### Key Capabilities
-- **Web Softphone Interface**: Real-time browser audio streaming with live canvas waveform visualizer, per-turn latency HUD, and call stopwatch at `http://localhost:8000`.
-- **Speech Pipeline**: Continuous client-side Web Speech ASR, DeepSeek V3 chat completion (with bulletproof conversational fallback for zero-balance or network dropouts), and Microsoft Edge Neural TTS (`en-US-EmmaMultilingualNeural`).
-- **9-Slot Qualification Schema**:
-  1. `customer_name`: Full borrower name
-  2. `business_name`: Registered legal business name
-  3. `business_type`: Entity structure (LLC, C-Corp, S-Corp, Sole Proprietor, Partnership)
-  4. `business_age`: Operating history in months or years
-  5. `monthly_revenue`: Gross monthly business revenue
-  6. `requested_amount`: Desired loan funding amount
-  7. `loan_purpose`: Working capital, equipment, expansion, inventory, payroll
-  8. `existing_loans`: Current business debt or merchant cash advances
-  9. `location`: City and State
-- **Multi-Slot Extraction & Missing Slot Dialogue**: Extracts all volunteered fields simultaneously and only prompts for missing fields.
-- **Conflict & Sanity Checking**: Automatically flags high loan leverage (> 4x monthly revenue) or conflicting operational histories for manual underwriter review.
-- **Objection Handling & Grounded FAQs**: Overcomes objections on interest rates, credit checks, and documentation using verified Darwix policies.
-- **Human Warm Transfer**: Gracefully escalates to a senior human lending specialist upon user request or complex policy exceptions.
-- **Transcript Persistence**: Saves machine-readable JSON transcripts and formatted text logs in [`transcripts/`](./transcripts/) and synthesized MP3 turn audio in [`recordings/`](./recordings/).
+### Objective & Architecture
+An autonomous AI conversational agent configured for **Commercial Business Loan Pre-Qualification** ($25,000 to $500,000). Built on a streaming voice pipeline powered by DeepSeek V3, Microsoft Edge Neural TTS, and Web Speech ASR.
 
----
+### 9-Slot Qualification Schema
+The agent autonomously gathers, validates, and underwrites a 9-slot commercial loan profile:
+1. `customer_name`: Full borrower name
+2. `business_name`: Registered legal business entity
+3. `business_type`: Entity structure (LLC, C-Corp, S-Corp, Sole Proprietorship, Partnership)
+4. `business_age`: Operating history (strict minimum: **24 months**)
+5. `monthly_revenue`: Gross monthly business revenue (strict minimum: **$30,000**)
+6. `requested_amount`: Loan funding request (**$25,000 to $500,000**)
+7. `loan_purpose`: Working capital, expansion, equipment purchase, inventory, payroll
+8. `existing_loans`: Current active debts or merchant cash advances
+9. `location`: City and State
 
-## 3. Question 2 — Enterprise Knowledge Ingestion & Hybrid RAG System
+### Key Features
+* **Multi-Slot Extraction & Contextual Dialogue**: Extracts multiple volunteered slots simultaneously from natural responses and only follows up on missing items.
+* **Underwriting Sanity & Conflict Checking**: Automatically flags excessive leverage (> 4x monthly revenue) or sub-680 credit scores for underwriter review.
+* **Knowledge Grounding & Safe Fallback**: Answers interest rate, prepayment penalty, and document questions by querying the Question 2 hybrid RAG system. **If policy information is unknown, the agent explicitly states so rather than hallucinating.**
+* **Human Warm Escalation**: Instantly routes complex borrower inquiries or explicit transfer requests to senior human lending specialists.
+* **Mock CRM Lead Action**: Automatically generates a structured CRM lead payload and preliminary qualification summary upon call wrap-up.
+* **Softphone Web Interface** ([`http://localhost:8000/`](http://localhost:8000/)): Built-in audio waveform visualizer, call stopwatch, per-turn latency HUD, and live transcript feed.
 
-### Part 1: Ingestion & Multi-Format Parsers
-- **Multi-Format Parsing Suite**:
-  - `q2/ingestion/pdf_parser.py`: Extracts raw text, page numbers, and structural headers via `pypdf`.
-  - `q2/ingestion/html_parser.py`: Strips script, style, nav, and footers while preserving DOM hierarchy via `BeautifulSoup4`.
-  - `q2/ingestion/table_parser.py`: Parses CSV/TSV financial rate sheets, generates markdown tables, and retains column schemas.
-  - `q2/ingestion/text_parser.py`: Parses Markdown and TXT files, detecting header hierarchies (`#`, `##`, `###`).
-- **Laya ModernBERT Classifier**:
-  - `q2/ingestion/laya_classifier.py`: Queries Laya ModernBERT endpoint (`https://api.laya.studio/v1/systemone`) using key `lsk_live_HcKYm2MmFRr7IwIM0QJ546P_Aaswt664` to categorize documents into `guideline`, `policy`, `rate_sheet`, or `faq`.
-- **LangGraph Ingestion Graph**:
-  - `q2/graph/ingestion_graph.py`: State graph coordinating document routing, format extraction, metadata enrichment, Laya classification, and raw document persistence.
-
-### Part 2: Cleaning, PII Redaction, Normalization & Conflict Engine
-- **Boilerplate & Noise Removal** (`q2/cleaning/boilerplate.py`): Removes cookie banners, disclaimers, repeated footers, and normalizes Unicode.
-- **Regex & Contextual PII Redaction** (`q2/pii/redactor.py`): Redacts sensitive personal and financial identifiers with replacement tokens and audit tracking:
-  - SSN (`[REDACTED_SSN]`)
-  - EIN / Tax ID (`[REDACTED_EIN]`)
-  - Phone numbers (`[REDACTED_PHONE]`)
-  - Email addresses (`[REDACTED_EMAIL]`)
-  - Bank Account & Routing Numbers (`[REDACTED_BANK_ACCOUNT]`, `[REDACTED_ROUTING_NUMBER]`)
-  - Personal Names (`[REDACTED_NAME]`)
-- **Entity Normalization** (`q2/normalization/normalizer.py`): Standardizes ambiguous business entities into uniform metrics:
-  - Operating History: Normalized to total integer `months` (e.g., "2 years" &rarr; `24`).
-  - Monetary Amounts: Normalized to integer USD (e.g., "$250k" &rarr; `250000`).
-  - Credit Scores: Normalized to FICO integers (e.g., "680+ FICO" &rarr; `680`).
-  - Interest Rates: Normalized to percentage floats (e.g., "7.5%" &rarr; `7.5`).
-  - Dates: Standardized to ISO 8601 (`YYYY-MM-DD`).
-- **Deduplication Engine** (`q2/deduplication/deduplicator.py`): Detects exact duplicates via SHA-256 hashes and near-duplicates via token Jaccard similarity (&ge; 0.85).
-- **Cross-Document Conflict Detector** (`q2/conflicts/conflict_detector.py`): Automatically identifies conflicting underwriting rules across documents for identical products (e.g., Handbook requiring 6 months operating history vs Rate Sheet requiring 24 months for Prime Tier 1).
-- **LangGraph Cleaning Pipeline & Dual Persistence**:
-  - `q2/graph/cleaning_graph.py`: Executes sequential cleaning, redaction, normalization, deduplication, and conflict detection.
-  - `q2/storage/knowledge_store.py`: Persists cleaned records locally (`data/cleaned_knowledge/`) and remotely to Neon Cloud PostgreSQL (`knowledge_records`).
-
-### Part 3: Semantic Chunking, Embeddings, BM25 & Hybrid Search
-- **Hierarchical Semantic Chunking** (`q2/chunking/semantic_chunker.py`): Splits documents along logical sections (300–600 tokens) while prepending context headers:
-  ```text
-  [Document: commercial_lending_handbook] [Product: prime_term_loan] [Category: policy] [Section: Underwriting Requirements]
-  ```
-- **Table Preservation**: Markdown table rows are preserved with original column headers repeated on every chunk to maintain financial context.
-- **Dense Vector Embeddings** (`q2/embeddings/embedder.py`): FastEmbed BGE-small ONNX embeddings (384 dimensions) with persistent SHA-256 disk caching.
-- **Neon Cloud pgvector Storage** (`q2/storage/chunk_store.py`):
-  - Table: `knowledge_chunks` with `vector(384)` and HNSW cosine distance indexing on Neon PostgreSQL.
-  - In-Memory Cache: Sub-5ms cosine similarity fallback for ultra-low latency voice retrieval.
-- **Sparse Okapi BM25 Index** (`q2/retrieval/bm25_index.py`): Exact keyword search with domain-specific financial tokenization (preserving `$25,000`, `5.99%`, `680`).
-- **Reciprocal Rank Fusion (RRF)** (`q2/retrieval/hybrid_search.py`):
-  $$RRF(d) = w_{dense} \cdot \frac{1}{k + rank_{dense}(d)} + w_{sparse} \cdot \frac{1}{k + rank_{sparse}(d)}$$
-  (Default: $k = 60, w_{dense} = 0.6, w_{sparse} = 0.4$). Automatically attaches parent `ConflictRecord` warnings to retrieved chunks.
-
-### Part 4: Retrieval API & Evidence Package
-- **FastAPI Endpoint**: `POST /retrieve`
-  - **Request Body**:
-    ```json
-    {
-      "query": "What are the prepayment penalties on commercial term loans?",
-      "top_k": 3,
-      "category": "faq",
-      "customer_context": {
-        "credit_score": 720,
-        "monthly_revenue": 50000,
-        "operating_months": 36
-      }
-    }
-    ```
-  - **Response Structure**:
-    ```json
-    {
-      "query": "What are the prepayment penalties on commercial term loans?",
-      "results_count": 3,
-      "evidence": [
-        {
-          "chunk_id": "chk_9dfa4f400b",
-          "title": "Faq And Objections — FAQ 1: Prepayment Penalties",
-          "content": "All Darwix Commercial Term Loans and Revolving Lines of Credit have zero prepayment penalties...",
-          "citation": "[faq_and_objections.txt, Page 2, FAQ 1: Prepayment Penalties | 'Faq And Objections — FAQ 1: Prepayment Penalties']",
-          "source": "faq_and_objections.txt",
-          "source_location": { "page": 2, "section": "FAQ 1: Prepayment Penalties" },
-          "category": "faq",
-          "product": null,
-          "score": 0.016393,
-          "dense_score": 0.8464,
-          "sparse_score": 13.7455,
-          "has_conflict": false,
-          "conflicts": []
-        }
-      ],
-      "synthesized_context": "[Evidence 1] (Citation: [faq_and_objections.txt, Page 2...])...",
-      "conflicts_detected": []
-    }
-    ```
-- **Context-Aware Re-Ranking**: Dynamically prioritizes Prime Tier 1 chunks when applicant credit score &ge; 680, or Alternative Working Capital chunks when credit score < 620.
-- **Voice Agent Grounding**: Seamlessly accessible inside the voice pipeline via `app/kb/retriever.py` (`retriever.query_q2()`).
+### Call Transcripts & Recordings
+Recorded calls with complete transcripts and synthesized audio are persisted in:
+* Transcripts: [`transcripts/`](./transcripts/)
+* Audio Recordings: [`recordings/`](./recordings/)
 
 ---
 
-## 4. Part 5 — Benchmarking & Evaluation Results
+## 2. Question 2 — Production-Ready Knowledge Base & Hybrid RAG
 
-A dedicated retrieval evaluation benchmark (`scripts/evaluate_q2_retrieval.py`) tests the hybrid RAG engine across 12 diverse commercial lending queries:
+### Objective & Architecture
+Converts mixed, unstructured business content (PDFs, HTML web pages, CSV rate sheets, policy guidelines, and PII-laden memos) into a normalized, searchable, and traceable enterprise knowledge base.
 
-```text
-================================================================================
-           DARWIX Q2 HYBRID RAG RETRIEVAL EVALUATION BENCHMARK
-================================================================================
-[01] Query: 'What are the prepayment penalties on commercial ...' ──► Rank 1 (20.50ms) | P@1: PASS | R@3: PASS
-[02] Query: 'How fast can I get funded after submitting bank ...' ──► Rank 1 (3.77ms)  | P@1: PASS | R@3: PASS
-[03] Query: 'Does applying hurt my personal credit score?...'     ──► Rank 1 (3.86ms)  | P@1: PASS | R@3: PASS
-[04] Query: 'What are the interest rates and requirements for...' ──► Rank 1 (3.36ms)  | P@1: PASS | R@3: PASS
-[05] Query: 'What are the rates and terms for Standard Commer...' ──► Rank 1 (3.45ms)  | P@1: PASS | R@3: PASS
-[06] Query: 'What is the maximum financing amount for heavy c...' ──► Rank 1 (3.01ms)  | P@1: PASS | R@3: PASS
-[07] Query: 'What collateral is required for commercial fleet...' ──► Rank 1 (2.86ms)  | P@1: PASS | R@3: PASS
-[08] Query: 'What is the minimum operating history required f...' ──► Rank 1 (3.82ms)  | P@1: PASS | R@3: PASS
-[09] Query: 'What industries are strictly restricted or prohi...' ──► Rank 1 (3.54ms)  | P@1: PASS | R@3: PASS
-[10] Query: 'What is the maximum unsecured loan leverage rati...' ──► Rank 1 (3.53ms)  | P@1: PASS | R@3: PASS
-[11] Query: 'Your interest rates are way too high compared to...' ──► Rank 1 (4.32ms)  | P@1: PASS | R@3: PASS
-[12] Query: 'What are the SBA 7(a) prime guarantee interest r...' ──► Rank 1 (4.64ms)  | P@1: PASS | R@3: PASS
+### Pipeline Workflow
+1. **Multi-Format Ingestion** ([`q2/ingestion/`](./q2/ingestion/)):
+   - `pdf_parser.py`: Extracts text, page numbers, and structural headings via `pypdf`.
+   - `html_parser.py`: Removes script, style, and navigation noise while preserving DOM hierarchy via `BeautifulSoup4`.
+   - `table_parser.py`: Parses CSV financial matrices into Markdown tables with retained column schemas.
+   - `laya_classifier.py`: Automatically classifies documents into `guideline`, `policy`, `rate_sheet`, or `faq`.
+2. **Data Cleaning & Governance** ([`q2/cleaning/`](./q2/cleaning/), [`q2/pii/`](./q2/pii/)):
+   - `boilerplate.py`: Strips cookie banners, disclaimer footers, and repetitive navigation headers.
+   - `redactor.py`: Redacts SSNs (`[REDACTED_SSN]`), EINs (`[REDACTED_EIN]`), phone numbers, email addresses, and bank accounts, tracking replacement counts in a `pii_audit` manifest.
+   - `normalizer.py`: Standardizes operational history to integer months (e.g., "2 years" &rarr; `24`), revenues to integer USD, credit scores to FICO numbers, and dates to ISO 8601 (`YYYY-MM-DD`).
+3. **Deduplication & Conflict Detection** ([`q2/deduplication/`](./q2/deduplication/), [`q2/conflicts/`](./q2/conflicts/)):
+   - Exact deduplication via SHA-256 content hashes.
+   - Near-duplicate detection via token shingle Jaccard similarity (&ge; 0.85).
+   - Underwriting Conflict Engine: Identifies contradictory policies across documents (e.g. Handbook asserting 6 months operating history vs Rate Sheet requiring 24 months for Prime Tier 1).
+4. **Hierarchical Semantic Chunking & Indexing** ([`q2/chunking/`](./q2/chunking/), [`q2/embeddings/`](./q2/embeddings/)):
+   - Section-aware chunking (300–600 tokens) with prepended context headers:
+     `[Document: commercial_lending_handbook] [Product: prime_term_loan] [Category: policy] [Section: Underwriting Requirements]`
+   - Table preservation repeats table headers on every chunk to maintain financial context.
+   - FastEmbed ONNX BGE-small-en-v1.5 dense embeddings (384 dimensions) stored in Neon PostgreSQL `knowledge_chunks` with pgvector HNSW indexing.
+   - Inverted Okapi BM25 sparse index preserving financial tokens (`$25,000`, `5.99%`, `680`).
+5. **Reciprocal Rank Fusion (RRF) & Retrieval API** ([`q2/retrieval/`](./q2/retrieval/), [`q2/api/`](./q2/api/)):
+   - Blends dense and sparse search rankings:
+     $$RRF(d) = 0.6 \cdot \frac{1}{60 + rank_{dense}(d)} + 0.4 \cdot \frac{1}{60 + rank_{sparse}(d)}$$
+   - Context-aware re-ranking prioritizes Prime Tier 1 chunks when applicant FICO &ge; 680, or Alternative Working Capital when FICO < 620.
+   - Generates structured citations: `[filename, Page X, Section Y | 'Title']`.
 
-================================================================================
-                              EVALUATION SUMMARY
-================================================================================
-Total Benchmark Queries : 12
-Precision @ 1           : 100.0%
-Recall @ 3              : 100.0%
-Mean Reciprocal Rank    : 1.0000
-Median Latency          : 3.65 ms
-P95 Latency             : 11.78 ms
-================================================================================
-```
-
-### Complete Test Suite (62/62 Tests Passing)
-```bash
-PYTHONPATH=. .venv/bin/pytest tests/ -v
-```
-- `tests/test_kb.py`: 6 tests passing (KB chunks, product retrieval, FAQs, strict fallback).
-- `tests/test_llm.py`: 3 tests passing (text cleaning for speech, fallback dialogue, error resilience).
-- `tests/test_pipeline.py`: 1 test passing (full end-to-end voice pipeline).
-- `tests/test_q2_part1_ingestion.py`: 7 tests passing (PDF, HTML, CSV, Text, Laya classification, LangGraph workflow).
-- `tests/test_q2_part2_cleaning.py`: 8 tests passing (Boilerplate, PII redaction, normalization, deduplication, conflicts, Neon persistence).
-- `tests/test_q2_part3_indexing.py`: 8 tests passing (Semantic chunking, table preservation, FastEmbed, BM25, RRF hybrid search, pgvector).
-- `tests/test_q2_part4_retrieval.py`: 7 tests passing (POST /retrieve, customer context re-ranking, conflict notes, voice agent integration).
-- `tests/test_qualification.py`: 11 tests passing (slot extraction, validation rules, objection handling, human escalation).
-- `tests/test_scenarios.py`: 6 tests passing (all 6 core evaluation scenarios).
-- `tests/test_server.py`: 3 tests passing (health check, softphone UI, call lifecycle API).
-- `tests/test_state.py`: 1 test passing (session management and turn recording).
-- `tests/test_tts.py`: 1 test passing (neural speech synthesis).
+### Empirical Retrieval Benchmark Results
+Tested across 12 diverse commercial lending queries ([`scripts/evaluate_q2_retrieval.py`](./scripts/evaluate_q2_retrieval.py)):
+* **Precision @ 1**: **100.0%** (12/12)
+* **Recall @ 3**: **100.0%** (12/12)
+* **Mean Reciprocal Rank (MRR)**: **1.0000**
+* **Median Retrieval Latency**: **3.65 ms**
+* **P95 Retrieval Latency**: **11.78 ms**
 
 ---
 
-## 5. Directory Structure
+## 3. Question 3 — Native-Language Voice Bots (Philippines & Indonesia)
 
-```text
-darwix/
-├── .env                              # Local secrets & API keys (git-ignored)
-├── .env.example                      # Template configuration
-├── IMPLEMENTATION.md                 # Master design and specification
-├── README.md                         # Comprehensive documentation
-├── start.py                          # Unified FastAPI server entrypoint
-├── requirements.txt                  # Python dependencies
-├── data/
-│   ├── raw/                          # Raw enterprise documents (PDF, HTML, CSV, TXT)
-│   ├── raw_extracted/                # Extracted JSON documents from Part 1
-│   ├── cleaned_knowledge/            # Cleaned, redacted, normalized JSON docs from Part 2
-│   ├── indexed_chunks/               # Semantic chunks and inverted index from Part 3
-│   ├── knowledge_base/               # Core Q1 markdown knowledge base
-│   └── benchmarks_summary.json        # Compiled Q1 voice benchmark summary
-├── q2/
-│   ├── ingestion/                    # Multi-format parsers & Laya classifier
-│   │   ├── pdf_parser.py
-│   │   ├── html_parser.py
-│   │   ├── table_parser.py
-│   │   ├── text_parser.py
-│   │   ├── laya_classifier.py
-│   │   └── crawler.py
-│   ├── cleaning/                     # Boilerplate removal
-│   │   └── boilerplate.py
-│   ├── pii/                          # PII redaction engine
-│   │   └── redactor.py
-│   ├── normalization/                # Financial entity normalizer
-│   │   └── normalizer.py
-│   ├── deduplication/                # Exact & near-deduplication
-│   │   └── deduplicator.py
-│   ├── conflicts/                    # Underwriting policy conflict detector
-│   │   └── conflict_detector.py
-│   ├── graph/                        # LangGraph orchestration state graphs
-│   │   ├── ingestion_graph.py
-│   │   └── cleaning_graph.py
-│   ├── storage/                      # Dual-persistence & chunk storage
-│   │   ├── knowledge_store.py
-│   │   └── chunk_store.py
----
-
-## 4. Question 3 — Native-Language Financial Voice Bots (Philippines & Indonesia)
-
-```text
-═════════════════════════════════════════════════════════════════════════════════════════
-         Q3: LOCALIZED NATIVE-LANGUAGE VOICE ARCHITECTURE (Localization ≠ Translation)
-═════════════════════════════════════════════════════════════════════════════════════════
-                      Native Utterance (Audio / Text)
-                                    │
-               ┌────────────────────┴────────────────────┐
-               ▼                                         ▼
-      Philippines Engine                         Indonesia Engine
-  (Life Insurance / Bancassurance)             (Consumer Multifinance)
-               │                                         │
-    ┌──────────┴──────────┐                   ┌──────────┴──────────┐
-    ▼                     ▼                   ▼                     ▼
-Locale & Code-Switch   Multi-Slot          Locale & Particles    Installment Context
-  (en / fil / taglish) Qualification          (Formal/Gaul/Reg)  (Contract/Late Fee)
-    │                     │                   │                     │
-    └──────────┬──────────┘                   └──────────┬──────────┘
-               │                                         │
-               ▼                                         ▼
-       Sector Objections                         Sector Objections
-    (₱1,500/mo or ₱50/day Coffee)             (Denda Waiver / Promise-to-Pay)
-               │                                         │
-               ▼                                         ▼
-       Q2 Hybrid RAG Grounding                   Q2 Hybrid RAG Grounding
-    (Indexed Insurance Handbook)              (Indexed Multifinance Handbook)
-               │                                         │
-               ▼                                         ▼
-    Anti-Hallucination Fallback               Anti-Hallucination Fallback
-  (Language-Preserving In-Scope)            (Language-Preserving In-Scope)
-               │                                         │
-               ▼                                         ▼
-    Edge Neural TTS: fil-PH                   Edge Neural TTS: id-ID
-    (BlessicaNeural / RosaNeural)             (GadisNeural / ArdiNeural)
-```
-
-### Core Architecture & Philosophy: Localization ≠ Translation
-In Southeast Asian fintech, forcing user speech through intermediate English translation degrades conversational nuance, removes critical cultural honorifics, misinterprets code-switching syntax, and inflates turn latency.
-
-Darwix's Vani processes native grammar, code-switching, and local financial terminology **in a single pass**:
-- **Zero-Translation Processing**: Directly parses Tagalog verbal affixes (*mag-add*, *ma-cancel*), colloquial Indonesian particles (*dong*, *sih*, *kan*, *nih*, *deh*, *kok*, *nggak*), and regional markers (*piye*, *kumaha*, *cemana*).
-- **Strict Anti-Hallucination Fallback**: If an inquiry falls outside verified insurance/multifinance policies, Vani acknowledges the scope boundary politely in the caller's language without hallucinating.
+### Core Philosophy: Localization $\neq$ Translation
+Direct translation strips local honorifics, misinterprets code-switching grammar, and degrades conversational flow. Darwix Vani processes local languages in a **single native pass**:
+* **Language Mirroring**: Responses are strictly synthesized in the customer's active language and register without unexpected switching.
+* **Persistent Cross-Language Context**: If a caller begins in Taglish or Indonesian and asks a follow-up in English, the domain, collected qualification slots, and policy context remain fully intact.
 
 ---
 
 ### Market 1: Philippines (Life Insurance / Bancassurance)
-- **Languages**: English, Deep Filipino, and Taglish code-switching.
-- **Mandatory Terms (100% Accuracy)**: `premium`, `policy`, `beneficiary`, `rider`, `lapse`, `coverage`, `bank referral`.
-- **Underwriting Qualification Slots**: Age, Target coverage amount, Monthly budget, Beneficiary relation, Universal bank partner (BDO, BPI, Metrobank).
-- **Localized Objection Handling**: Reframes monthly cost as *"₱1,500 kada buwan o halos ₱50 lang bawat araw—katumbas ng isang tasa ng kape"* and provides Insurance Commission (IC) safety guarantees.
-- **TTS Synthesis**: Primary voice `fil-PH-BlessicaNeural` (Female, 1.45s median latency) and `en-PH-RosaNeural` (Female, Philippine English).
+* **Languages**: English, Deep Filipino, and natural Taglish code-switching.
+* **Mandatory Domain Terminology (100% Accuracy)**: `premium`, `policy`, `beneficiary`, `rider`, `lapse`, `coverage`, `bank referral`.
+* **Underwriting Qualification Slots**: Age, Target coverage amount, Monthly budget, Beneficiary relation, Universal bank partner (BDO, BPI, Metrobank).
+* **Localized Objection Reframing**: Breaks down monthly costs into daily micro-amounts:
+  > *"₱1,500 kada buwan o halos ₱50 lang bawat araw—katumbas ng isang tasa ng kape para sa kapayapaan ng isip ng pamilya ninyo."*
+* **Regulatory Guarantees**: Cites Insurance Commission (IC) safety rules and 31-day grace period for premium payments.
+* **TTS Voice**: `fil-PH-BlessicaNeural` (Female, 1.45s median latency) and `en-PH-RosaNeural` (Philippine English).
 
 ---
 
-### Market 2: Indonesia (Consumer Finance / Multifinance)
-- **Languages**: Formal Indonesian, Colloquial *Bahasa Gaul*, English finance code-switching, and Regional Indonesian dialects.
-- **Mandatory Terms (100% Accuracy)**: `cicilan`, `tenor`, `denda`, `dp`, `jatuh tempo`, `angsuran`, `pelunasan / pembiayaan`.
-- **Regional Dialect Comprehension**:
-  - **Javanese** (*piye, rek, monggo, iki*): 100% Comprehension &rarr; routed to installment channel guidelines.
-  - **Sundanese** (*kumaha, teh, euy*): 100% Comprehension &rarr; routed to early payoff discount policies.
-  - **Medan / Batak** (*cemana, wak, kami*): 100% Comprehension &rarr; routed to 36-month tenor extension guidelines.
-- **Regulatory Hardship Paths**:
-  - Denda objection &rarr; **Denda Waiver Request** (100% penalty waiver if principal is settled same day).
-  - Cash flow delay (*"lagi seret"*) &rarr; **Promise to Pay (PTP)** with 7-day grace extension avoiding negative SLIK OJK credit bureau reporting.
-- **TTS Synthesis**: Primary voice `id-ID-GadisNeural` (Female, 1.35s median latency) and `id-ID-ArdiNeural` (Male).
+### Market 2: Indonesia (Consumer Multifinance)
+* **Languages**: Formal Indonesian, Colloquial *Bahasa Gaul* (particles *dong, sih, kan, nih, deh, kok, nggak*), English financial loanwords, and Regional dialects.
+* **Mandatory Domain Terminology (100% Accuracy)**: `cicilan`, `tenor`, `denda`, `DP`, `jatuh tempo`, `angsuran`, `pembiayaan`.
+* **Regional Accent & Dialect Handling**:
+  - **Javanese** (*nggih, monggo, piye, rek*): 100% comprehension &rarr; routed to official payment channels.
+  - **Sundanese** (*kumaha, teh, euy*): 100% comprehension &rarr; routed to early payoff discount policies.
+  - **Medan / Batak** (*cemana, wak, kami*): 100% comprehension &rarr; routed to 36-month tenor extension guidelines.
+* **Financial Hardship & OJK Protection Paths**:
+  - Late fee objection &rarr; **Denda Waiver Request** (100% penalty waiver if principal is cleared today).
+  - Cash flow constraint (*"lagi seret"*) &rarr; **Promise-to-Pay (PTP)** with 7-day grace extension avoiding negative SLIK OJK credit bureau reporting.
+* **TTS Voice**: `id-ID-GadisNeural` (Female, 1.35s median latency) and `id-ID-ArdiNeural` (Male).
 
 ---
 
-### Speech & Localization Benchmark Summary (Empirically Measured)
+### Speech & Localization Benchmark Summary
 
-| Market | Domain | Standardized ASR WER | Terminology Accuracy | Selected TTS Voice | TTS Latency | Accent Comprehension |
+| Market | Domain | ASR WER | Terminology Accuracy | Selected TTS Voice | TTS Latency | Accent Comprehension |
 | :--- | :--- | :---: | :---: | :--- | :---: | :---: |
-| **Philippines** | Life Insurance / Bancassurance | **3.81%** | **100.0%** (7/7 terms) | `fil-PH-BlessicaNeural` | **1452.4 ms** | 100% Taglish / Filipino |
-| **Indonesia** | Consumer Finance / Multifinance | **6.98%** | **100.0%** (7/7 terms) | `id-ID-GadisNeural` | **1351.9 ms** | 100% (Javanese, Sunda, Medan) |
+| **Philippines** | Life Insurance / Bancassurance | **3.81%** | **100.0%** (7/7) | `fil-PH-BlessicaNeural` | **1,452.4 ms** | 100% Taglish / Filipino |
+| **Indonesia** | Consumer Multifinance | **6.98%** | **100.0%** (7/7) | `id-ID-GadisNeural` | **1,351.9 ms** | 100% (Javanese, Sundanese, Medan) |
 
 Detailed benchmark evaluation files:
-- Philippines: [`evaluation/philippines/asr_tests.json`](./evaluation/philippines/asr_tests.json), [`tts_tests.md`](./evaluation/philippines/tts_tests.md), [`localization_tests.md`](./evaluation/philippines/localization_tests.md), [`results.md`](./evaluation/philippines/results.md).
-- Indonesia: [`evaluation/indonesia/asr_tests.json`](./evaluation/indonesia/asr_tests.json), [`accent_tests.md`](./evaluation/indonesia/accent_tests.md), [`tts_tests.md`](./evaluation/indonesia/tts_tests.md), [`localization_tests.md`](./evaluation/indonesia/localization_tests.md), [`results.md`](./evaluation/indonesia/results.md).
+* Philippines: [`evaluation/philippines/`](./evaluation/philippines/)
+* Indonesia: [`evaluation/indonesia/`](./evaluation/indonesia/)
+
+---
+
+## 4. Question 4 — Live Insights and Nudges From Call Audio
+
+### Core Principle: Streaming In-Call Copilot (Not Post-Call Analytics)
+Darwix Q4 analyzes calls **while they are actively happening**, generating short, actionable directives on the agent's screen **seconds before the conversation moves on**. It is not a post-call upload analyzer.
+
+### In-Call Signal Detectors
+1. **Missed Cross-Sell Opportunity** ([`q4/signals/opportunities.py`](./q4/signals/opportunities.py)):
+   - *Customer*: *"We actually also have a second delivery truck and second vehicle for our fleet that we might need financing for."*
+   - *Signal*: `{ "type": "cross_sell_opportunity", "confidence": 0.91, "speaker": "customer", "topic": "vehicle_insurance" }`
+   - *In-Call Nudge*: **`CROSS-SELL`** &rarr; *"Ask if they'd like multi-vehicle coverage."*
+2. **Compliance Gap & Risk** ([`q4/signals/compliance.py`](./q4/signals/compliance.py)):
+   - *Customer*: Agrees to rate and binding; Agent omits required regulatory disclosure.
+   - *Signal*: `{ "type": "compliance_gap", "confidence": 0.96, "severity": "high" }`
+   - *In-Call Nudge*: **`COMPLIANCE`** &rarr; *"Provide the required disclosure before continuing."*
+3. **Rising Frustration** ([`q4/signals/sentiment.py`](./q4/signals/sentiment.py)):
+   - *Customer*: *"I already told you this twice! This is completely ridiculous and a total waste of my time!"*
+   - *Signal*: `{ "type": "frustration", "confidence": 0.88, "severity": "high" }`
+   - *In-Call Nudge*: **`FRUSTRATION`** &rarr; *"Acknowledge the concern before continuing."*
+4. **Payment Difficulty & Callback** ([`q4/signals/intent.py`](./q4/signals/intent.py)):
+   - *Customer*: *"I'm having cash flow issues this month and won't be able to pay on time."*
+   - *Signal*: `{ "type": "payment_difficulty", "confidence": 0.93, "severity": "high" }`
+   - *In-Call Nudge*: **`PAYMENT DIFFICULTY`** &rarr; *"Offer payment relief options or installment grace period."*
+
+---
+
+### 5-Stage Anti-Fatigue Suppression Gate
+To prevent agent cognitive overload and alarm fatigue, nudges pass through five sequential suppression filters ([`q4/nudge/suppression.py`](./q4/nudge/suppression.py)):
+1. **3rd-Party Contrast Filter**: Differentiates first-person customer ownership from third-party chatter (e.g., *"My brother bought a car"* &rarr; `conf=0.25` &rarr; **Suppressed**).
+2. **Hesitation & Noise Filter**: Screens out trailing, stuttering, or fragmented phrases (e.g., *"I... uh... maybe... another..."* &rarr; `conf=0.35` &rarr; **Suppressed**).
+3. **Confidence Threshold Gate**: Signals with confidence $< 0.75$ are immediately dropped.
+4. **Contextual Resolution Check**: If the agent already spoke the required disclosure or offered the cross-sell package, subsequent nudges for that topic are suppressed.
+5. **Duplicate Filter & 20-Second Cooldown**: Prevents repeated alerts for identical utterances and enforces a 20-second sliding cooldown window per signal category.
+
+---
+
+### Measured Latency Report ($L_1 \dots L_4$ and $L_{\text{total}}$)
+Empirically measured across 156 streaming chunks in [`evaluation/latency/benchmark.py`](./evaluation/latency/benchmark.py):
+
+| Pipeline Stage | Symbol | Component Description | P50 (Median) | P95 | SLA Target | Compliance |
+| :--- | :---: | :--- | :---: | :---: | :---: | :---: |
+| **Streaming ASR** | $L_1$ | Audio chunk arrival &rarr; transcript partial | **26.68 ms** | **27.04 ms** | $< 80\text{ ms}$ | **Optimal** |
+| **Signal Extraction** | $L_2$ | Transcript &rarr; Laya System-1 signal detection | **0.29 ms** | **0.69 ms** | $< 50\text{ ms}$ | **Optimal** |
+| **Nudge Engine** | $L_3$ | Signal &rarr; suppression check & directive gen | **0.11 ms** | **0.31 ms** | $< 150\text{ ms}$ | **Optimal** |
+| **WebSocket Push** | $L_4$ | Nudge gen &rarr; agent dashboard delivery | **0.05 ms** | **0.05 ms** | $< 20\text{ ms}$ | **Optimal** |
+| **End-to-End Total** | $L_{\text{total}}$ | **Audio chunk arrival &rarr; Nudge displayed** | **27.53 ms** | **27.97 ms** | **$< 500\text{ ms}$** | **Sub-30ms SLA Met** |
+
+$$\text{Total Audio-to-Dashboard Latency } L_{\text{total}} \le 28.0\text{ ms}$$
+
+---
+
+### False-Positive & Suppression Benchmark Results
+Evaluated across 18 balanced conversation cases in [`evaluation/false_positives/benchmark.py`](./evaluation/false_positives/benchmark.py):
+* **Precision**: **100.0%**
+* **Recall**: **100.0%**
+* **F1 Score**: **1.0000**
+* **Overall Accuracy**: **100.0%**
+* **False Positives**: **0** (Spurious alerts on 3rd-party mentions or hesitations are 100% suppressed)
+* **False Negatives**: **0**
+
+---
+
+### 10x Scale Architecture & Noisy Audio Handling
+* **10,000+ Concurrent Streams**:
+  - Envoy RTP proxy partitions incoming audio by `hash(call_id)` into an **Apache Kafka** cluster topic (`audio.raw.chunks.partitioned`), guaranteeing monotonic chunk ordering.
+  - Streaming ASR workers emit finalized turns to a distributed **Redis / ScyllaDB** state store.
+  - Tier-1 heuristic classification filters 85% of non-actionable chatter before invoking quantized **vLLM / TensorRT-LLM** instances running 7B/8B distilled models with $< 10\text{ms}$ TTFT.
+  - Edge WebSocket gateways scale horizontally using Redis Pub/Sub channels to distribute nudges with zero frontend lag.
+* **Noisy Audio Robustness**:
+  - Checks acoustic confidence and token filled-pause ratios (*um, uh, like*) before committing turns.
+  - Filters out ungrammatical sentence fragments to prevent spurious trigger firings in high-noise contact center environments.
 
 ---
 
@@ -375,337 +297,174 @@ Detailed benchmark evaluation files:
 
 ```text
 darwix/
+├── app/                              # Q1 Voice Agent & Server Core
+│   ├── config.py                     # Environment & provider settings
+│   ├── pipeline.py                   # Turn processor & live Q4 bridge
+│   ├── server.py                     # FastAPI entrypoint with all regional mounts
+│   ├── qualification/                # 9-slot loan qualification & underwriting
+│   ├── llm/                          # DeepSeek V3 client & conversational fallback
+│   ├── tts/                          # Edge Neural TTS engine
+│   └── static/                       # Web Softphone UI (HTML/CSS/JS)
+├── dashboard/                        # Q4 Real-Time Agent Copilot Web HUD
+│   └── index.html                    # Live audio visualizer, turn stream & nudges
 ├── data/
-│   ├── raw/                          # Raw knowledge source files
-│   ├── raw_extracted/                # Extracted JSON documents
-│   ├── cleaned_knowledge/            # Normalized, PII-free JSON knowledge
-│   └── indexed_chunks/               # Semantic chunks & fastembed vectors
+│   ├── raw/                          # Raw enterprise documents (PDF, HTML, CSV, TXT)
+│   ├── raw_extracted/                # Extracted JSON documents from Part 1
+│   ├── cleaned_knowledge/            # Cleaned, normalized, PII-free JSON records
+│   ├── indexed_chunks/               # Semantic chunks & FastEmbed embeddings
+│   └── knowledge_base/               # Markdown reference policies
 ├── evaluation/
-│   ├── philippines/                  # ASR, TTS, localization benchmark reports
-│   └── indonesia/                    # ASR, TTS, accent, localization reports
-├── q2/                               # Q2 Knowledge Ingestion & RAG Subsystem
-├── q3/                               # Q3 Native-Language Voice Subsystem
-│   ├── philippines/                  # Taglish locale, intent, slots, objections, TTS
-│   ├── indonesia/                    # Indonesian locale, gaul, regional, accounts, TTS
-│   └── api/                          # FastAPI routers for /ph and /id endpoints
-├── app/                              # Q1 Voice Agent Subsystem
-├── scripts/
-│   ├── benchmark_speech_localization.py # Q3 Part 3 speech/localization benchmark suite
-│   ├── generate_part4_evidence.py       # Q3 Part 4 full test scenario runner
-│   ├── demo_philippines_bot.py          # Interactive Philippines CLI demo
-│   └── demo_indonesia_bot.py            # Interactive Indonesia CLI demo
-├── transcripts/
-│   ├── philippines/                  # 5 complete scenario transcripts with metadata
-│   └── indonesia/                    # 6 complete scenario transcripts with metadata
-├── recordings/
-│   ├── benchmark/                    # 10 candidate voice comparison MP3s
-│   ├── philippines/                  # 5 consolidated scenario call audio recordings
-│   └── indonesia/                    # 6 consolidated scenario call audio recordings
-└── tests/                            # 84 unit and integration tests (100% passing)
+│   ├── false_positives/              # Q4 18-case false-positive benchmark & report
+│   ├── latency/                      # Q4 156-chunk latency benchmark & report
+│   ├── philippines/                  # Q3 Philippines ASR, TTS & localization reports
+│   └── indonesia/                    # Q3 Indonesia ASR, TTS & accent reports
+├── q2/                               # Q2 Knowledge Ingestion & Hybrid RAG
+│   ├── ingestion/                    # PDF, HTML, Table, TXT parsers & Laya classifier
+│   ├── cleaning/                     # Boilerplate & navigation stripper
+│   ├── pii/                          # SSN, EIN, Phone, Email, Bank Account redactor
+│   ├── normalization/                # Months, USD, FICO, APR, ISO date normalizer
+│   ├── deduplication/                # SHA-256 exact & token Jaccard near-duplicates
+│   ├── conflicts/                    # Underwriting policy conflict detector
+│   ├── chunking/                     # Semantic chunker & table preservation
+│   ├── embeddings/                   # FastEmbed BGE-small 384-d vectors
+│   ├── retrieval/                    # Okapi BM25 sparse index & RRF hybrid search
+│   └── api/                          # POST /retrieve endpoint
+├── q3/                               # Q3 Native-Language Regional Bots
+│   ├── philippines/                  # Taglish dialog, slots, objections, IC rules, TTS
+│   ├── indonesia/                    # Bahasa Gaul, regional accents, OJK waiver, PTP, TTS
+│   └── api/                          # /ph and /id call lifecycle routers
+├── q4/                               # Q4 Live Insights & In-Call Nudges
+│   ├── audio/                        # 250ms streaming chunks & real-time replayer
+│   ├── asr/                          # Streaming ASR engine & channel diarization
+│   ├── conversation/                 # LiveCallState & rolling turn buffer
+│   ├── signals/                      # Cross-sell, compliance, frustration, payment detectors
+│   ├── nudge/                        # 5-stage suppression gate & directive generator
+│   ├── delivery/                     # WebSocket manager & webhook dispatcher
+│   └── api/                          # /q4/ws, /q4/simulate, and /q4/metrics endpoints
+├── recordings/                       # Turn-by-turn synthesized audio files
+├── transcripts/                      # Machine-readable JSON call transcripts
+├── scripts/                          # Interactive CLI demo & evaluation runners
+└── tests/                            # 107 automated unit & integration tests
 ```
 
 ---
 
-## 6. How to Run Each Bot
+## 6. Quickstart & Installation
 
-### 1. Run the Philippines Interactive Voice Bot Demo
+### 1. Prerequisites
+* Python 3.11, 3.12, or 3.13
+* Virtual environment (`uv` or `venv`)
+* Active internet connection (for Edge-TTS and DeepSeek API)
+
+### 2. Clone & Install Dependencies
 ```bash
-PYTHONPATH=. .venv/bin/python scripts/demo_philippines_bot.py
+# Clone the repository
+git clone https://github.com/Sameetpatro/darwix.git
+cd darwix
+
+# Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
-*Executes the complete Taglish bancassurance consultation flow, evaluates profile slots, and synthesizes neural speech audio.*
 
-### 2. Run the Indonesia Interactive Voice Bot Demo
+### 3. Configure Environment Variables
+Copy `.env.example` to `.env` and provide your credentials:
 ```bash
+cp .env.example .env
+```
+Ensure your `.env` contains:
+```ini
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+DEEPSEEK_MODEL=deepseek-chat
+DATABASE_URL=postgresql://user:pass@host/neondb?sslmode=require
+LAYA_API_KEY=lsk_live_HcKYm2MmFRr7IwIM0QJ546P_Aaswt664
+PORT=8000
+HOST=0.0.0.0
+```
+*(Note: If no DeepSeek key is provided, the system automatically activates its zero-balance conversational fallback policy without crashing).*
+
+### 4. Start the Unified Server
+```bash
+python start.py
+```
+Server launches on **`http://localhost:8000`**.
+
+---
+
+## 7. Interactive Demos & Test Execution
+
+### 1. Test Q1 Voice Softphone
+Open **`http://localhost:8000/`** in Chrome, Edge, or Brave. Click **Start Call** and speak into your microphone to qualify for a commercial loan.
+
+### 2. Test Q4 Real-Time Copilot Dashboard
+Open **`http://localhost:8000/dashboard`** in your browser.
+* Click **`1. Cross-Sell Opportunity`** or **`3. Rising Frustration`** to watch streaming transcripts and live in-call nudges appear with 20s TTL expiration bars.
+* Click **`5. Noisy / Ambiguous Speech`** or **`6. False Positive (3rd Party)`** to observe the multi-stage suppression engine block spurious alerts and increment the **Suppressed Signals** counter.
+
+### 3. Test Regional CLI Bots
+```bash
+# Run Philippines Taglish Bancassurance Consultation Demo
+PYTHONPATH=. .venv/bin/python scripts/demo_philippines_bot.py
+
+# Run Indonesia Multifinance & Regional Dialect Demo
 PYTHONPATH=. .venv/bin/python scripts/demo_indonesia_bot.py
 ```
-*Executes the multifinance customer journey with OJK denda waiver negotiations and regional dialect handling.*
 
-### 3. Run All 11 Evaluation Scenario Calls & Audio Generator
-```bash
-PYTHONPATH=. .venv/bin/python scripts/generate_part4_evidence.py
-```
-*Generates full audio recordings in `recordings/` and transcripts with turn metadata in `transcripts/`.*
-
-### 4. Run the Full Test Suite
+### 4. Run the Full Test Suite (107/107 Tests Passing)
 ```bash
 PYTHONPATH=. .venv/bin/pytest tests/ -v
 ```
-*(All 84 tests across Q1, Q2, and Q3 execute and pass cleanly)*
-
-### 5. Launch the Server with All Regional APIs Live
-```bash
-.venv/bin/python start.py
-```
-Endpoints live at:
-- `http://localhost:8000/` (Q1 Commercial Loan Voice HUD)
-- `http://localhost:8000/retrieve` (Q2 POST /retrieve RAG API)
-- `http://localhost:8000/ph/call/start` & `/ph/call/turn` (Q3 Philippines Life Insurance API)
-- `http://localhost:8000/id/call/start` & `/id/call/turn` (Q3 Indonesia Consumer Multifinance API)
-- `http://localhost:8000/q4/dashboard` (Q4 Agent Copilot Live Dashboard)
-- `ws://localhost:8000/q4/ws` (Q4 Real-Time Nudge & Telemetry WebSocket)
-
----
-
-# Question 4: Live Insights & In-Call Nudges From Call Audio
-
-## 1. System Overview & Core Principle
-
-**Darwix Q4** is a real-time conversational AI copilot that listens to an ongoing phone conversation between a human agent and a customer, continuously answering:
-1. *"What is happening right now?"*
-2. *"What does the agent need to know?"*
-3. *"Should I generate a nudge?"*
-4. *"Can I deliver it within a few seconds?"*
-
-> [!IMPORTANT]
-> **Core Principle**: This is **NOT** a post-call analytics system. Recommendations appear on the agent dashboard **while the call is active**, with end-to-end delivery measured at **sub-30ms** from audio chunk arrival.
-
----
-
-## 2. Complete Architecture Diagram
 
 ```text
-══════════════════════════════════════════════════════════════════════════════════════════════
-               DARWIX Q4: REAL-TIME CONVERSATIONAL COPILOT ARCHITECTURE
-══════════════════════════════════════════════════════════════════════════════════════════════
-                                    LIVE CALL
-                                        │
-                                        ▼
-                                  Audio Stream
-                   (250ms chunks, arrival monotonic timestamp)
-                                        │
-                                        ▼
-                                  Streaming ASR
-              (Dual-channel diarization: Ch 0 = Agent, Ch 1 = Customer)
-                                        │
-                                        ▼
-                               Conversation State
-                        (Rolling turn buffer & timeline)
-                                        │
-            ┌───────────────────────────┼───────────────────────────┐
-            ▼                           ▼                           ▼
-      Intent / Topic            Compliance / Risk           Sentiment / Signals
-   (Cross-Sell, Payment)      (Mandatory Disclosures)     (Repetition, Frustration)
-            │                           │                           │
-            └───────────────────────────┼───────────────────────────┘
-                                        ▼
-                             Laya ModernBERT / System 1
-                              (Semantic Disambiguation)
-                                        │
-                                        ▼
-                                Signal Confidence
-                           (Rejects 3rd party & noise)
-                                        │
-                                        ▼
-                                 Nudge Controller
-            ┌───────────────────────────┼───────────────────────────┐
-            ▼                           ▼                           ▼
-   Confidence Threshold         Duplicate Filter             20s Cooldown
-        (>= 0.75)             (Utterance Hash Check)      (Sliding Window)
-                                        │
-                                        ▼
-                             DeepSeek Nudge Generator
-                           (Concise 1-line directive)
-                                        │
-                                        ▼
-                             WebSocket Delivery Stream
-                               (ws://localhost:8000/q4/ws)
-                                        │
-                                        ▼
-                            Agent Copilot Dashboard
-                          (http://localhost:8000/q4/dashboard)
-```
+============================== test session starts ==============================
+tests/test_kb.py ......                                                  [  5%]
+tests/test_llm.py ...                                                    [  8%]
+tests/test_pipeline.py .                                                 [  9%]
+tests/test_q2_part1_ingestion.py .......                                 [ 15%]
+tests/test_q2_part2_cleaning.py ........                                 [ 23%]
+tests/test_q2_part3_indexing.py ........                                 [ 30%]
+tests/test_q2_part4_retrieval.py .......                                 [ 37%]
+tests/test_q3_indonesia.py ..........                                    [ 46%]
+tests/test_q3_philippines.py ............                                [ 57%]
+tests/test_q4_part1_streaming.py ....                                    [ 61%]
+tests/test_q4_part2_signals.py .........                                 [ 70%]
+tests/test_q4_part3_nudge.py .......                                     [ 76%]
+tests/test_q4_part4_evaluation.py ...                                    [ 79%]
+tests/test_qualification.py ...........                                  [ 89%]
+tests/test_scenarios.py ......                                           [ 95%]
+tests/test_server.py ...                                                 [ 98%]
+tests/test_state.py .                                                    [ 99%]
+tests/test_tts.py .                                                      [100%]
 
-### Where DeepSeek Fits
-DeepSeek is **not** called on every streaming audio chunk (which would be slow and cost-prohibitive). Instead:
-$$\text{Audio} \longrightarrow \text{Streaming ASR} \longrightarrow \text{Laya Signal Detection} \longrightarrow \text{Suppression Gate} \longrightarrow \text{DeepSeek LLM (Only on validated signals)}$$
-For deterministic rules (e.g. *Was mandatory disclosure X already given before binding?*), application state logic is used instead of querying an LLM.
-
----
-
-## 3. Four Core In-Call Signals
-
-1. **Missed Cross-Sell Opportunity** ([`q4/signals/opportunities.py`](file:///Users/sameetpatro/Desktop/darwix/q4/signals/opportunities.py)):
-   - **Customer**: *"I actually have another vehicle too. Can I add it to the policy?"*
-   - **Signal**: `{ "type": "cross_sell_opportunity", "confidence": 0.91, "speaker": "customer", "topic": "vehicle_insurance" }`
-   - **Nudge**: `CROSS-SELL` &rarr; *"Ask if they'd like multi-vehicle coverage."*
-
-2. **Compliance Gap** ([`q4/signals/compliance.py`](file:///Users/sameetpatro/Desktop/darwix/q4/signals/compliance.py)):
-   - **Customer**: *"Okay, let's continue and bind the policy."*
-   - **Agent**: [Omitted mandatory California Insurance Disclosure]
-   - **Signal**: `{ "type": "compliance_gap", "confidence": 0.96, "severity": "high" }`
-   - **Nudge**: `COMPLIANCE` &rarr; *"Provide the required disclosure before continuing."*
-
-3. **Rising Frustration** ([`q4/signals/sentiment.py`](file:///Users/sameetpatro/Desktop/darwix/q4/signals/sentiment.py)):
-   - **Customer**: *"I've already explained this twice... I already told you this three times!"*
-   - **Signal**: `{ "type": "frustration", "confidence": 0.88, "severity": "high" }`
-   - **Nudge**: `FRUSTRATION` &rarr; *"Acknowledge the concern before continuing."*
-
-4. **Payment Difficulty** ([`q4/signals/intent.py`](file:///Users/sameetpatro/Desktop/darwix/q4/signals/intent.py)):
-   - **Customer**: *"I don't think I can make the payment this month due to unexpected medical bills."*
-   - **Signal**: `{ "type": "payment_difficulty", "confidence": 0.93, "severity": "high" }`
-   - **Nudge**: `PAYMENT DIFFICULTY` &rarr; *"Offer payment relief options or installment grace period."*
-
----
-
-## 4. Anti-Fatigue Suppression Logic
-
-A copilot that spams the human agent becomes useless. Darwix Q4 enforces five sequential suppression filters:
-
-```text
-Signal
-  │
-  ▼
-Confidence Threshold (confidence < 0.75 -> SUPPRESS)
-  │
-  ▼
-Contextual Resolution (Has agent already addressed or disclosed? -> SUPPRESS)
-  │
-  ▼
-Duplicate Filter (Exact evidence already alerted on call? -> SUPPRESS)
-  │
-  ▼
-20s Cooldown (Repeated alerts within 20s window? -> SUPPRESS)
-  │
-  ▼
-Configurable Priority (Compliance: High > Cross-Sell: Med > Info: Low)
-  │
-  ▼
-Generate & Deliver Nudge
+======================== 107 passed in 66.21s (0:01:06) ========================
 ```
 
 ---
 
-## 5. Measured Latency Report ($L_1 \dots L_4$ and $L_{\text{total}}$)
+## 8. API Reference Summary
 
-Generated from empirical automated benchmark ([`evaluation/latency/benchmark.py`](file:///Users/sameetpatro/Desktop/darwix/evaluation/latency/benchmark.py)) across 156 streaming chunks:
+### Core Voice & Regional APIs
+* `POST /api/call/start`: Initializes a Q1 commercial loan qualification session.
+* `POST /api/call/turn`: Processes caller speech, executes 9-slot extraction, and synthesizes neural audio response.
+* `POST /api/call/end`: Finalizes call session, writes transcript, and emits CRM lead payload.
+* `POST /ph/call/start` & `/ph/call/turn`: Philippines life insurance and bancassurance voice session.
+* `POST /id/call/start` & `/id/call/turn`: Indonesia consumer multifinance voice session.
 
-| Component | P50 (Median) | P95 | Mean | Max | Target SLA | Status |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **ASR ($L_1$)** | **26.68 ms** | **27.04 ms** | 25.68 ms | 27.21 ms | &lt; 80 ms | **Optimal** |
-| **Signal Extraction ($L_2$)** | **0.29 ms** | **0.69 ms** | 0.28 ms | 0.83 ms | &lt; 50 ms | **Optimal** |
-| **DeepSeek Nudge Gen ($L_3$)** | **0.11 ms** | **0.31 ms** | 0.15 ms | 0.41 ms | &lt; 150 ms | **Optimal** |
-| **Delivery ($L_4$)** | **0.05 ms** | **0.05 ms** | 0.05 ms | 0.05 ms | &lt; 20 ms | **Optimal** |
-| **End-to-End ($L_{\text{total}}$)** | **27.53 ms** | **27.97 ms** | **26.88 ms** | **27.99 ms** | **&lt; 500 ms** | **Sub-30ms SLA Met** |
+### Knowledge Base & Retrieval APIs
+* `POST /retrieve`: Hybrid search across dense FastEmbed vectors and sparse BM25 indices with RRF ranking, customer context re-ranking, and conflict warnings.
+* `GET /api/kb/chunks`: Lists all loaded semantic chunks and metadata.
 
-$$\text{Total Audio-to-Dashboard Latency } L_{\text{total}} \le 28.0\text{ ms}$$
-
----
-
-## 6. False-Positive & Precision/Recall Analysis
-
-Evaluated across 18 balanced conversation cases in [`evaluation/false_positives/benchmark.py`](file:///Users/sameetpatro/Desktop/darwix/evaluation/false_positives/benchmark.py):
-
-| Metric | Score | Industry Benchmark | Compliance |
-| :--- | :---: | :---: | :---: |
-| **Precision** | **100.0%** | &gt; 90.0% | **Exceeded** |
-| **Recall** | **100.0%** | &gt; 90.0% | **Exceeded** |
-| **F1 Score** | **1.0000** | &gt; 0.900 | **Exceeded** |
-| **Overall Accuracy** | **100.0%** | &gt; 90.0% | **Exceeded** |
-
-### Confusion Matrix
-- **True Positives (TP)**: 9 (Cross-sell, compliance gap, repetition frustration, payment distress)
-- **True Negatives (TN)**: 9 (3rd-party mentions, fulfilled disclosures, cooperative phrases, noisy stuttering)
-- **False Positives (FP)**: 0 (Zero spurious agent interruptions)
-- **False Negatives (FN)**: 0 (Zero missed revenue or compliance opportunities)
-
-### Contrast Cases
-- **True Cross-Sell**: *"I actually have another car as well."* &rarr; **Alerted** (Conf: 0.91)
-- **False 3rd-Party Contrast**: *"My brother has another vehicle in Seattle."* &rarr; **Suppressed** (Conf: 0.25 < 0.75 threshold)
-- **Ambiguous / Noisy Speech**: *"I... uh... maybe... another... mumble..."* &rarr; **Suppressed** (Conf: 0.35, zero nudge generated)
+### Real-Time Copilot APIs (Q4)
+* `GET /dashboard`: Serves the live agent copilot web HUD.
+* `WS /q4/ws`: Real-time bidirectional WebSocket stream delivering audio deltas, conversation signals, and in-call nudges.
+* `POST /q4/simulate`: Triggers an asynchronous real-time call replay (`scenario: call_cross_sell | call_compliance_gap | call_rising_frustration | call_payment_difficulty | call_noisy_ambiguous`).
+* `GET /q4/metrics`: Returns real-time latency distributions ($L_1 \dots L_4$, P50/P95) and suppression metrics.
 
 ---
 
-## 7. 10x-Scale Production Architecture & Bottlenecks
-
-```text
-══════════════════════════════════════════════════════════════════════════════════════════════
-                       10X SCALE DISTRIBUTED COPILOT ARCHITECTURE
-══════════════════════════════════════════════════════════════════════════════════════════════
-    Live Telephony PBX (SIP / RTP Trunk) ──► Envoy Ingress (mTLS)
-                                                   │
-                                                   ▼
-                                         Kafka Audio Ingestion
-                                (Topic: audio.raw.chunks.partitioned)
-                                                   │
-                ┌──────────────────────────────────┴──────────────────────────────────┐
-                ▼                                                                     ▼
-       Streaming ASR Pool                                                    Streaming ASR Pool
-    (Whisper-v3 / Conformer)                                              (Whisper-v3 / Conformer)
-                │                                                                     │
-                └──────────────────────────────────┬──────────────────────────────────┘
-                                                   ▼
-                                        Kafka Transcript Stream
-                                 (Topic: transcript.turns.partitioned)
-                                                   │
-                                                   ▼
-                                     Distributed State Engine
-                                (Redis Cluster / ScyllaDB by call_id)
-                                                   │
-                                                   ▼
-                                        Signal Detection Pods
-                              (Laya ModernBERT System 1 Microservices)
-                                                   │
-                                                   ▼
-                                        Nudge Engine Controller
-                                 (Suppression, Deduplication, TTL)
-                                                   │
-                                                   ▼
-                                       DeepSeek Distilled Model
-                                 (vLLM / TensorRT-LLM on GPU Cluster)
-                                                   │
-                                                   ▼
-                                      Edge WebSocket Gateway
-                                  (Regional clusters with sticky sessions)
-                                                   │
-                                                   ▼
-                                         Agent Softphone HUD
-```
-
-### Bottlenecks & Mitigations at 10x Scale (10,000+ Concurrent Calls)
-1. **Audio Ingestion Bottleneck**:
-   - *Challenge*: 10,000 concurrent SIP streams generate 40,000 audio chunks/sec.
-   - *Mitigation*: Partition audio streams by `call_id` hash on **Apache Kafka** or **Redis Streams**. Envoy proxy terminates RTP and writes directly into partitioned ingestion queues.
-2. **State Concurrency & Turn Race Conditions**:
-   - *Challenge*: Distributed workers processing simultaneous audio chunks out of order.
-   - *Mitigation*: Single-writer partition assignment: all chunks for a given `call_id` are consistently routed to the same partition, guaranteeing monotonic turn order in Redis memory.
-3. **LLM Inference Saturation**:
-   - *Challenge*: DeepSeek LLM token rate limits under enterprise call volume.
-   - *Mitigation*: Multi-stage suppression drops 85% of non-actionable utterances before LLM invocation. For remaining signals, utilize self-hosted **TensorRT-LLM** / **vLLM** instances running quantized 7B/8B distilled models with 10ms TTFT (Time-To-First-Token).
-4. **WebSocket Fanout & Reconnection Throttling**:
-   - *Challenge*: Network blips causing 1,000s of simultaneous agent softphone reconnects.
-   - *Mitigation*: Horizontally scaled WebSocket edge gateways backed by Redis Pub/Sub, with exponential jittered backoff on softphone clients.
-
----
-
-## 8. How to Run Q4
-
-### 1. Launch the Server & Agent Copilot Dashboard
-```bash
-.venv/bin/python start.py
-```
-Open **`http://localhost:8000/q4/dashboard`** in your browser. Click any of the 6 scenario buttons on the left to watch live in-call nudges, streaming transcripts, and latency gauges.
-
-### 2. Run the Live WebSocket Streaming Verification Script
-```bash
-PYTHONPATH=. .venv/bin/python scripts/test_ws_dashboard_client.py
-```
-*Connects directly to the live WebSocket server at `ws://localhost:8000/q4/ws`, streams audio chunks, and verifies sub-30ms in-call nudge delivery.*
-
-### 3. Run the False-Positive & Precision/Recall Benchmark
-```bash
-PYTHONPATH=. .venv/bin/python evaluation/false_positives/benchmark.py
-```
-*Evaluates the 18 true, false, and ambiguous test utterances, printing the confusion matrix and saving `evaluation/false_positives/report.md`.*
-
-### 4. Run the Empirical Latency Benchmark (P50 / P95)
-```bash
-PYTHONPATH=. .venv/bin/python evaluation/latency/benchmark.py
-```
-*Streams 156 chunks through all 4 test calls, calculates P50/P95 distributions, and saves `evaluation/latency/report.md`.*
-
-### 5. Run the Complete Test Suite
-```bash
-PYTHONPATH=. .venv/bin/pytest tests/ -v
-```
-*(All 104 tests across Q1, Q2, Q3, and Q4 execute and pass cleanly)*
-
+## License & Author
+Built for the **AI Engineer Assessment** by **Sameet Patro** ([@Sameetpatro](https://github.com/Sameetpatro)).
+All rights reserved. Code licensed under MIT.
