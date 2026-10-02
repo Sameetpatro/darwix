@@ -457,11 +457,107 @@ tests/test_tts.py .                                                      [100%]
 * `POST /retrieve`: Hybrid search across dense FastEmbed vectors and sparse BM25 indices with RRF ranking, customer context re-ranking, and conflict warnings.
 * `GET /api/kb/chunks`: Lists all loaded semantic chunks and metadata.
 
-### Real-Time Copilot APIs (Q4)
-* `GET /dashboard`: Serves the live agent copilot web HUD.
-* `WS /q4/ws`: Real-time bidirectional WebSocket stream delivering audio deltas, conversation signals, and in-call nudges.
-* `POST /q4/simulate`: Triggers an asynchronous real-time call replay (`scenario: call_cross_sell | call_compliance_gap | call_rising_frustration | call_payment_difficulty | call_noisy_ambiguous`).
-* `GET /q4/metrics`: Returns real-time latency distributions ($L_1 \dots L_4$, P50/P95) and suppression metrics.
+---
+
+## 9. Known Limitations & Production-Improvement Plan
+
+### Known Limitations by Subsystem
+
+#### 1. Voice Agent & Speech Pipeline (Question 1)
+* **Browser-Dependent ASR**: The softphone relies on the W3C Web Speech API, which performs optimally in Chromium browsers (Chrome, Edge, Brave) but exhibits varying microphone permission and background noise sensitivity on mobile WebKit/Safari.
+* **Cloud TTS Latency**: Microsoft Edge-TTS delivers high vocal realism but incurs ~1.2s to 1.5s network round-trip synthesis latency over standard HTTP. Under congested network conditions, total turn latency can stretch to ~2 seconds.
+
+#### 2. Enterprise Knowledge Base & Hybrid RAG (Question 2)
+* **Embedding Model Context Window**: FastEmbed `bge-small-en-v1.5` (384 dimensions) was selected for sub-5ms CPU vector search and zero vendor lock-in. However, its 512-token context limit requires aggressive chunking for long legal policy documents compared to larger 8k-token embedding models.
+* **Complex Multi-Spanned Tables**: While markdown table schemas and column headers are replicated across chunks, financial tables with nested column hierarchies or multi-page row spans can occasionally lose vertical context.
+
+#### 3. Native-Language Regional Bots (Question 3)
+* **Synthetic Voice Phonetics for Regional Dialects**: `fil-PH-BlessicaNeural` and `id-ID-GadisNeural` synthesize standard Tagalog and Indonesian cleanly. However, when speaking regional dialects (e.g., Javanese *krama inggil* or Batak colloquialisms), the TTS engine applies standard national phonetics rather than distinct regional prosody.
+* **Dynamic Slang Evolution**: Southeast Asian colloquial speech (*Bahasa Gaul* and Taglish slang) mutates rapidly; maintaining zero-shot classification accuracy requires periodic heuristic and dictionary updates.
+
+#### 4. Real-Time In-Call Copilot & Nudges (Question 4)
+* **Single-Channel Acoustic Crosstalk**: In blended single-channel audio, simultaneous speaker interruption (agent and customer speaking concurrently) can momentarily degrade ASR speaker diarization attribution.
+* **Monolithic WebSocket Connections**: A single FastAPI process can manage hundreds of concurrent WebSocket streams; scaling to 10,000+ simultaneous agents requires decoupled WebSocket edge gateways.
+
+---
+
+### Production-Improvement Plan
+
+```text
+══════════════════════════════════════════════════════════════════════════════════════════════
+                          ENTERPRISE PRODUCTION DEPLOYMENT ROADMAP
+══════════════════════════════════════════════════════════════════════════════════════════════
+    [Telephony Ingress]           [Distributed Streaming]               [GPU Inference Pool]
+    Twilio / FreeSWITCH   ──►   Apache Kafka Audio Topic    ──►   Triton Server (Whisper-v3)
+    (SIP REC / SRTP)              (Partitioned by call_id)              (Sub-50ms Streaming ASR)
+                                             │                                      │
+                                             ▼                                      ▼
+                                Distributed State (Redis)       ──►   vLLM / TensorRT-LLM Pods
+                                (Rolling Window & Context)              (Quantized 8B Distilled)
+                                             │                                      │
+                                             ▼                                      ▼
+                                Edge WebSocket Cluster          ──►   Agent CRM Softphone HUD
+                                (Sticky Session Gateway)                (Sub-20ms Push Latency)
+```
+
+1. **Hardware-Separated Dual-Channel Telephony (SIP REC)**:
+   - Integrate with PBX/telephony carriers (Twilio Elastic SIP Trunking, FreeSWITCH, or Genesys Cloud) using standard **SIP REC (RFC 7865)** to ingest pre-split stereo audio (Channel 0: Agent mic, Channel 1: Customer line), eliminating acoustic crosstalk.
+2. **On-Premise / Edge Neural Speech Engines**:
+   - Replace cloud Edge-TTS with self-hosted **XTTS-v2** or **Kokoro-82M** running on GPU nodes with streaming chunked audio transfer (chunked transfer encoding), slashing TTS latency below **250ms**.
+3. **Partitioned Stream Ingestion & Distributed State**:
+   - Ingest 250ms audio chunks directly into an **Apache Kafka** partitioned cluster (`audio.raw.chunks.partitioned`), routing chunks consistently by `hash(call_id)` to dedicated ASR worker pods.
+   - Maintain session state and rolling buffers in a distributed **Redis Cluster** with ScyllaDB for permanent compliance audit archiving.
+4. **Quantized Self-Hosted LLMs & Local LoRA Adapters**:
+   - Deploy lightweight quantized models (e.g. `DeepSeek-R1-Distill-Qwen-8B-GPTQ` or `Llama-3.1-8B-Instruct`) via **vLLM** / **TensorRT-LLM** on NVIDIA A10G/L4 clusters, reducing LLM Time-To-First-Token (TTFT) to $< 15\text{ms}$.
+   - Train regional LoRA adapters on local contact-center conversation datasets to master authentic regional prosody and local financial idioms.
+
+---
+
+## 10. Video Walkthrough & Interactive Demo Guide
+
+### Recommended 5-Minute Evaluation Walkthrough
+
+1. **Part 1: Question 1 Voice Softphone (`0:00 - 1:15`)**
+   - Open `http://localhost:8000/`.
+   - Click **Start Call** and simulate a business loan inquiry:
+     *"Hi, I'm Robert from Apex Logistics, an LLC operating for 3 years with $45,000 monthly revenue. We're looking for a $150,000 equipment loan."*
+   - Highlight the live canvas waveform visualizer, 9-slot qualification HUD, and grounded response citing zero prepayment penalties.
+2. **Part 2: Question 2 Enterprise Knowledge Base & Citations (`1:15 - 2:15`)**
+   - Execute a live hybrid retrieval curl:
+     ```bash
+     curl -s -X POST http://localhost:8000/retrieve \
+       -H "Content-Type: application/json" \
+       -d '{"query": "What are the prepayment penalties on commercial loans?", "top_k": 1}' | jq
+     ```
+   - Point out the FastEmbed dense score, BM25 score, Reciprocal Rank Fusion, and structured citation `[faq_and_objections.txt, Page 2, FAQ 1]`.
+3. **Part 3: Question 3 Native-Language Regional Bots (`2:15 - 3:30`)**
+   - Run the interactive Philippines demo:
+     ```bash
+     PYTHONPATH=. .venv/bin/python scripts/demo_philippines_bot.py
+     ```
+     Demonstrating Taglish insurance consultation and IC compliance guarantees.
+   - Run the interactive Indonesia demo:
+     ```bash
+     PYTHONPATH=. .venv/bin/python scripts/demo_indonesia_bot.py
+     ```
+     Demonstrating Javanese dialect comprehension (*monggo, nggih*) and OJK denda waiver negotiations.
+4. **Part 4: Question 4 Real-Time Copilot Dashboard (`3:30 - 4:45`)**
+   - Open `http://localhost:8000/dashboard`.
+   - Click **`1. Cross-Sell Opportunity`**: Observe the live audio stream, turn finalization, and the **`CROSS-SELL`** nudge popping up with its 25s countdown bar.
+   - Click **`3. Rising Frustration`**: Observe immediate detection and the **`FRUSTRATION`** directive (*"Acknowledge the concern before continuing"*).
+   - Click **`5. Noisy / Ambiguous Speech`** and **`6. False Positive (3rd Party)`**: Show the multi-stage suppression engine blocking spurious alerts (incrementing the **Suppressed Signals** counter) and explain the sub-30ms latency SLA telemetry gauges.
+5. **Part 5: Test Suite Verification (`4:45 - 5:00`)**
+   - Run `PYTHONPATH=. .venv/bin/pytest tests/ -v` to showcase all 107 tests passing.
+
+---
+
+## 11. Security & Compliance Statement
+
+> [!IMPORTANT]
+> **Zero Credential & PII Leakage Policy**:
+> * All proprietary API keys, database connection strings, and model secrets are isolated in local `.env` configuration files and strictly excluded from version control via `.gitignore`.
+> * The repository contains only sanitized, synthetic enterprise documents and redacted test cases with full masking of SSNs, EINs, names, phone numbers, and financial account numbers.
+> * No customer data or production credentials are committed.
 
 ---
 
