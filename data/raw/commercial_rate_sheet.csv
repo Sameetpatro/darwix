@@ -1,0 +1,5 @@
+tier_id,tier_name,min_credit_score,min_months_in_business,min_monthly_revenue,min_apr,max_apr,repayment_frequency
+tier_1,Prime Commercial,680,24,30000,5.99%,10.99%,Monthly ACH
+tier_2,Standard Commercial,620,12,15000,11.00%,17.99%,Monthly / Bi-Weekly ACH
+tier_3,Alternative Working Capital,550,6,10000,18.00%,24.99%,Weekly / Daily ACH
+tier_sba,SBA 7a Prime Guarantee,660,24,25000,Prime + 2.25%,Prime + 2.75%,Monthly Direct ACH
