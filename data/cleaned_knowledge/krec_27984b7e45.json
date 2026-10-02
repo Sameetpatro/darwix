@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_27984b7e45",
+  "source_doc_id": "doc_0acdaf0265",
+  "title": "Ph Insurance Faqs Objections — Section 2: Localized Objection Handling",
+  "cleaned_content": "## Section 2: Localized Objection Handling",
+  "original_content_hash": "eab118b02380aa6c4b253f4498aaeb173535aa2ee0a003f98112b1e6129751a5",
+  "cleaned_content_hash": "e56aa5a15421ea7606009d0fd9a8ca97cefa2ccd7949dea73a4d19290aba62dd",
+  "category": "objection",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 8,
+    "section": "Section 2: Localized Objection Handling"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919274.0232031
+}

@@ -1,0 +1,60 @@
+{
+  "record_id": "krec_2b60723f18",
+  "source_doc_id": "doc_c4760eea81",
+  "title": "Id Payment Faqs Objections — FAQ 4: Berapa uang muka atau DP yang harus disiapkan saat awal pembiayaan?",
+  "cleaned_content": "### FAQ 4: Berapa uang muka atau DP yang harus disiapkan saat awal pembiayaan?\n- **Jawaban**: Sesuai peraturan OJK, uang muka (DP) untuk pembiayaan kendaraan bermotor berkisar antara 10% hingga 20% dari harga kendaraan on-the-road (OTR). Untuk barang elektronik dan gadget tertentu, tersedia promo DP 0% bagi pelanggan dengan skor kredit baik.\n\n---",
+  "original_content_hash": "310379d47370dbcde150b038a10766e05646fddeb2431b28328169cfabe2d139",
+  "cleaned_content_hash": "bf86957bc79b2274f2a4c8534e9feaaac3143dd4bd0cc54007d9e27071b17bc0",
+  "category": "faq",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 6,
+    "section": "FAQ 4: Berapa uang muka atau DP yang harus disiapkan saat awal pembiayaan?"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 10.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_a898470a",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_87325953d6",
+      "this_value": 10.0,
+      "conflicting_value": 5.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 10.0, whereas record 'doc_87325953d6' specifies 5.0.",
+      "severity": "high",
+      "detected_at": 1790920044.798408
+    },
+    {
+      "conflict_id": "conf_3aa7953a",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_a5ee209f56",
+      "this_value": 10.0,
+      "conflicting_value": 5.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 10.0, whereas record 'doc_a5ee209f56' specifies 5.0.",
+      "severity": "high",
+      "detected_at": 1790920044.79859
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920045.0764291
+}

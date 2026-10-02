@@ -1,0 +1,53 @@
+{
+  "timestamp": 1790923104.882613,
+  "total_audio_chunks": 166,
+  "total_signals_evaluated": 15,
+  "total_nudges_generated": 10,
+  "components": {
+    "ASR": {
+      "mean": 25.69,
+      "p50": 26.46,
+      "p90": 27.04,
+      "p95": 27.05,
+      "p99": 27.05,
+      "max": 27.69,
+      "samples": 166
+    },
+    "Signal_extraction": {
+      "mean": 0.33,
+      "p50": 0.38,
+      "p90": 0.66,
+      "p95": 0.7,
+      "p99": 0.76,
+      "max": 0.77,
+      "samples": 15
+    },
+    "LLM_Jev_Nudge": {
+      "mean": 0.17,
+      "p50": 0.14,
+      "p90": 0.29,
+      "p95": 0.3,
+      "p99": 0.3,
+      "max": 0.31,
+      "samples": 10
+    },
+    "Delivery_WebSocket": {
+      "mean": 0.05,
+      "p50": 0.05,
+      "p90": 0.05,
+      "p95": 0.05,
+      "p99": 0.05,
+      "max": 0.05,
+      "samples": 6
+    },
+    "End_to_End_Total": {
+      "mean": 27.08,
+      "p50": 27.48,
+      "p90": 28.03,
+      "p95": 28.03,
+      "p99": 28.03,
+      "max": 28.03,
+      "samples": 6
+    }
+  }
+}

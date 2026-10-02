@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_64f5bd5a11",
+  "source_doc_id": "doc_2324d87a74",
+  "title": "Id Multifinance Handbook — Fasilitas Pembiayaan yang Tersedia:",
+  "cleaned_content": "### Fasilitas Pembiayaan yang Tersedia:\n1. **Pembiayaan Kendaraan Bermotor (Motor & Mobil)**:\n   - Pembiayaan unit baru dan bekas berkualitas.\n   - Pilihan uang muka atau Down Payment (DP): Mulai dari 10% hingga 25% sesuai ketentuan regulasi OJK.\n   - Pilihan tenor pembiayaan: 12 bulan, 24 bulan, 36 bulan, hingga 48 bulan.\n   - Pembayaran cicilan bulanan (angsuran) terjangkau dengan suku bunga tetap (flat per tahun).\n\n2. **Pembiayaan Gadget dan Elektronik Konsumen**:\n   - Pembiayaan smartphone, laptop, dan perlengkapan rumah tangga.\n   - Tenor fleksibel: 3 bulan, 6 bulan, 9 bulan, dan 12 bulan.\n   - Uang muka (DP) mulai dari 0% untuk nasabah terpilih dengan riwayat pembayaran lancar.\n\n---",
+  "original_content_hash": "d6dbe4a03e9a932cce4189f11f0578fce70959287fb83526dda01f90bfa56c60",
+  "cleaned_content_hash": "30903d2aed93154e6accc9c254caeefc35647020e87fc33f3b0e2a0d17bd40ef",
+  "category": "other",
+  "product": null,
+  "source": "id_multifinance_handbook.md",
+  "source_location": {
+    "page": 3,
+    "section": "Fasilitas Pembiayaan yang Tersedia:"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 10.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920033.934359
+}

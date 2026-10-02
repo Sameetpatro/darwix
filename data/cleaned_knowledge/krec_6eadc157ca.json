@@ -1,0 +1,39 @@
+{
+  "record_id": "krec_6eadc157ca",
+  "source_doc_id": "doc_28db3d0c1f",
+  "title": "Ph Life Insurance Handbook — 1. Program Overview and Policy Types",
+  "cleaned_content": "## 1. Program Overview and Policy Types\nDarwix Philippines, in partnership with leading universal banks (BDO Unibank, Bank of the Philippine Islands (BPI), Metrobank, and Security Bank), offers tailored life insurance and bancassurance solutions regulated under the Insurance Commission of the Philippines (IC).",
+  "original_content_hash": "4871e9260f7b0f4ee5d486636a83843b69aea2029a3cedb91e05850d9f9c2052",
+  "cleaned_content_hash": "5de0111288411828f802fe8e01372b4d259113325834d28888f4e6ae8d5921b2",
+  "category": "policy",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 2,
+    "section": "1. Program Overview and Policy Types"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [
+      "Partnership"
+    ],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919252.2903209
+}

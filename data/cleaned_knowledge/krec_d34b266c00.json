@@ -1,0 +1,51 @@
+{
+  "record_id": "krec_d34b266c00",
+  "source_doc_id": "doc_91e44bcce0",
+  "title": "Ph Life Insurance Handbook — 6. Bancassurance Partnership Privileges",
+  "cleaned_content": "## 6. Bancassurance Partnership Privileges\nFor depositors and account holders of our bancassurance partner banks (BDO, BPI, Metrobank, Security Bank):\n- **Fast-Track Underwriting**: Non-medical underwriting limit increased to ₱3,000,000 face amount for applicants aged 18 to 45.\n- **Auto-Debit Discount**: Zero processing charges and 5% first-year premium rebate when enrolling through bank branch referral ADA.\n- **Dedicated Bank Financial Specialist**: Seamless coordination at the partner bank's local branch.",
+  "original_content_hash": "56b270daacdfd82237790cc21d13c4b312619aa94fb41e648aee52a02d4f2658",
+  "cleaned_content_hash": "99ee759a040c521f9352d1aff50db786ca6a9e1c6a6d4b26bd9e2397e862be59",
+  "category": "other",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 9,
+    "section": "6. Bancassurance Partnership Privileges"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [
+      "Partnership"
+    ],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": 18.0,
+    "max_loan_amount_usd": 45.0,
+    "min_apr": 5.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_75cb58a8",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_82fed92774",
+      "this_value": 5.0,
+      "conflicting_value": 8.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 5.0, whereas record 'doc_82fed92774' specifies 8.0.",
+      "severity": "high",
+      "detected_at": 1790919262.054312
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919262.4267452
+}

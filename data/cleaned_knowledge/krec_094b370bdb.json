@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_094b370bdb",
+  "source_doc_id": "doc_206f58bed4",
+  "title": "Ph Insurance Faqs Objections — FAQ 4: What riders can I attach to my life insurance policy?",
+  "cleaned_content": "### FAQ 4: What riders can I attach to my life insurance policy?\n- **Answer**: You can attach optional riders such as the Critical Illness Benefit (CIB covering 36 critical illnesses like cancer and heart attack), Accidental Death & Dismemberment (ADB), Waiver of Premium upon Disability (WP), and Daily Hospital Income Benefit (HIR).",
+  "original_content_hash": "4ab567886817f7929a5a86f52529184fffd5d18e7f9ffaf0acc62b8248358a95",
+  "cleaned_content_hash": "a0c60d6b264b7f975825e6798742a844b4f2cc80b8889ee3f123a868a1cf5c7c",
+  "category": "faq",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 6,
+    "section": "FAQ 4: What riders can I attach to my life insurance policy?"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": "Daily",
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919271.116672
+}

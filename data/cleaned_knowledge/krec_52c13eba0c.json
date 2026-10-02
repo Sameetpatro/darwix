@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_52c13eba0c",
+  "source_doc_id": "doc_2cdd3f165d",
+  "title": "Faq And Objections — Darwix Customer FAQs and Policy Notes",
+  "cleaned_content": "# Darwix Customer FAQs and Policy Notes",
+  "original_content_hash": "6b08997af86c35880caa1707cb5701c5ab06d89a3daec22ccfec437d91576599",
+  "cleaned_content_hash": "547748ea7b20d96e6067cf1b4617ab0b5d5be396ffb74873e8118f1e129833be",
+  "category": "faq",
+  "product": null,
+  "source": "faq_and_objections.txt",
+  "source_location": {
+    "page": 1,
+    "section": "Darwix Customer FAQs and Policy Notes"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790917989.984063
+}

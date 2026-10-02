@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_f0147ea0d1",
+  "source_doc_id": "doc_8d26f625d3",
+  "title": "Ph Life Insurance Handbook — 5. Supplemental Riders (Add-On Benefits)",
+  "cleaned_content": "## 5. Supplemental Riders (Add-On Benefits)\nPolicyholders can attach optional riders to enhance coverage:\n1. **Accidental Death and Dismemberment (ADB)**:\n   - Doubles the face payout if death occurs as a direct result of an accident.\n   - Pays schedule of indemnities for loss of limbs, sight, or hearing.\n2. **Critical Illness Benefit (CIB)**:\n   - Lump-sum cash payout upon diagnosis of any of 36 covered critical illnesses (including stroke, cancer, heart attack, kidney failure, major organ transplant).\n   - Additional rider premium starting at ₱450/month for ₱500,000 critical illness coverage.\n3. **Waiver of Premium upon Disability (WP)**:\n   - Waives all future policy premiums if the insured becomes totally and permanently disabled before age 60, while keeping the full death benefit active.\n4. **Hospital Income Rider (HIR)**:\n   - Daily cash allowance (₱1,000 to ₱5,000 per day) during hospital confinement for injury or sickness.\n\n---",
+  "original_content_hash": "7f1b09db8403c1b9b151c2258140a630a8cc3108d7cd5b793b2490a3907867ed",
+  "cleaned_content_hash": "d4db783e88a756148d2b8ca0e9f8bc33e6eb8608a7a31998f325bf0a3a62db18",
+  "category": "policy",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 8,
+    "section": "5. Supplemental Riders (Add-On Benefits)"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": "Daily",
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919260.919542
+}

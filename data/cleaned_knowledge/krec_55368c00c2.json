@@ -1,0 +1,60 @@
+{
+  "record_id": "krec_55368c00c2",
+  "source_doc_id": "doc_2196e9b705",
+  "title": "Id Payment Faqs Objections — Keberatan 1: \"Denda-nya terlalu tinggi / Denda keterlambatan kemahalan\"",
+  "cleaned_content": "### Keberatan 1: \"Denda-nya terlalu tinggi / Denda keterlambatan kemahalan\"\n- **Konteks**: Nasabah merasa keberatan dengan akumulasi denda harian.\n- **Pendekatan Respon (Bahasa Indonesia)**:\n  - *\"Saya memahami kendala yang Bapak/Ibu rasakan. Sebagai informasi, besaran denda 0,5% per hari ini telah diatur secara transparan sesuai standar asosiasi dan regulasi OJK untuk kedisiplinan kontrak. Namun, kabar baiknya untuk Bapak/Ibu hari ini, jika pembayaran pokok angsuran dapat diselesaikan pada hari ini, kami dapat memberikan rekomendasi program penghapusan atau potongan denda keterlambatan (denda waiver) agar beban Bapak/Ibu menjadi jauh lebih ringan. Apakah bersedia kami bantu proseskan sekarang?\"*",
+  "original_content_hash": "912d16babb1a23e40321b03fc355e71627cb76f03afbe2f6915a99197ac96909",
+  "cleaned_content_hash": "12ba7b009aa1679b4f67abcef9cefdfd303d40c27329aa215d5fed686904ddde",
+  "category": "other",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 8,
+    "section": "Keberatan 1: \"Denda-nya terlalu tinggi / Denda keterlambatan kemahalan\""
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 5.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_406a7de4",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_2324d87a74",
+      "this_value": 5.0,
+      "conflicting_value": 10.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 5.0, whereas record 'doc_2324d87a74' specifies 10.0.",
+      "severity": "high",
+      "detected_at": 1790920047.2773418
+    },
+    {
+      "conflict_id": "conf_698cd053",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_c4760eea81",
+      "this_value": 5.0,
+      "conflicting_value": 10.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 5.0, whereas record 'doc_c4760eea81' specifies 10.0.",
+      "severity": "high",
+      "detected_at": 1790920047.2775521
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920047.56335
+}

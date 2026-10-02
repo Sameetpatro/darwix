@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_6eef845e94",
+  "source_doc_id": "doc_1bd1a07853",
+  "title": "Ph Life Insurance Handbook — Darwix Philippines Life Insurance & Bancassurance Underwriting Handbook",
+  "cleaned_content": "# Darwix Philippines Life Insurance & Bancassurance Underwriting Handbook",
+  "original_content_hash": "20d0ce011160e4c7e0aa1abd58c25027d784e6d799f54dc292e8de808b80c5bf",
+  "cleaned_content_hash": "f6bf1e9f9d1dd922f760be7bde625b73ef6e3220457c9c5527feb354602c36e3",
+  "category": "other",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 1,
+    "section": "Darwix Philippines Life Insurance & Bancassurance Underwriting Handbook"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919250.9821389
+}

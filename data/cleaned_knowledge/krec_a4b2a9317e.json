@@ -1,0 +1,53 @@
+{
+  "record_id": "krec_a4b2a9317e",
+  "source_doc_id": "doc_22036143ae",
+  "title": "Commercial Rate Sheet",
+  "cleaned_content": "# Commercial Rate Sheet\n\n| tier_id | tier_name | min_credit_score | min_months_in_business | min_monthly_revenue | min_apr | max_apr | repayment_frequency |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| tier_1 | Prime Commercial | 680 | 24 | 30000 | 5.99% | 10.99% | Monthly ACH |\n| tier_2 | Standard Commercial | 620 | 12 | 15000 | 11.00% | 17.99% | Monthly / Bi-Weekly ACH |\n| tier_3 | Alternative Working Capital | 550 | 6 | 10000 | 18.00% | 24.99% | Weekly / Daily ACH |\n| tier_sba | SBA 7a Prime Guarantee | 660 | 24 | 25000 | Prime + 2.25% | Prime + 2.75% | Monthly Direct ACH |\n\n## Table Entries Detail:\n\n- Entry 1: tier_id: tier_1, tier_name: Prime Commercial, min_credit_score: 680, min_months_in_business: 24, min_monthly_revenue: 30000, min_apr: 5.99%, max_apr: 10.99%, repayment_frequency: Monthly ACH\n- Entry 2: tier_id: tier_2, tier_name: Standard Commercial, min_credit_score: 620, min_months_in_business: 12, min_monthly_revenue: 15000, min_apr: 11.00%, max_apr: 17.99%, repayment_frequency: Monthly / Bi-Weekly ACH\n- Entry 3: tier_id: tier_3, tier_name: Alternative Working Capital, min_credit_score: 550, min_months_in_business: 6, min_monthly_revenue: 10000, min_apr: 18.00%, max_apr: 24.99%, repayment_frequency: Weekly / Daily ACH\n- Entry 4: tier_id: tier_sba, tier_name: SBA 7a Prime Guarantee, min_credit_score: 660, min_months_in_business: 24, min_monthly_revenue: 25000, min_apr: Prime + 2.25%, max_apr: Prime + 2.75%, repayment_frequency: Monthly Direct ACH",
+  "original_content_hash": "dffd82535cd414279f3488f12436926c5770a005f3c4a87db59a8c6317134056",
+  "cleaned_content_hash": "2782d72335b42f1ad8c9ac1ff68ba7bf00ecbb9f8a8b039923dba0cfb26c1aa5",
+  "category": "product",
+  "product": "Term Loan",
+  "source": "commercial_rate_sheet.csv",
+  "source_location": {
+    "page": 1,
+    "section": "Table Data"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [
+      "Term Loan",
+      "SBA 7(a) Loan",
+      "Working Capital Loan"
+    ],
+    "entity_types": [],
+    "time_in_business_months": 24,
+    "time_in_business_display": "24 months (2.0 years)",
+    "min_revenue_monthly_usd": 30000.0,
+    "min_credit_score": 680,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 5.99,
+    "max_apr": 10.99,
+    "repayment_frequency": "Monthly",
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_af6a46ee",
+      "field": "min_months_in_business",
+      "product": "Term Loan",
+      "conflicting_record_id": "doc_bbcc77a986",
+      "this_value": 24,
+      "conflicting_value": 6,
+      "description": "Discrepancy in months in business for Term Loan: Current record specifies 24, whereas record 'doc_bbcc77a986' specifies 6.",
+      "severity": "high",
+      "detected_at": 1790917085.890761
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790917085.891208
+}

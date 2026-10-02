@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_e6dba1ca1c",
+  "source_doc_id": "doc_9d22243159",
+  "title": "Ph Insurance Faqs Objections — Darwix Philippines Life Insurance — FAQs and Objection Handling Guide",
+  "cleaned_content": "# Darwix Philippines Life Insurance  -  FAQs and Objection Handling Guide",
+  "original_content_hash": "dd5cd8ca5b3bb34a11ae684dd92513326dd44b8be355147ce54479bd79a166d3",
+  "cleaned_content_hash": "860a4e87f269ac3ab4a8040dbf4f86857ee9d1e6119925534b2d41dc973a7f68",
+  "category": "faq",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 1,
+    "section": "Darwix Philippines Life Insurance — FAQs and Objection Handling Guide"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919263.947863
+}

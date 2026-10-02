@@ -1,0 +1,49 @@
+{
+  "record_id": "krec_fadc1ca25a",
+  "source_doc_id": "doc_7434261969",
+  "title": "Ph Life Insurance Handbook — 3. Policy Lapse and Reinstatement Rules",
+  "cleaned_content": "## 3. Policy Lapse and Reinstatement Rules\n- **Lapse Condition**: If a premium is not settled within the 31-day grace period and there is insufficient cash value or automatic premium loan (APL) balance, the policy will lapse.\n- **Reinstatement Window**: Lapsed policies can be reinstated within three (3) years from the date of default.\n- **Reinstatement Requirements**:\n  1. Submission of Application for Reinstatement with Health Declaration.\n  2. Proof of insurability satisfactory to Darwix Underwriting.\n  3. Settlement of all overdue premiums with compound interest at 6% per annum.\n  4. Payment or reinstatement of any outstanding policy indebtedness.\n\n---",
+  "original_content_hash": "ec864b0fc463d3f0f0ad08d2b50793e4780fc25be10f7c054292dce57a690639",
+  "cleaned_content_hash": "654f5d0b60199620fd68449c0864580638502e753df0d2e6c5a233cfc9c92db1",
+  "category": "policy",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 6,
+    "section": "3. Policy Lapse and Reinstatement Rules"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 6.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_f80a0f83",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_82fed92774",
+      "this_value": 6.0,
+      "conflicting_value": 8.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 6.0, whereas record 'doc_82fed92774' specifies 8.0.",
+      "severity": "medium",
+      "detected_at": 1790919257.503621
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919257.973367
+}

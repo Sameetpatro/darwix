@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_9f95877d30",
+  "source_doc_id": "doc_23f51ff16b",
+  "title": "Ph Life Insurance Handbook — 4. Beneficiaries Designation and Rules",
+  "cleaned_content": "## 4. Beneficiaries Designation and Rules\n- **Primary vs Contingent Beneficiaries**:\n  - Primary Beneficiaries: Receive proceeds upon the insured's demise.\n  - Contingent Beneficiaries: Receive proceeds if all primary beneficiaries predecease the insured.\n- **Revocable vs Irrevocable**:\n  - Revocable: The policyholder can change beneficiaries at any time without their consent.\n  - Irrevocable: The beneficiary's written consent is required for policy amendments, withdrawals, or beneficiary changes.\n- **Eligible Beneficiaries**: Under Philippine law, beneficiaries must have an insurable interest (spouse, legitimate or illegitimate children, parents, siblings, or legal dependents).\n\n---",
+  "original_content_hash": "d3239a328918cb6c67bf074bbdec08e2407ee3eb81d332cdaf6c098d00b7945b",
+  "cleaned_content_hash": "3107a7b35299b52bc68490ab16126816d973a28a87266518e3805f6f8b1b6d47",
+  "category": "policy",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 7,
+    "section": "4. Beneficiaries Designation and Rules"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919259.39235
+}

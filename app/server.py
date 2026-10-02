@@ -48,6 +48,10 @@ app.include_router(ph_router)
 from q3.api.id_router import id_router
 app.include_router(id_router)
 
+# Mount Question 4 Live Insights & Nudges Router
+from q4.api import q4_router
+app.include_router(q4_router)
+
 
 # =====================================================================
 # Request / Response Schemas

@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_340eabcb45",
+  "source_doc_id": "doc_4efb6fbdca",
+  "title": "Id Payment Faqs Objections — FAQ 2: Bagaimana cara membayar cicilan angsuran Darwix Multifinance?",
+  "cleaned_content": "### FAQ 2: Bagaimana cara membayar cicilan angsuran Darwix Multifinance?\n- **Jawaban**: Pembayaran angsuran cicilan sangat mudah dan dapat dilakukan secara real-time melalui:\n  1. Virtual Account Bank (BCA, Mandiri, BRI, BNI, Permata).\n  2. Gerai Minimarket Indomaret dan Alfamart terdekat dengan menunjukkan nomor kontrak pembiayaan Anda.\n  3. Aplikasi dompet digital seperti GoPay, OVO, Dana, atau ShopeePay.\n  Bukti pembayaran akan dikirimkan otomatis melalui SMS atau WhatsApp resmi Darwix dalam waktu 5 menit.",
+  "original_content_hash": "4812dffe00e01a16910c562b9c541ca32355a01ef5a734cbcfa4ab4f8eb4d8b0",
+  "cleaned_content_hash": "5df390a1c19b846450f3ec4f16e754cf7d1707fe3eca743d08d8dfd2be710162",
+  "category": "faq",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 4,
+    "section": "FAQ 2: Bagaimana cara membayar cicilan angsuran Darwix Multifinance?"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920042.7399669
+}

@@ -1,0 +1,49 @@
+{
+  "record_id": "krec_a0ddd1eee3",
+  "source_doc_id": "doc_87325953d6",
+  "title": "Id Multifinance Handbook — 3. Ketentuan Denda Keterlambatan dan Penagihan",
+  "cleaned_content": "## 3. Ketentuan Denda Keterlambatan dan Penagihan\n- **Perhitungan Denda Keterlambatan (Late Payment Fee)**:\n  - Jika pembayaran melewati batas 3 hari masa tenggang, denda keterlambatan akan dihitung sebesar 0,5% per hari kalender dari nilai angsuran bulanan yang tertunggak.\n  - Contoh perhitungan: Untuk angsuran Rp 1.000.000 per bulan yang terlambat 5 hari (setelah grace period 3 hari, efektif terlambat 2 hari denda), maka estimasi denda adalah: 2 hari × 0,5% × Rp 1.000.000 = Rp 10.000.\n- **Pelaporan Riwayat Kredit (SLIK OJK)**:\n  - Nasabah dengan status pembayaran lancar (Kolektibilitas 1) akan mendapatkan penilaian kredit prima di SLIK OJK.\n  - Keterlambatan lebih dari 30 hari kalender akan tercatat pada Sistem Layanan Informasi Keuangan (SLIK OJK / BI Checking), yang dapat mempengaruhi kelayakan pengajuan kredit perbankan nasabah di masa mendatang.\n\n---",
+  "original_content_hash": "0b4958db8cc6091256e0c14a3c62f1e96843377a1359e76a88ec618e25ad81df",
+  "cleaned_content_hash": "054b53ceaed8f6c422b13a923c1cb3a009baa177eb716eeafcbf0666d55c186d",
+  "category": "other",
+  "product": null,
+  "source": "id_multifinance_handbook.md",
+  "source_location": {
+    "page": 5,
+    "section": "3. Ketentuan Denda Keterlambatan dan Penagihan"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 5.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_efdc88d9",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_2324d87a74",
+      "this_value": 5.0,
+      "conflicting_value": 10.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 5.0, whereas record 'doc_2324d87a74' specifies 10.0.",
+      "severity": "high",
+      "detected_at": 1790920036.0388749
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920036.293083
+}

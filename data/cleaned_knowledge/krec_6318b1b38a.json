@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_6318b1b38a",
+  "source_doc_id": "doc_c57c64473e",
+  "title": "Ph Insurance Faqs Objections — Section 11",
+  "cleaned_content": "### Objection 3: \"Wala pa akong budget ngayon, next time na lang / No budget right now\"\n- **Context**: Customer wants to postpone.\n- **Handling Approach (Taglish / English)**:\n  - *\"Opo, nauunawaan ko po. Pero alam niyo po ba na habang mas bata at malusog pa tayo, doon pinakamura ang premium ng life insurance? Kapag naghintay po tayo, baka magmahal ang rate o magkaroon ng health issues na magpapahirap sa pag-apply. Pwede po tayong magsimula sa pinakamababang coverage muna habang nag-iipon.\"*\n  - *\"I understand completely. However, securing a policy while you are young and in good health locks in the lowest possible premium for the entire term. Waiting often means higher premiums due to age or future health changes. We can start with a basic affordable protection plan today and upgrade it as your income grows.\"*\n\n---",
+  "original_content_hash": "e49a573dbad71ce62ffb59bd4e17447433747e6c9cddd1102346f48e8f678c86",
+  "cleaned_content_hash": "1e7661fb187140e2cecd7fcd08b98180ba85ae78e98cd97c83d45f1ad955856c",
+  "category": "objection",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 11,
+    "section": "Section 11"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919278.118624
+}

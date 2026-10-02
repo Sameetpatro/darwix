@@ -1,0 +1,71 @@
+{
+  "source_file": "loan_policy_handbook.pdf",
+  "source_type": "pdf",
+  "total_documents": 3,
+  "flagged_for_review": false,
+  "documents": [
+    {
+      "document_id": "doc_58066e1070",
+      "source_type": "pdf",
+      "source": "loan_policy_handbook.pdf",
+      "page": 1,
+      "section": "Darwix Commercial Lending Handbook - 2026",
+      "title": "Darwix Commercial Lending Handbook - 2026",
+      "raw_content": "Darwix Commercial Lending Handbook - 2026\nSection 1: General Business Loan Eligibility Thresholds\nThis policy outlines the official underwriting thresholds for all commercial credit facilities.\n1. Minimum Operating History: The borrowing business must have at least 6 months of verifiable operating history for\nshort-term working capital loans, and a minimum of 12 to 24 months for prime commercial term loans.\n2. Minimum Gross Revenue: Businesses must demonstrate minimum average monthly gross revenues of ,000 (,000\nannualized), verified via 3 to 6 months of official business checking bank statements.\n3. Geographic Eligibility: The borrower entity must be registered and actively operating within any of the 50 United\nStates or the District of Columbia. Foreign entities are strictly ineligible.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "qualification",
+      "classification_confidence": 0.9,
+      "metadata": {
+        "total_pages": 3,
+        "file_size_bytes": 3167,
+        "parser": "pypdf",
+        "character_count": 799,
+        "word_count": 117
+      },
+      "created_at": 1790922735.17397
+    },
+    {
+      "document_id": "doc_e4d0b70a21",
+      "source_type": "pdf",
+      "source": "loan_policy_handbook.pdf",
+      "page": 2,
+      "section": "Section 2: Maximum Underwriting Leverage Matrix",
+      "title": "Section 2: Maximum Underwriting Leverage Matrix",
+      "raw_content": "Section 2: Maximum Underwriting Leverage Matrix\nUnsecured working capital facilities are evaluated against average monthly revenue ratios:\nMonthly Revenue Max Unsecured Loan Maximum Leverage\n,000 - ,000 ,000 - ,000 2.5x to 3.0x Revenue\n,000 - ,000 ,000 - ,000 3.0x to 3.5x Revenue\n,000 - ,000+ ,000 - ,000+ Up to 3.5x Revenue\nLoans exceeding 4.0x monthly gross revenue are classified as excessive leverage and require immediate senior\nunderwriting review or equipment equity.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "other",
+      "classification_confidence": 0.5,
+      "metadata": {
+        "total_pages": 3,
+        "file_size_bytes": 3167,
+        "parser": "pypdf",
+        "character_count": 475,
+        "word_count": 74
+      },
+      "created_at": 1790922735.175446
+    },
+    {
+      "document_id": "doc_a64aa53e39",
+      "source_type": "pdf",
+      "source": "loan_policy_handbook.pdf",
+      "page": 3,
+      "section": "Section 3: Ineligible and Restricted Industries",
+      "title": "Section 3: Ineligible and Restricted Industries",
+      "raw_content": "Section 3: Ineligible and Restricted Industries\nUnder federal compliance and internal risk guidelines, Darwix strictly prohibits funding to businesses engaged in:\n- Gambling operations, casinos, sports betting, and lottery ventures.\n- Adult entertainment venues or novelty businesses.\n- Cannabis, marijuana cultivation, or dispensaries.\n- Cryptocurrency trading, speculative token mining, or crypto futures.\n- Predatory payday lending or debt settlement organizations.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "policy",
+      "classification_confidence": 0.85,
+      "metadata": {
+        "total_pages": 3,
+        "file_size_bytes": 3167,
+        "parser": "pypdf",
+        "character_count": 468,
+        "word_count": 60
+      },
+      "created_at": 1790922735.176394
+    }
+  ]
+}

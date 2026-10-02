@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_e29725c8f9",
+  "source_doc_id": "doc_137a6f5444",
+  "title": "Section 3: Ineligible and Restricted Industries",
+  "cleaned_content": "Section 3: Ineligible and Restricted Industries\nUnder federal compliance and internal risk guidelines, Darwix strictly prohibits funding to businesses engaged in:\n- Gambling operations, casinos, sports betting, and lottery ventures.\n- Adult entertainment venues or novelty businesses.\n- Cannabis, marijuana cultivation, or dispensaries.\n- Cryptocurrency trading, speculative token mining, or crypto futures.\n- Predatory payday lending or debt settlement organizations.",
+  "original_content_hash": "8fceb0e6fb06a597fe42299ef4bca7766d290075710de92594a1bd0c850d86da",
+  "cleaned_content_hash": "06dc004278ce9a1f3dca2c307de2d83e132cbe860cc241705ee19d502d00b17a",
+  "category": "policy",
+  "product": null,
+  "source": "loan_policy_handbook.pdf",
+  "source_location": {
+    "page": 3,
+    "section": "Section 3: Ineligible and Restricted Industries"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790917997.715086
+}

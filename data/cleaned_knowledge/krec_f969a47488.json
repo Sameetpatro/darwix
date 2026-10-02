@@ -1,0 +1,39 @@
+{
+  "record_id": "krec_f969a47488",
+  "source_doc_id": "doc_d036bf6007",
+  "title": "Section 2: Maximum Underwriting Leverage Matrix",
+  "cleaned_content": "Section 2: Maximum Underwriting Leverage Matrix\nUnsecured working capital facilities are evaluated against average monthly revenue ratios:\nMonthly Revenue Max Unsecured Loan Maximum Leverage\n,000 - ,000 ,000 - ,000 2.5x to 3.0x Revenue\n,000 - ,000 ,000 - ,000 3.0x to 3.5x Revenue\n,000 - ,000+ ,000 - ,000+ Up to 3.5x Revenue\nLoans exceeding 4.0x monthly gross revenue are classified as excessive leverage and require immediate senior\nunderwriting review or equipment equity.",
+  "original_content_hash": "a83e55dce2088cecd08aed7594fda9b5286dd8e27b2becfdaeb4d385e294c4c7",
+  "cleaned_content_hash": "2ae13c13d6c9da6c1720281cea32fb4cdef3273ef84592a3e8ee7aa219898b77",
+  "category": "other",
+  "product": "Working Capital Loan",
+  "source": "loan_policy_handbook.pdf",
+  "source_location": {
+    "page": 2,
+    "section": "Section 2: Maximum Underwriting Leverage Matrix"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [
+      "Working Capital Loan"
+    ],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920667.0256782
+}

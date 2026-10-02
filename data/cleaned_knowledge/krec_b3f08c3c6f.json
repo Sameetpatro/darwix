@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_b3f08c3c6f",
+  "source_doc_id": "doc_f806b96a16",
+  "title": "Ph Insurance Faqs Objections — Objection 1: \"Masyadong mahal ang premium / The premium is too expensive\"",
+  "cleaned_content": "### Objection 1: \"Masyadong mahal ang premium / The premium is too expensive\"\n- **Context**: The customer feels insurance is beyond their current budget.\n- **Handling Approach (Taglish / English)**:\n  - *\"Naiintindihan ko po kayo. Pero ang kagandahan po sa Darwix, pwede po nating i-customize ang plan para swak sa inyong budget. Meron po tayong SecureTerm na nagsisimula lamang sa humigit-kumulang ₱1,500 kada buwan - o ₱50 lang bawat araw, kasing halaga lang ng isang merienda o kape. Gusto niyo po bang gawan natin ng quotation na pasok sa inyong buwanang budget?\"*\n  - *\"I completely understand your concern. The great thing with Darwix is that we customize the policy to your specific budget. Our SecureTerm starts at around ₱1,500 per month - just about ₱50 a day, which is the cost of a daily cup of coffee or merienda. Would you like to review a plan customized to your monthly budget?\"*",
+  "original_content_hash": "484581d26cb1f274bd97f21c804bb4612462249f7d8f457e015c2fa691e41fda",
+  "cleaned_content_hash": "690aa3675cbdeebb7679ad144f128c254451223bcbb55e2718f41170da759895",
+  "category": "objection",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 9,
+    "section": "Objection 1: \"Masyadong mahal ang premium / The premium is too expensive\""
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": "Daily",
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919275.299498
+}

@@ -1,0 +1,634 @@
+{
+  "timestamp": 1790923095.653763,
+  "total_cases": 18,
+  "metrics": {
+    "true_positives": 9,
+    "true_negatives": 9,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "accuracy": 1.0
+  },
+  "detailed_results": [
+    {
+      "id": "cross_sell_true_01",
+      "category": "cross_sell",
+      "text": "I actually have another car as well.",
+      "description": "Direct customer ownership of another vehicle",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_4288cd8d",
+          "call_id": "eval_cross_sell_true_01",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.91,
+          "evidence": "I actually have another car as well.",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.1,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Direct customer ownership of additional vehicle",
+            "turn_id": "turn_cross_sell_true_01"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_e3b93e9b",
+        "call_id": "eval_cross_sell_true_01",
+        "priority": "medium",
+        "type": "cross_sell_opportunity",
+        "headline": "CROSS-SELL",
+        "context": "Customer mentioned another vehicle or insurable asset.",
+        "message": "Ask if they'd like multi-vehicle coverage.",
+        "confidence": 0.91,
+        "expires_in": 25,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_4288cd8d",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "cross_sell_true_02",
+      "category": "cross_sell",
+      "text": "Actually, I have another vehicle too. Can I add it to the policy?",
+      "description": "Explicit customer inquiry about adding second vehicle",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_09f60f07",
+          "call_id": "eval_cross_sell_true_02",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.91,
+          "evidence": "Actually, I have another vehicle too. Can I add it to the policy?",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.03,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Direct customer ownership of additional vehicle",
+            "turn_id": "turn_cross_sell_true_02"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_664e3f87",
+        "call_id": "eval_cross_sell_true_02",
+        "priority": "medium",
+        "type": "cross_sell_opportunity",
+        "headline": "CROSS-SELL",
+        "context": "Customer mentioned another vehicle or insurable asset.",
+        "message": "Ask if they'd like multi-vehicle coverage.",
+        "confidence": 0.91,
+        "expires_in": 25,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_09f60f07",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "cross_sell_true_03",
+      "category": "cross_sell",
+      "text": "We own two cars, a Civic and a Ford F-150.",
+      "description": "Multi-car household ownership declaration",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_828237e3",
+          "call_id": "eval_cross_sell_true_03",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.91,
+          "evidence": "We own two cars, a Civic and a Ford F-150.",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.08,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Direct customer ownership of additional vehicle",
+            "turn_id": "turn_cross_sell_true_03"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_217ff926",
+        "call_id": "eval_cross_sell_true_03",
+        "priority": "medium",
+        "type": "cross_sell_opportunity",
+        "headline": "CROSS-SELL",
+        "context": "Customer mentioned another vehicle or insurable asset.",
+        "message": "Ask if they'd like multi-vehicle coverage.",
+        "confidence": 0.91,
+        "expires_in": 25,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_828237e3",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "compliance_true_01",
+      "category": "compliance",
+      "text": "Okay, let's continue and charge the first month deposit.",
+      "description": "Customer advancing to binding without required disclosure",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_733fa030",
+          "call_id": "eval_compliance_true_01",
+          "timestamp": 1790923095.65,
+          "type": "compliance_gap",
+          "speaker": "customer",
+          "confidence": 0.96,
+          "evidence": "Okay, let's continue and charge the first month deposit.",
+          "topic": "compliance",
+          "severity": "high",
+          "status": "new",
+          "detection_latency_ms": 0.01,
+          "metadata": {
+            "rule": "MANDATORY_STAGE_DISCLOSURE",
+            "missing_disclosure": "mandatory_disclosure",
+            "stage": "binding_ready",
+            "turn_id": "turn_compliance_true_01"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_096c2c60",
+        "call_id": "eval_compliance_true_01",
+        "priority": "high",
+        "type": "compliance_gap",
+        "headline": "COMPLIANCE",
+        "context": "Required disclosure has not been given.",
+        "message": "Provide the required disclosure before continuing.",
+        "confidence": 0.96,
+        "expires_in": 15,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_733fa030",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "compliance_true_02",
+      "category": "compliance",
+      "text": "Go ahead and bind the policy now, take my card details.",
+      "description": "Binding request without mandatory regulatory disclosure",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_83d75e23",
+          "call_id": "eval_compliance_true_02",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.72,
+          "evidence": "Go ahead and bind the policy now, take my card details.",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.03,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "General vehicle mention",
+            "turn_id": "turn_compliance_true_02"
+          }
+        },
+        {
+          "signal_id": "sig_e8405038",
+          "call_id": "eval_compliance_true_02",
+          "timestamp": 1790923095.65,
+          "type": "compliance_gap",
+          "speaker": "customer",
+          "confidence": 0.96,
+          "evidence": "Go ahead and bind the policy now, take my card details.",
+          "topic": "compliance",
+          "severity": "high",
+          "status": "new",
+          "detection_latency_ms": 0.03,
+          "metadata": {
+            "rule": "MANDATORY_STAGE_DISCLOSURE",
+            "missing_disclosure": "mandatory_disclosure",
+            "stage": "binding_ready",
+            "turn_id": "turn_compliance_true_02"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_0cf8dd77",
+        "call_id": "eval_compliance_true_02",
+        "priority": "high",
+        "type": "compliance_gap",
+        "headline": "COMPLIANCE",
+        "context": "Required disclosure has not been given.",
+        "message": "Provide the required disclosure before continuing.",
+        "confidence": 0.96,
+        "expires_in": 15,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_e8405038",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": "Confidence 0.72 is below threshold 0.75"
+    },
+    {
+      "id": "frustration_true_01",
+      "category": "frustration",
+      "text": "I already told you this three times! I don't understand why you're asking again!",
+      "description": "Repeated question complaint with explicit frustration",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_2996cce0",
+          "call_id": "eval_frustration_true_01",
+          "timestamp": 1790923095.65,
+          "type": "frustration",
+          "speaker": "customer",
+          "confidence": 0.88,
+          "evidence": "I already told you this three times! I don't understand why you're asking again!",
+          "topic": "customer_satisfaction",
+          "severity": "high",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Customer explicitly complaining about repetitive questions",
+            "turn_id": "turn_frustration_true_01"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_c41c0b8a",
+        "call_id": "eval_frustration_true_01",
+        "priority": "high",
+        "type": "frustration",
+        "headline": "FRUSTRATION",
+        "context": "Customer appears increasingly frustrated.",
+        "message": "Acknowledge the concern before continuing.",
+        "confidence": 0.88,
+        "expires_in": 20,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_2996cce0",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "frustration_true_02",
+      "category": "frustration",
+      "text": "I've already explained this twice to your colleague, this is ridiculous.",
+      "description": "High negative sentiment with repetition complaint",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_241bed04",
+          "call_id": "eval_frustration_true_02",
+          "timestamp": 1790923095.65,
+          "type": "frustration",
+          "speaker": "customer",
+          "confidence": 0.88,
+          "evidence": "I've already explained this twice to your colleague, this is ridiculous.",
+          "topic": "customer_satisfaction",
+          "severity": "high",
+          "status": "new",
+          "detection_latency_ms": 0.01,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Customer explicitly complaining about repetitive questions",
+            "turn_id": "turn_frustration_true_02"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_32e79b79",
+        "call_id": "eval_frustration_true_02",
+        "priority": "high",
+        "type": "frustration",
+        "headline": "FRUSTRATION",
+        "context": "Customer appears increasingly frustrated.",
+        "message": "Acknowledge the concern before continuing.",
+        "confidence": 0.88,
+        "expires_in": 20,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_241bed04",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "payment_true_01",
+      "category": "payment_difficulty",
+      "text": "I don't think I can make the payment this month due to unexpected medical bills.",
+      "description": "Explicit inability to make scheduled payment",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_422af5d3",
+          "call_id": "eval_payment_true_01",
+          "timestamp": 1790923095.65,
+          "type": "payment_difficulty",
+          "speaker": "customer",
+          "confidence": 0.93,
+          "evidence": "I don't think I can make the payment this month due to unexpected medical bills.",
+          "topic": "billing_and_payments",
+          "severity": "high",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Customer explicitly states inability to make scheduled payment",
+            "turn_id": "turn_payment_true_01"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_042e3e1f",
+        "call_id": "eval_payment_true_01",
+        "priority": "high",
+        "type": "payment_difficulty",
+        "headline": "PAYMENT DIFFICULTY",
+        "context": "Customer expressed difficulty making scheduled payments.",
+        "message": "Offer payment relief options or installment grace period.",
+        "confidence": 0.93,
+        "expires_in": 25,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_422af5d3",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "payment_true_02",
+      "category": "payment_difficulty",
+      "text": "I lost my job recently and I'm really struggling to pay this premium.",
+      "description": "Financial distress and hardship declaration",
+      "expected_nudge": true,
+      "actual_nudge": true,
+      "outcome": "TP",
+      "signals_detected": [
+        {
+          "signal_id": "sig_dffea444",
+          "call_id": "eval_payment_true_02",
+          "timestamp": 1790923095.65,
+          "type": "payment_difficulty",
+          "speaker": "customer",
+          "confidence": 0.93,
+          "evidence": "I lost my job recently and I'm really struggling to pay this premium.",
+          "topic": "billing_and_payments",
+          "severity": "high",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "Customer explicitly states inability to make scheduled payment",
+            "turn_id": "turn_payment_true_02"
+          }
+        }
+      ],
+      "nudge": {
+        "event": "nudge",
+        "nudge_id": "ndg_fba46e80",
+        "call_id": "eval_payment_true_02",
+        "priority": "high",
+        "type": "payment_difficulty",
+        "headline": "PAYMENT DIFFICULTY",
+        "context": "Customer expressed difficulty making scheduled payments.",
+        "message": "Offer payment relief options or installment grace period.",
+        "confidence": 0.93,
+        "expires_in": 25,
+        "timestamp": 1790923095.65,
+        "signal_id": "sig_dffea444",
+        "generation_latency_ms": 0.0,
+        "status": "active"
+      },
+      "suppression_reason": null
+    },
+    {
+      "id": "cross_sell_false_01",
+      "category": "cross_sell",
+      "text": "My brother has another vehicle in Seattle, but I only drive this Civic.",
+      "description": "3rd-party vehicle ownership (brother) - Not customer cross-sell",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [
+        {
+          "signal_id": "sig_7f09ba50",
+          "call_id": "eval_cross_sell_false_01",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.25,
+          "evidence": "My brother has another vehicle in Seattle, but I only drive this Civic.",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "3rd party ownership reference detected: \\b(my\\s+(brother|sister|friend|neighbor|cousin|boss|uncle|dad|mom|father|mother))\\b",
+            "turn_id": "turn_cross_sell_false_01"
+          }
+        }
+      ],
+      "nudge": null,
+      "suppression_reason": "Confidence 0.25 is below threshold 0.75"
+    },
+    {
+      "id": "cross_sell_false_02",
+      "category": "cross_sell",
+      "text": "My neighbor has a motorcycle that makes so much noise every morning.",
+      "description": "Neighbor asset mention - Not customer insurable interest",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [
+        {
+          "signal_id": "sig_7e017321",
+          "call_id": "eval_cross_sell_false_02",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.25,
+          "evidence": "My neighbor has a motorcycle that makes so much noise every morning.",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "3rd party ownership reference detected: \\b(my\\s+(brother|sister|friend|neighbor|cousin|boss|uncle|dad|mom|father|mother))\\b",
+            "turn_id": "turn_cross_sell_false_02"
+          }
+        }
+      ],
+      "nudge": null,
+      "suppression_reason": "Confidence 0.25 is below threshold 0.75"
+    },
+    {
+      "id": "cross_sell_false_03",
+      "category": "cross_sell",
+      "text": "Someone else's vehicle hit my bumper in the parking lot yesterday.",
+      "description": "Accident third-party vehicle mention",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [
+        {
+          "signal_id": "sig_74327b08",
+          "call_id": "eval_cross_sell_false_03",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.25,
+          "evidence": "Someone else's vehicle hit my bumper in the parking lot yesterday.",
+          "topic": "vehicle_insurance",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "3rd party ownership reference detected: \\b(someone\\s+else|somebody\\s+else)\\b",
+            "turn_id": "turn_cross_sell_false_03"
+          }
+        }
+      ],
+      "nudge": null,
+      "suppression_reason": "Confidence 0.25 is below threshold 0.75"
+    },
+    {
+      "id": "compliance_false_01",
+      "category": "compliance",
+      "text": "Okay, let's continue and finalize the policy.",
+      "description": "Customer advancing after agent already delivered required disclosure",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [
+        {
+          "signal_id": "sig_a102dfc3",
+          "call_id": "eval_compliance_false_01",
+          "timestamp": 1790923095.65,
+          "type": "cross_sell_opportunity",
+          "speaker": "customer",
+          "confidence": 0.3,
+          "evidence": "Okay, let's continue and finalize the policy.",
+          "topic": "cross_sell",
+          "severity": "medium",
+          "status": "new",
+          "detection_latency_ms": 0.02,
+          "metadata": {
+            "classifier": "laya_system_one",
+            "reason": "No verified cross-sell asset detected",
+            "turn_id": "turn_compliance_false_01"
+          }
+        }
+      ],
+      "nudge": null,
+      "suppression_reason": "Confidence 0.30 is below threshold 0.75"
+    },
+    {
+      "id": "frustration_false_01",
+      "category": "frustration",
+      "text": "I understand you need to verify my address twice for security, no problem at all.",
+      "description": "Cooperative customer mentioning 'twice' without frustration",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [],
+      "nudge": null,
+      "suppression_reason": null
+    },
+    {
+      "id": "payment_false_01",
+      "category": "payment_difficulty",
+      "text": "I will make the full payment online this Friday as scheduled.",
+      "description": "Normal timely payment confirmation",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [],
+      "nudge": null,
+      "suppression_reason": null
+    },
+    {
+      "id": "ambiguous_noisy_01",
+      "category": "noisy_speech",
+      "text": "I... uh... maybe... another... mumble...",
+      "description": "Incomplete, fragmented, and hesitant speech",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [],
+      "nudge": null,
+      "suppression_reason": null
+    },
+    {
+      "id": "ambiguous_noisy_02",
+      "category": "noisy_speech",
+      "text": "Um... yeah... like... er...",
+      "description": "Filler words with no actionable semantic information",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [],
+      "nudge": null,
+      "suppression_reason": null
+    },
+    {
+      "id": "ambiguous_noisy_03",
+      "category": "noisy_speech",
+      "text": "Another... er... what was that again?",
+      "description": "Question fragment with ambiguous 'another' keyword",
+      "expected_nudge": false,
+      "actual_nudge": false,
+      "outcome": "TN",
+      "signals_detected": [],
+      "nudge": null,
+      "suppression_reason": null
+    }
+  ]
+}

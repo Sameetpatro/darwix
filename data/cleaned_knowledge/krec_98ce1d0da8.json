@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_98ce1d0da8",
+  "source_doc_id": "doc_67a4286d5b",
+  "title": "Id Payment Faqs Objections — Bagian 1: Tanya Jawab Seputar Pembayaran (FAQs)",
+  "cleaned_content": "## Bagian 1: Tanya Jawab Seputar Pembayaran (FAQs)",
+  "original_content_hash": "26d36dac79c37dc45ecc4865aee9cf916375a4fae87eb7c149220b776cba30fc",
+  "cleaned_content_hash": "bfbd8905767333dda8ec4de03f8353a90cf5f4d8bf56cb4e182df7a8cfd43edf",
+  "category": "faq",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 2,
+    "section": "Bagian 1: Tanya Jawab Seputar Pembayaran (FAQs)"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920040.129219
+}

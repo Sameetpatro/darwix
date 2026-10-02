@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_21d5a2f3b5",
+  "source_doc_id": "doc_9dabe58fb1",
+  "title": "Id Payment Faqs Objections — Bagian 3: Eskalasi Layanan Konsumen (Human Escalation)",
+  "cleaned_content": "## Bagian 3: Eskalasi Layanan Konsumen (Human Escalation)\n- Apabila nasabah meminta berbicara dengan agen penagihan manusia, customer service, atau manajer (*\"mau bicara sama customer service\"*, *\"sambungkan ke agen manusia\"*, *\"bicara sama orang\"*):\n  - Respon: *\"Baik, saya segera sambungkan Anda dengan Petugas Layanan Konsumen Darwix Multifinance. Mohon ditunggu sebentar ya, panggilan Anda sedang dialihkan.\"*",
+  "original_content_hash": "c5e28084d7681e11c32d35db7295c8a853f95bac0026dc47fc1978e5922045f9",
+  "cleaned_content_hash": "c8771a2cb03b2dd23ad358646f4cbfedad7eb36b86f1d6eccfbeee9983d78329",
+  "category": "other",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 10,
+    "section": "Bagian 3: Eskalasi Layanan Konsumen (Human Escalation)"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920050.7058759
+}

@@ -1,0 +1,85 @@
+{
+  "source_file": "equipment_financing_portal.html",
+  "source_type": "html",
+  "total_documents": 2,
+  "flagged_for_review": false,
+  "documents": [
+    {
+      "document_id": "doc_a62dad42a2",
+      "source_type": "html",
+      "source": "equipment_financing_portal.html",
+      "page": 1,
+      "section": "Program Overview and Eligibility",
+      "title": "Darwix Equipment Financing & Machinery Leasing \u2014 Program Overview and Eligibility",
+      "raw_content": "Program Overview and Eligibility\nDarwix Equipment Financing enables commercial businesses to acquire heavy machinery, medical devices, commercial vehicles, technology servers, and kitchen hardware without depleting operational capital.\nFacility Range:\n,000 up to ,000,000.\nRepayment Terms:\n24 to 84 months (2 to 7 years), tailored to the equipment's useful economic life.\nStarting Rates:\n5.99% APR for prime credit tiers.\nDown Payment:\nAs low as zsh down for creditworthy guarantors.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "product",
+      "classification_confidence": 0.88,
+      "metadata": {
+        "html_tag": "section",
+        "character_count": 483,
+        "word_count": 68,
+        "has_tables": false
+      },
+      "created_at": 1790916737.8568928
+    },
+    {
+      "document_id": "doc_4bf2550ab4",
+      "source_type": "html",
+      "source": "equipment_financing_portal.html",
+      "page": 2,
+      "section": "Equipment Financing Term Structures",
+      "title": "Darwix Equipment Financing & Machinery Leasing \u2014 Equipment Financing Term Structures",
+      "raw_content": "Equipment Financing Term Structures\nEquipment Category\nMax Amount\nMax Term\nCollateral Required\nConstruction Machinery\n,000,000\n84 Months\nEquipment Itself\nMedical & Dental Hardware\n,000\n60 Months\nEquipment Itself\nCommercial Fleet Vehicles\n,000\n60 Months\nVehicle Title Lien\nRestaurant Commercial Kitchen\n,000\n48 Months\nEquipment Itself",
+      "tables": [
+        {
+          "headers": [
+            "Equipment Category",
+            "Max Amount",
+            "Max Term",
+            "Collateral Required"
+          ],
+          "rows": [
+            [
+              "Construction Machinery",
+              ",000,000",
+              "84 Months",
+              "Equipment Itself"
+            ],
+            [
+              "Medical & Dental Hardware",
+              ",000",
+              "60 Months",
+              "Equipment Itself"
+            ],
+            [
+              "Commercial Fleet Vehicles",
+              ",000",
+              "60 Months",
+              "Vehicle Title Lien"
+            ],
+            [
+              "Restaurant Commercial Kitchen",
+              ",000",
+              "48 Months",
+              "Equipment Itself"
+            ]
+          ],
+          "row_count": 4,
+          "column_count": 4
+        }
+      ],
+      "extraction_status": "success",
+      "content_type": "product",
+      "classification_confidence": 0.88,
+      "metadata": {
+        "html_tag": "section",
+        "character_count": 333,
+        "word_count": 45,
+        "has_tables": true
+      },
+      "created_at": 1790916737.8570628
+    }
+  ]
+}

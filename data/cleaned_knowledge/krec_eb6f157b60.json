@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_eb6f157b60",
+  "source_doc_id": "doc_7c3d870f95",
+  "title": "Ph Insurance Faqs Objections — FAQ 3: Can I name my children or parents as beneficiaries?",
+  "cleaned_content": "### FAQ 3: Can I name my children or parents as beneficiaries?\n- **Answer**: Yes. Under the Philippine Insurance Code, you may designate your spouse, children, parents, siblings, or any person who has an insurable interest as your primary or contingent beneficiaries. Minors can also be named with an appointed trustee or guardian.",
+  "original_content_hash": "9b51aeae2f5d3fb39f5f3b98499c8a8b4e36300b25b0a244c67f435b743d814c",
+  "cleaned_content_hash": "736808cd2492686561f069b2723723fb4710bad376af692694c10069c5ac8e5e",
+  "category": "faq",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 5,
+    "section": "FAQ 3: Can I name my children or parents as beneficiaries?"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919269.664056
+}

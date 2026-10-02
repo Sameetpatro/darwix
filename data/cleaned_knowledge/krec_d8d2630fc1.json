@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_d8d2630fc1",
+  "source_doc_id": "doc_029be33353",
+  "title": "Ph Insurance Faqs Objections — Section 1: Frequently Asked Questions (FAQs)",
+  "cleaned_content": "## Section 1: Frequently Asked Questions (FAQs)",
+  "original_content_hash": "0799bd06a42ce418ca860ab34690f03c697a55de0f3e2d24002a8568ec66aacd",
+  "cleaned_content_hash": "0f2dd812608f85cfac59a1793912f591f88e863d88baa8b32676931682f1f5f6",
+  "category": "faq",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 2,
+    "section": "Section 1: Frequently Asked Questions (FAQs)"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919265.151252
+}

@@ -1,0 +1,27 @@
+{
+  "source_file": "corrupted_archive.dat",
+  "source_type": "unknown",
+  "total_documents": 1,
+  "flagged_for_review": true,
+  "documents": [
+    {
+      "document_id": "doc_ececb5824d",
+      "source_type": "unknown",
+      "source": "corrupted_archive.dat",
+      "page": 1,
+      "section": null,
+      "title": "FLAGGED: Corrupted_Archive",
+      "raw_content": "",
+      "tables": [],
+      "extraction_status": "flagged_for_review",
+      "content_type": "other",
+      "classification_confidence": 0.0,
+      "metadata": {
+        "flagged_for_manual_review": true,
+        "error_reason": "No suitable parser found for source_type: unknown",
+        "file_size": 29
+      },
+      "created_at": 1790922735.9876192
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_f18991c27c",
+  "source_doc_id": "doc_0b8d2ffe12",
+  "title": "Ph Life Insurance Handbook — Available Policy Categories:",
+  "cleaned_content": "### Available Policy Categories:\n1. **Darwix SecureTerm (Term Life Insurance)**:\n   - Pure protection policy providing maximum financial security at affordable premium rates.\n   - Coverage terms: 5 years, 10 years, 20 years, or term-to-age-65.\n   - Face amount coverage: Minimum ₱500,000 up to ₱10,000,000.\n   - Renewable and convertible to permanent life insurance without evidence of insurability before age 60.\n\n2. **Darwix LifeHeritage (Whole Life Insurance)**:\n   - Permanent life insurance providing lifetime coverage up to age 100 with guaranteed cash values and policy loan privileges.\n   - Premium payment options: Regular Pay up to age 65, 10-Pay (fully paid in 10 years), or 20-Pay.\n   - Face amount coverage: Minimum ₱1,000,000 up to ₱25,000,000.\n\n3. **Darwix InvestShield (Variable Unit-Linked / VUL)**:\n   - Hybrid protection and investment-linked life insurance. Premiums are allocated between life protection and professionally managed Philippine equity, bond, and balanced funds.\n   - Face amount: Minimum 125% of single premium or 5x annual premium.\n\n---",
+  "original_content_hash": "ada563810672236e78a9e2f8a9c8ca8b5b3c4df22e8d5093980c0457ffcfffcf",
+  "cleaned_content_hash": "74a7377dc4b2443cfb3bbbc2f9f754a71809b58607ae9d5e1392678d7114a1c4",
+  "category": "policy",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 3,
+    "section": "Available Policy Categories:"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919253.543933
+}

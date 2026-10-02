@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_c1bdc35aa1",
+  "source_doc_id": "doc_fe3e731839",
+  "title": "Id Payment Faqs Objections — Keberatan 2: \"Bulan ini belum ada dana / uang belum cair / lagi seret\"",
+  "cleaned_content": "### Keberatan 2: \"Bulan ini belum ada dana / uang belum cair / lagi seret\"\n- **Konteks**: Nasabah belum memiliki dana pada hari jatuh tempo dan berniat menunda.\n- **Pendekatan Respon (Bahasa Indonesia)**:\n  - *\"Baik Bapak/Ibu, kami sangat mengerti situasi ekonomi yang terkadang tidak menentu. Agar catatan skor kredit Bapak/Ibu di SLIK OJK tetap aman dan terhindar dari denda yang terus bertambah, kami dapat membantu mendaftarkan program Janji Bayar resmi (Promise to Pay). Kira-kira pada tanggal berapa dana Bapak/Ibu akan siap masuk, agar jadwal pembayaran dapat kami sesuaikan dalam sistem resmi kami?\"*\n\n---",
+  "original_content_hash": "9b52132d6019487fadafa6e53d20a41f30eaf7b57b07ead5868c0334ebf31d13",
+  "cleaned_content_hash": "d45475544f50522bbf3c16e5e7d9b1e6ed4569260447dd71ffa33efb48ad8571",
+  "category": "other",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 9,
+    "section": "Keberatan 2: \"Bulan ini belum ada dana / uang belum cair / lagi seret\""
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920048.996949
+}

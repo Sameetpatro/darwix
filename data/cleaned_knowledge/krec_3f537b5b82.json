@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_3f537b5b82",
+  "source_doc_id": "doc_6859cf5f8b",
+  "title": "Ph Insurance Faqs Objections — FAQ 2: What is the difference between Term Life and Whole Life insurance?",
+  "cleaned_content": "### FAQ 2: What is the difference between Term Life and Whole Life insurance?\n- **Answer**: Term Life (Darwix SecureTerm) provides pure financial protection for a specific period (e.g., 10, 20 years) with the lowest possible premiums, ideal for family protection or debt coverage. Whole Life (Darwix LifeHeritage) provides guaranteed lifetime protection up to age 100 and builds guaranteed cash values and policy dividends over time.",
+  "original_content_hash": "ebdc4afb26dd0a78f75a99547bb07b44d12c15d58d134c713fee8850a9474713",
+  "cleaned_content_hash": "97e9fb27af03f514e5ac96cc68eb2f473e341e8dd4b952795da97953634b9fd3",
+  "category": "faq",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 4,
+    "section": "FAQ 2: What is the difference between Term Life and Whole Life insurance?"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919267.9356349
+}

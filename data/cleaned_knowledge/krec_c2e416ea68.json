@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_c2e416ea68",
+  "source_doc_id": "doc_2ad1205157",
+  "title": "Id Multifinance Handbook — 2. Ketentuan Angsuran, Tenor, dan Jatuh Tempo",
+  "cleaned_content": "## 2. Ketentuan Angsuran, Tenor, dan Jatuh Tempo\n- **Jatuh Tempo (Due Date)**: Setiap kontrak memiliki tanggal jatuh tempo bulanan tetap (misalnya tanggal 5, 10, 15, atau 20 setiap bulan).\n- **Grace Period (Masa Tenggang Bebas Denda)**:\n  - Darwix Multifinance memberikan masa tenggang resmi selama 3 (tiga) hari kalender terhitung sejak tanggal jatuh tempo.\n  - Apabila nasabah melakukan pembayaran angsuran dalam kurun waktu 3 hari masa tenggang, maka nasabah tidak dikenakan denda keterlambatan sama sekali.\n- **Kanal Pembayaran Resmi**:\n  - Virtual Account (BCA, Bank Mandiri, BRI, BNI, Permata Bank).\n  - Gerai Retail Minimarket: Alfamart, Indomaret, Dan+Dan.\n  - Dompet Digital / E-Wallet: GoPay, OVO, Dana, ShopeePay.\n  - Auto-debit rekening bank nasabah.\n\n---",
+  "original_content_hash": "d261599391fdf40207745ef321e4ca0397d2fbd8100a58e3c1dc84a0b8f119fb",
+  "cleaned_content_hash": "8f5f2aaf89bb72622d0763d7d0aaf73c3e5b1940a71ee7fe1907755e0b660027",
+  "category": "other",
+  "product": null,
+  "source": "id_multifinance_handbook.md",
+  "source_location": {
+    "page": 4,
+    "section": "2. Ketentuan Angsuran, Tenor, dan Jatuh Tempo"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920035.221594
+}

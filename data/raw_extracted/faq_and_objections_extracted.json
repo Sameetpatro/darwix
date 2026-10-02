@@ -1,0 +1,103 @@
+{
+  "source_file": "faq_and_objections.txt",
+  "source_type": "text",
+  "total_documents": 5,
+  "flagged_for_review": false,
+  "documents": [
+    {
+      "document_id": "doc_2cdd3f165d",
+      "source_type": "text",
+      "source": "faq_and_objections.txt",
+      "page": 1,
+      "section": "Darwix Customer FAQs and Policy Notes",
+      "title": "Faq And Objections \u2014 Darwix Customer FAQs and Policy Notes",
+      "raw_content": "# Darwix Customer FAQs and Policy Notes",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "faq",
+      "classification_confidence": 0.95,
+      "metadata": {
+        "section_index": 1,
+        "character_count": 39,
+        "word_count": 7
+      },
+      "created_at": 1790916740.403135
+    },
+    {
+      "document_id": "doc_424a61c6aa",
+      "source_type": "text",
+      "source": "faq_and_objections.txt",
+      "page": 2,
+      "section": "FAQ 1: Prepayment Penalties",
+      "title": "Faq And Objections \u2014 FAQ 1: Prepayment Penalties",
+      "raw_content": "## FAQ 1: Prepayment Penalties\nQuestion: Are there prepayment penalties if a borrower settles the loan early?\nAnswer: Absolutely not. All Darwix Commercial Term Loans and Revolving Lines of Credit have zero prepayment penalties. Borrowers can pay off the full balance at any time and receive a discount on unaccrued interest charges.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "faq",
+      "classification_confidence": 0.95,
+      "metadata": {
+        "section_index": 2,
+        "character_count": 333,
+        "word_count": 52
+      },
+      "created_at": 1790916740.4031649
+    },
+    {
+      "document_id": "doc_c232edaaed",
+      "source_type": "text",
+      "source": "faq_and_objections.txt",
+      "page": 3,
+      "section": "FAQ 2: Funding Timeline and Speed",
+      "title": "Faq And Objections \u2014 FAQ 2: Funding Timeline and Speed",
+      "raw_content": "## FAQ 2: Funding Timeline and Speed\nQuestion: How fast can a commercial borrower receive funds?\nAnswer: Approvals are granted in 2 to 4 hours after submitting digital bank statements. Once loan contracts are electronically executed, funds are transferred via same-day wire or automated ACH in 24 to 48 hours.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "faq",
+      "classification_confidence": 0.95,
+      "metadata": {
+        "section_index": 3,
+        "character_count": 309,
+        "word_count": 50
+      },
+      "created_at": 1790916740.4031832
+    },
+    {
+      "document_id": "doc_8024b8507a",
+      "source_type": "text",
+      "source": "faq_and_objections.txt",
+      "page": 4,
+      "section": "FAQ 3: Soft Credit Check Guarantee",
+      "title": "Faq And Objections \u2014 FAQ 3: Soft Credit Check Guarantee",
+      "raw_content": "## FAQ 3: Soft Credit Check Guarantee\nQuestion: Does applying hurt the business owner credit score?\nAnswer: No. Darwix performs only a soft credit pull to generate loan offers and pre-qualifications. A soft inquiry has zero impact on credit scores.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "faq",
+      "classification_confidence": 0.95,
+      "metadata": {
+        "section_index": 4,
+        "character_count": 248,
+        "word_count": 40
+      },
+      "created_at": 1790916740.4031968
+    },
+    {
+      "document_id": "doc_c2df4a77b6",
+      "source_type": "text",
+      "source": "faq_and_objections.txt",
+      "page": 5,
+      "section": "Objection 1: High Interest Rate Concern",
+      "title": "Faq And Objections \u2014 Objection 1: High Interest Rate Concern",
+      "raw_content": "## Objection 1: High Interest Rate Concern\nCustomer Context: The borrower believes rates are too high.\nGuidance: Clarify that our rates start at 5.99% APR, which is significantly lower than alternative merchant cash advances (which can exceed 60% APR). We provide competitive bank-grade pricing based on cash flow strength.",
+      "tables": [],
+      "extraction_status": "success",
+      "content_type": "objection",
+      "classification_confidence": 0.92,
+      "metadata": {
+        "section_index": 5,
+        "character_count": 323,
+        "word_count": 49
+      },
+      "created_at": 1790916740.403211
+    }
+  ]
+}

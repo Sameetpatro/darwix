@@ -1,0 +1,49 @@
+{
+  "record_id": "krec_d3c9a7cfbd",
+  "source_doc_id": "doc_6606be104d",
+  "title": "Prime Commercial Term Loan Underwriting Matrix",
+  "cleaned_content": "Prime Commercial Term Loan Guidelines:\n        Guarantor: [REDACTED_NAME]: [REDACTED_EMAIL]\n        Contact Phone: ([REDACTED_PHONE]\n        Tax ID: [REDACTED_EIN]\n        Underwriting Rules:\n        Borrowing entity must be an LLC or C-Corp with at least 24 months of operating history.\n        Minimum monthly revenue: $30,000.\n        Minimum credit score: 680 FICO.\n        Loan facility range: $25,000 to $500,000.\n        Effective Date: 2026-02-01.",
+  "original_content_hash": "dd5fa899c66f99c2c4c8b9009a144576949fe0480134666b14e59fc0626113c2",
+  "cleaned_content_hash": "56ed08a61f9074622238c623eb1380032c57d7027b88f7f7a149531968bc8a26",
+  "category": "qualification",
+  "product": "Term Loan",
+  "source": "underwriting_memo_2026.txt",
+  "source_location": {
+    "page": 1,
+    "section": "Credit Matrix Tier 1"
+  },
+  "version": "1.0",
+  "effective_date": "2026-02-01",
+  "normalized_entities": {
+    "loan_products": [
+      "Term Loan"
+    ],
+    "entity_types": [
+      "LLC",
+      "C-Corp"
+    ],
+    "time_in_business_months": 24,
+    "time_in_business_display": "24 months (2.0 years)",
+    "min_revenue_monthly_usd": 30000.0,
+    "min_credit_score": 680,
+    "min_loan_amount_usd": 25000.0,
+    "max_loan_amount_usd": 500000.0,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": [
+      "2026-02-01"
+    ]
+  },
+  "pii_audit": {
+    "ein": 1,
+    "phone": 1,
+    "email": 1,
+    "person_name": 1
+  },
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920656.311486
+}

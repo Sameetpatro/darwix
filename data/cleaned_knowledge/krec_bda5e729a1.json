@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_bda5e729a1",
+  "source_doc_id": "doc_c2df4a77b6",
+  "title": "Faq And Objections — Objection 1: High Interest Rate Concern",
+  "cleaned_content": "## Objection 1: High Interest Rate Concern\nCustomer Context: The borrower believes rates are too high.\nGuidance: Clarify that our rates start at 5.99% APR, which is significantly lower than alternative merchant cash advances (which can exceed 60% APR). We provide competitive bank-grade pricing based on cash flow strength.",
+  "original_content_hash": "be6e74ae828a465a1adced2512c4e68073cd1768d95bc5a1aad8855b923f9cae",
+  "cleaned_content_hash": "3810d04b0a579fa61c2d0911836239bf57dcf06fe4da392b7b5b0884d9d4ec75",
+  "category": "objection",
+  "product": null,
+  "source": "faq_and_objections.txt",
+  "source_location": {
+    "page": 5,
+    "section": "Objection 1: High Interest Rate Concern"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 5.99,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919644.8237288
+}

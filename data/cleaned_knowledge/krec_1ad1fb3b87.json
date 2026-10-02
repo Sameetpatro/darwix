@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_1ad1fb3b87",
+  "source_doc_id": "doc_3d4c3483c2",
+  "title": "Ph Insurance Faqs Objections — Section 10",
+  "cleaned_content": "### Objection 2: \"Baka malugi lang ako o scam / I might just lose money or it's a scam\"\n- **Context**: The customer worries about financial stability or insurance scams.\n- **Handling Approach (Taglish / English)**:\n  - *\"Naiintindihan ko po ang inyong pag-iingat. Ang Darwix Life po ay 100% lisensyado at mahigpit na pinangangasiwaan ng Insurance Commission ng Pilipinas. Bukod dito, partner po namin ang mga nangungunang bangko sa bansa tulad ng BDO, BPI, at Metrobank. Lahat po ng benepisyo at coverage ay nakasulat sa legal na kontrata upang sigurado ang proteksyon ng inyong pamilya.\"*\n  - *\"I respect your caution. Darwix Life is fully licensed and strictly regulated by the Insurance Commission of the Philippines. Furthermore, we are official bancassurance partners with top Philippine banks like BDO, BPI, and Metrobank. Every single peso of death benefit and guaranteed cash value is legally secured by strict capital reserve requirements.\"*",
+  "original_content_hash": "b0f727fdcd04bd6996d76122ecd9dfc0c673fcb4f0f40db296aded109a904069",
+  "cleaned_content_hash": "f11fee7618a98ff0797d881f024ea17f178416caae2ccfa587d757650dd02364",
+  "category": "objection",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 10,
+    "section": "Section 10"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919276.6679869
+}

@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_86883653c5",
+  "source_doc_id": "doc_5ae70cca88",
+  "title": "Ph Life Insurance Handbook — 2. Premiums and Payment Schedules",
+  "cleaned_content": "## 2. Premiums and Payment Schedules\nPremiums are determined by entry age, smoking status, biological sex, health classification, and selected coverage amount.",
+  "original_content_hash": "13154453781a3f3b9d4636e389c8087f01d3a6df66bc0ee3fbd97fe9895fbe49",
+  "cleaned_content_hash": "452770978e6b650a528f4e06b4866c750787b3ceb7e749c2f7ea939dc5137415",
+  "category": "other",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 4,
+    "section": "2. Premiums and Payment Schedules"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919255.181067
+}

@@ -1,0 +1,49 @@
+{
+  "record_id": "krec_bf47aed9a4",
+  "source_doc_id": "doc_a61773a904",
+  "title": "Ph Insurance Faqs Objections — Section 7",
+  "cleaned_content": "### FAQ 5: What are the perks of getting a policy through Bancassurance bank referral?\n- **Answer**: If you are referred by or hold an account with our partner banks (BDO, BPI, Metrobank, or Security Bank), you qualify for express non-medical underwriting up to ₱3,000,000 face amount, hassle-free automated auto-debit arrangement (ADA), and a 5% first-year premium rebate.\n\n---",
+  "original_content_hash": "3ddae7298493435e48bde87ceab39fc02f99c3d98267a036576ce4b9915b6fcc",
+  "cleaned_content_hash": "3bb9a16a1e970fde33102708acf532d8dd1d98cf3ac8f1b63f384a7b00bd4f8f",
+  "category": "faq",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 7,
+    "section": "Section 7"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 5.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_8c2fc105",
+      "field": "min_apr",
+      "product": "General Eligibility",
+      "conflicting_record_id": "doc_82fed92774",
+      "this_value": 5.0,
+      "conflicting_value": 8.0,
+      "description": "Discrepancy in minimum APR (%) for General Eligibility: Current record specifies 5.0, whereas record 'doc_82fed92774' specifies 8.0.",
+      "severity": "high",
+      "detected_at": 1790919272.4111412
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919272.657019
+}

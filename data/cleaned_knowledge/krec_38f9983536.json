@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_38f9983536",
+  "source_doc_id": "doc_4bb76d39b3",
+  "title": "Id Payment Faqs Objections — Section 1",
+  "cleaned_content": "# Darwix Indonesia Multifinance  -  Tanya Jawab (FAQ) & Panduan Penanganan Keberatan Nasabah",
+  "original_content_hash": "31e75091952eb9a60dc0a74feec23996abaf8bb539fb78e2772a849c23da92a7",
+  "cleaned_content_hash": "5c49150749e4dd5c3c7984e07204865a7358a23f8da0ab37f9b145c81eaad31c",
+  "category": "faq",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 1,
+    "section": "Section 1"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920038.900588
+}

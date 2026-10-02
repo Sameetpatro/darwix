@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darwix Q4 — Real-Time Agent Copilot & Live Nudges</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #07090e;
+      --bg-surface: #0e131f;
+      --bg-card: #141b2d;
+      --bg-card-hover: #1a233a;
+      --border-color: #212d4a;
+      --border-focus: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --primary: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --purple: #8b5cf6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation */
+    header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--success);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* Main Container Grid */
+    main {
+      flex: 1;
+      padding: 24px;
+      max-width: 1600px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 340px 1fr 380px;
+      gap: 20px;
+    }
+
+    @media (max-width: 1280px) {
+      main {
+        grid-template-columns: 300px 1fr;
+      }
+      .right-panel {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      .right-panel {
+        grid-column: span 1;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+    }
+
+    /* Simulation Control Buttons */
+    .btn-sim {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 11px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sim:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-sim.active {
+      border-color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    .sim-tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .tag-blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .tag-red { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .tag-amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .tag-purple { background: rgba(139, 92, 246, 0.2); color: #c084fc; }
+    .tag-gray { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; }
+
+    /* Live Transcript Feed */
+    .transcript-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+    }
+
+    .transcript-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bubble {
+      max-width: 82%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      position: relative;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bubble-customer {
+      align-self: flex-start;
+      background: #111a2e;
+      border: 1px solid #1e2d4d;
+      border-bottom-left-radius: 3px;
+    }
+
+    .bubble-agent {
+      align-self: flex-end;
+      background: #192138;
+      border: 1px solid #28375c;
+      border-bottom-right-radius: 3px;
+    }
+
+    .bubble-partial {
+      align-self: flex-start;
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px dashed rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+      font-style: italic;
+    }
+
+    .bubble-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .header-cust { color: #38bdf8; }
+    .header-agent { color: #a78bfa; }
+
+    /* Nudge Alerts Area */
+    .nudge-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .nudge-card {
+      background: linear-gradient(135deg, rgba(20, 27, 45, 0.95), rgba(30, 41, 69, 0.95));
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 18px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nudge-high {
+      border-color: #ef4444;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+    }
+
+    .nudge-medium {
+      border-color: #f59e0b;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+    }
+
+    .nudge-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .nudge-type-pill {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .type-compliance { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .type-crosssell { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .type-frustration { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+    .type-payment { background: rgba(139, 92, 246, 0.2); color: #c084fc; }
+
+    .nudge-directive {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nudge-context {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .nudge-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-ack {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-ack:hover {
+      background: #2563eb;
+    }
+
+    /* Expiration Progress Bar */
+    .ttl-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent-cyan);
+      width: 100%;
+      animation: countdown linear forwards;
+    }
+
+    /* Latency Box */
+    .latency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .latency-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lat-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .lat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .lat-highlight {
+      grid-column: span 2;
+      background: rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .lat-highlight .lat-val {
+      font-size: 20px;
+      color: #38bdf8;
+    }
+
+    /* Audio Waves Indicator */
+    .audio-indicator {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 20px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      background: var(--accent-cyan);
+      border-radius: 2px;
+      height: 4px;
+      transition: height 0.1s ease;
+    }
+
+    .active-audio .wave-bar:nth-child(1) { height: 14px; }
+    .active-audio .wave-bar:nth-child(2) { height: 20px; }
+    .active-audio .wave-bar:nth-child(3) { height: 8px; }
+    .active-audio .wave-bar:nth-child(4) { height: 16px; }
+    .active-audio .wave-bar:nth-child(5) { height: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="logo-badge">D</div>
+      <div>
+        <div class="brand-title">Darwix Copilot <span style="color: var(--accent-cyan); font-weight: 500;">Q4 Live</span></div>
+        <div class="brand-subtitle">Real-Time In-Call Audio Intelligence & Nudge Engine</div>
+      </div>
+    </div>
+
+    <div class="nav-status">
+      <div class="audio-indicator" id="audioWaves">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+      <div class="status-pill" id="connPill">
+        <div class="status-dot" id="connDot"></div>
+        <span id="connText">CONNECTING...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid -->
+  <main>
+    <!-- Left Column: Controls & Scenarios -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Live Call Replay</span>
+        <span class="sim-tag tag-blue">Real-Time</span>
+      </div>
+      <div class="card-body">
+        <p style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">
+          Streams audio chunks in strict wall-clock time through Streaming ASR &rarr; Laya Signal Engine &rarr; DeepSeek Nudge Controller.
+        </p>
+
+        <button class="btn-sim" onclick="startSimulation('call_cross_sell')">
+          <div>
+            <div style="font-weight: 600;">1. Missed Cross-Sell</div>
+            <div style="font-size: 11px; color: var(--text-dim);">Customer mentions 2nd car</div>
+          </div>
+          <span class="sim-tag tag-amber">Cross-Sell</span>
+        </button>
+
+        <button class="btn-sim" onclick="startSimulation('call_compliance_gap')">
+          <div>
+            <div style="font-weight: 600;">2. Compliance Gap</div>
+            <div style="font-size: 11px; color: var(--text-dim);">Binding without disclosure</div>
+          </div>
+          <span class="sim-tag tag-red">High Risk</span>
+        </button>
+
+        <button class="btn-sim" onclick="startSimulation('call_rising_frustration')">
+          <div>
+            <div style="font-weight: 600;">3. Rising Frustration</div>
+            <div style="font-size: 11px; color: var(--text-dim);">Repeated complaint loop</div>
+          </div>
+          <span class="sim-tag tag-red">Sentiment</span>
+        </button>
+
+        <button class="btn-sim" onclick="startSimulation('call_payment_difficulty')">
+          <div>
+            <div style="font-weight: 600;">4. Payment Difficulty</div>
+            <div style="font-size: 11px; color: var(--text-dim);">Customer distress / delay</div>
+          </div>
+          <span class="sim-tag tag-purple">Financial</span>
+        </button>
+
+        <button class="btn-sim" onclick="startSimulation('call_false_positive_cross_sell')">
+          <div>
+            <div style="font-weight: 600;">5. 3rd-Party Contrast</div>
+            <div style="font-size: 11px; color: var(--text-dim);">"My brother has a car"</div>
+          </div>
+          <span class="sim-tag tag-gray">Suppressed</span>
+        </button>
+
+        <button class="btn-sim" onclick="startSimulation('call_noisy_ambiguous')">
+          <div>
+            <div style="font-weight: 600;">6. Noisy / Ambiguous</div>
+            <div style="font-size: 11px; color: var(--text-dim);">Hesitant speech fragments</div>
+          </div>
+          <span class="sim-tag tag-gray">Zero-Nudge</span>
+        </button>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+          <span style="color: var(--text-muted);">Replay Speed:</span>
+          <select id="speedSelect" style="background: var(--bg-card); color: #fff; border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px;">
+            <option value="1.0">1.0x (Wall Clock)</option>
+            <option value="0.5" selected>2.0x (Fast Demo)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Column: Live Conversation Timeline -->
+    <div class="card transcript-container">
+      <div class="card-header">
+        <span class="card-title">Live Call Audio & Transcript</span>
+        <span id="callIdBadge" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-cyan);">IDLE</span>
+      </div>
+
+      <!-- Active In-Call Nudges Section -->
+      <div style="padding: 14px 16px 0 16px;" id="nudgesArea">
+        <!-- Nudges injected dynamically -->
+      </div>
+
+      <!-- Turn Bubbles -->
+      <div class="transcript-scroll" id="transcriptFeed">
+        <div style="text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px;">
+          Click a scenario on the left to start live streaming call intelligence.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Latency Telemetry & Suppression Metrics -->
+    <div class="card right-panel">
+      <div class="card-header">
+        <span class="card-title">Pipeline Latency (ms)</span>
+        <span class="sim-tag tag-blue">Live SLA</span>
+      </div>
+      <div class="card-body">
+        <div class="latency-grid">
+          <div class="latency-item lat-highlight">
+            <span class="lat-label">L_TOTAL (AUDIO &rarr; DASHBOARD)</span>
+            <span class="lat-val" id="latTotal">-- ms</span>
+          </div>
+
+          <div class="latency-item">
+            <span class="lat-label">L1: STREAMING ASR</span>
+            <span class="lat-val" id="latL1">-- ms</span>
+          </div>
+
+          <div class="latency-item">
+            <span class="lat-label">L2: SIGNAL EXTRACTION</span>
+            <span class="lat-val" id="latL2">-- ms</span>
+          </div>
+
+          <div class="latency-item">
+            <span class="lat-label">L3: DEEPSEEK NUDGE</span>
+            <span class="lat-val" id="latL3">-- ms</span>
+          </div>
+
+          <div class="latency-item">
+            <span class="lat-label">L4: WS DELIVERY</span>
+            <span class="lat-val" id="latL4">-- ms</span>
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+
+        <span class="card-title" style="font-size: 12px;">Suppression & Cooldown Monitor</span>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px;">
+            <span style="color: var(--text-muted);">Confidence Threshold:</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #fff;">&ge; 0.75</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px;">
+            <span style="color: var(--text-muted);">Signal Cooldown:</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #fff;">20.0s</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px;">
+            <span style="color: var(--text-muted);">Suppressed Signals:</span>
+            <span id="suppressedCount" style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--warning);">0</span>
+          </div>
+        </div>
+
+        <div id="suppressionLog" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); max-height: 140px; overflow-y: auto;">
+          [System Ready] Waiting for call stream...
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // WebSocket Client
+    let ws = null;
+    let suppressedCount = 0;
+
+    function connectWebSocket() {
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${protocol}//${window.location.host}/q4/ws`;
+
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+        document.getElementById('connDot').style.background = 'var(--success)';
+        document.getElementById('connPill').style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        document.getElementById('connText').innerText = 'COPILOT LIVE';
+        logSuppression("[WebSocket] Connected to Q4 real-time nudge stream.");
+      };
+
+      ws.onmessage = (event) => {
+        const msg = JSON.parse(event.data);
+        handleStreamEvent(msg);
+      };
+
+      ws.onclose = () => {
+        document.getElementById('connDot').style.background = 'var(--danger)';
+        document.getElementById('connPill').style.borderColor = 'rgba(239, 68, 68, 0.4)';
+        document.getElementById('connText').innerText = 'DISCONNECTED';
+        setTimeout(connectWebSocket, 2000);
+      };
+    }
+
+    function handleStreamEvent(msg) {
+      const eventType = msg.event;
+
+      if (eventType === 'call_started') {
+        document.getElementById('callIdBadge').innerText = msg.data.call_id;
+        document.getElementById('transcriptFeed').innerHTML = '';
+        document.getElementById('nudgesArea').innerHTML = '';
+        logSuppression(`[Call Started] ${msg.data.scenario} (${msg.data.call_id})`);
+      }
+
+      if (eventType === 'audio_stream') {
+        renderPartialTranscript(msg.data);
+      }
+
+      if (eventType === 'turn_finalized') {
+        renderCommittedTurn(msg.data);
+      }
+
+      if (eventType === 'nudge') {
+        renderNudgeCard(msg);
+      }
+
+      if (eventType === 'signal_suppressed') {
+        suppressedCount++;
+        document.getElementById('suppressedCount').innerText = suppressedCount;
+        logSuppression(`[Suppressed] ${msg.data.type} (Conf: ${msg.data.confidence.toFixed(2)}) - ${msg.data.reason}`);
+      }
+
+      if (eventType === 'latency_sample') {
+        updateLatencyGauges(msg.data);
+      }
+
+      if (eventType === 'call_completed') {
+        document.getElementById('audioWaves').classList.remove('active-audio');
+        logSuppression(`[Call Ended] All turns processed.`);
+      }
+    }
+
+    function renderPartialTranscript(data) {
+      document.getElementById('audioWaves').classList.add('active-audio');
+      let partialEl = document.getElementById('partialBubble');
+      if (!partialEl) {
+        partialEl = document.createElement('div');
+        partialEl.id = 'partialBubble';
+        partialEl.className = 'bubble bubble-partial';
+        document.getElementById('transcriptFeed').appendChild(partialEl);
+      }
+      partialEl.innerText = `${data.speaker.toUpperCase()}: ${data.partial_text}...`;
+      scrollTranscript();
+    }
+
+    function renderCommittedTurn(data) {
+      const partialEl = document.getElementById('partialBubble');
+      if (partialEl) partialEl.remove();
+
+      const bubble = document.createElement('div');
+      const isCust = data.speaker === 'customer';
+      bubble.className = `bubble ${isCust ? 'bubble-customer' : 'bubble-agent'}`;
+
+      const header = document.createElement('div');
+      header.className = `bubble-header ${isCust ? 'header-cust' : 'header-agent'}`;
+      header.innerHTML = `<span>${data.speaker.toUpperCase()}</span><span>${data.stage || ''}</span>`;
+
+      const text = document.createElement('div');
+      text.innerText = data.text;
+
+      bubble.appendChild(header);
+      bubble.appendChild(text);
+      document.getElementById('transcriptFeed').appendChild(bubble);
+      scrollTranscript();
+    }
+
+    function renderNudgeCard(nudge) {
+      const container = document.getElementById('nudgesArea');
+      const card = document.createElement('div');
+      const priorityClass = nudge.priority === 'high' ? 'nudge-high' : 'nudge-medium';
+      card.className = `nudge-card ${priorityClass}`;
+      card.id = `nudge_${nudge.nudge_id}`;
+
+      let typeClass = 'type-crosssell';
+      if (nudge.type === 'compliance_gap') typeClass = 'type-compliance';
+      if (nudge.type === 'frustration') typeClass = 'type-frustration';
+      if (nudge.type === 'payment_difficulty') typeClass = 'type-payment';
+
+      card.innerHTML = `
+        <div class="nudge-header-row">
+          <span class="nudge-type-pill ${typeClass}">${nudge.headline}</span>
+          <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">CONFIDENCE: ${(nudge.confidence * 100).toFixed(0)}%</span>
+        </div>
+        <div class="nudge-directive">&rarr; ${nudge.message}</div>
+        <div class="nudge-context">${nudge.context}</div>
+        <div class="nudge-actions">
+          <button class="btn-action" onclick="dismissNudge('${nudge.nudge_id}')">Dismiss</button>
+          <button class="btn-action btn-ack" onclick="acknowledgeNudge('${nudge.nudge_id}')">Acknowledge</button>
+        </div>
+        <div class="ttl-bar" style="animation-duration: ${nudge.expires_in}s;"></div>
+      `;
+
+      container.prepend(card);
+
+      // Auto-remove upon TTL
+      setTimeout(() => {
+        if (card.parentNode) card.remove();
+      }, nudge.expires_in * 1000);
+    }
+
+    function acknowledgeNudge(nudgeId) {
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ action: "acknowledge_nudge", nudge_id: nudgeId }));
+      }
+      dismissNudge(nudgeId);
+    }
+
+    function dismissNudge(nudgeId) {
+      const el = document.getElementById(`nudge_${nudgeId}`);
+      if (el) el.remove();
+    }
+
+    function updateLatencyGauges(lat) {
+      document.getElementById('latTotal').innerText = `${lat.L_total_ms.toFixed(1)} ms`;
+      document.getElementById('latL1').innerText = `${lat.L1_asr_ms.toFixed(1)} ms`;
+      document.getElementById('latL2').innerText = `${lat.L2_signal_ms.toFixed(2)} ms`;
+      document.getElementById('latL3').innerText = `${lat.L3_nudge_ms.toFixed(1)} ms`;
+      document.getElementById('latL4').innerText = `${lat.L4_delivery_ms.toFixed(2)} ms`;
+    }
+
+    function logSuppression(msg) {
+      const box = document.getElementById('suppressionLog');
+      const timeStr = new Date().toLocaleTimeString();
+      box.innerHTML = `[${timeStr}] ${msg}<br>` + box.innerHTML;
+    }
+
+    function scrollTranscript() {
+      const feed = document.getElementById('transcriptFeed');
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    async function startSimulation(scenario) {
+      const speed = parseFloat(document.getElementById('speedSelect').value);
+      try {
+        const resp = await fetch('/q4/simulate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scenario: scenario, time_scale: speed })
+        });
+        const data = await resp.json();
+        logSuppression(`[Simulation Initiated] ${scenario}`);
+      } catch (e) {
+        console.error("Simulation failed:", e);
+      }
+    }
+
+    window.onload = connectWebSocket;
+  </script>
+</body>
+</html>

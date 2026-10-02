@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_c1ad8052ec",
+  "source_doc_id": "doc_c232edaaed",
+  "title": "Faq And Objections — FAQ 2: Funding Timeline and Speed",
+  "cleaned_content": "## FAQ 2: Funding Timeline and Speed\nQuestion: How fast can a commercial borrower receive funds?\nAnswer: Approvals are granted in 2 to 4 hours after submitting digital bank statements. Once loan contracts are electronically executed, funds are transferred via same-day wire or automated ACH in 24 to 48 hours.",
+  "original_content_hash": "883984e9e8af14526632c5309b8d131daefc367e4e9821c3953a9af2bae829ca",
+  "cleaned_content_hash": "bc8b8b7061a4d4d63a09b79014ff495e2029c6900396d54f0cfc16f6c8a5fc78",
+  "category": "faq",
+  "product": null,
+  "source": "faq_and_objections.txt",
+  "source_location": {
+    "page": 3,
+    "section": "FAQ 2: Funding Timeline and Speed"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920256.7667441
+}

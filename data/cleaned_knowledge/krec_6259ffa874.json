@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_6259ffa874",
+  "source_doc_id": "doc_20c73bb231",
+  "title": "Id Payment Faqs Objections — Section 5",
+  "cleaned_content": "### FAQ 3: Apakah saya bisa mengajukan perpanjangan tenor atau keringanan cicilan jika sedang kesulitan uang?\n- **Jawaban**: Tentu bisa. Darwix Multifinance memiliki program restrukturisasi resmi yang diawasi oleh OJK. Anda dapat mengajukan perpanjangan tenor (misalnya dari 12 bulan menjadi 24 bulan) sehingga beban nominal cicilan bulanan Anda menjadi lebih ringan dan terjangkau sesuai kondisi finansial Anda saat ini.",
+  "original_content_hash": "5c23f96e3ac473a8246af088a007b7789bdedfc96723c26e15eac38ef99b87f8",
+  "cleaned_content_hash": "0d602fcb6ecc6b7f6232c111f277ee3b15563751ec53ab8d3ae97b0a5cf47663",
+  "category": "faq",
+  "product": null,
+  "source": "id_payment_faqs_objections.md",
+  "source_location": {
+    "page": 5,
+    "section": "Section 5"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920043.9330702
+}

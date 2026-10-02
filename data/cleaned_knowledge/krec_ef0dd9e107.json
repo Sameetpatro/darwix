@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_ef0dd9e107",
+  "source_doc_id": "doc_4082382afe",
+  "title": "Id Multifinance Handbook — 4. Program Keringanan dan Restrukturisasi Pembiayaan",
+  "cleaned_content": "## 4. Program Keringanan dan Restrukturisasi Pembiayaan\nBagi nasabah yang mengalami kendala finansial mendesak (penurunan omzet usaha, pemutusan hubungan kerja, atau musibah kesehatan):\n1. **Program Janji Bayar (Promise to Pay / PTP)**:\n   - Penundaan pembayaran terkonfirmasi hingga maksimal 7 hari kalender tanpa pengalihan ke tim kunjungan lapangan.\n2. **Program Penghapusan Denda (Denda Waiver)**:\n   - Diskon atau penghapusan denda hingga 100% apabila nasabah melunasi seluruh tunggakan pokok angsuran pada hari yang sama.\n3. **Restrukturisasi Tenor Pembiayaan**:\n   - Perpanjangan tenor pinjaman (misalnya dari tenor 12 bulan menjadi 24 bulan) untuk memperkecil nilai cicilan bulanan agar sesuai dengan kemampuan bayar nasabah saat ini.",
+  "original_content_hash": "4a47301b62a5a90d89e7bfdee57fbaca0684e1017bae9ca0c4c5b6a841555160",
+  "cleaned_content_hash": "48b699b44de9c36fe5468fffe446b0a1d14e2b7b1eb84c2d5d143d0c4bbdccc7",
+  "category": "other",
+  "product": null,
+  "source": "id_multifinance_handbook.md",
+  "source_location": {
+    "page": 6,
+    "section": "4. Program Keringanan dan Restrukturisasi Pembiayaan"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920037.6107242
+}

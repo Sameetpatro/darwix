@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_093c3ad632",
+  "source_doc_id": "doc_4ee05511ba",
+  "title": "Id Multifinance Handbook — Darwix Indonesia Panduan Pembiayaan Konsumen dan Multifinance",
+  "cleaned_content": "# Darwix Indonesia Panduan Pembiayaan Konsumen dan Multifinance",
+  "original_content_hash": "2fd11ca6610db07b9bb38960b479fa10669528adf0c76539a6b08f8b0316f791",
+  "cleaned_content_hash": "21458d1b5127595e52fe1c8a7c22539eed666fa51a06cd3a7c552740b8ecb271",
+  "category": "other",
+  "product": null,
+  "source": "id_multifinance_handbook.md",
+  "source_location": {
+    "page": 1,
+    "section": "Darwix Indonesia Panduan Pembiayaan Konsumen dan Multifinance"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790920031.2219598
+}

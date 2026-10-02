@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_8162991648",
+  "source_doc_id": "doc_82fed92774",
+  "title": "Ph Life Insurance Handbook — Standard Premium Guidelines:",
+  "cleaned_content": "### Standard Premium Guidelines:\n- **Payment Modes**: Monthly (via Auto-Debit Arrangement / ADA or post-dated checks), Quarterly, Semi-Annual, and Annual.\n- **Annual Premium Discount**: Policyholders selecting Annual payment receive an effective 8% discount compared to monthly installment equivalents.\n- **Sample Premiums (30-year-old Non-Smoker, ₱1,000,000 Coverage)**:\n  - SecureTerm (20-Year Term): ₱1,450 per month (₱16,000 annually).\n  - LifeHeritage (20-Pay Whole Life): ₱3,200 per month (₱35,000 annually).\n- **Grace Period**: All policies include a statutory 31-day grace period for payment of renewal premiums. The policy remains in full force during the grace period.\n\n---",
+  "original_content_hash": "5c183bdd0551ab228694ba3287ef60c9bf677451b43e15fe4ec92b78cefc849e",
+  "cleaned_content_hash": "3b5229f98f4883b7b24a5f018e1a0e3601df6a25bf3dbea8e8a9b7605e3c0f9d",
+  "category": "policy",
+  "product": null,
+  "source": "ph_life_insurance_handbook.md",
+  "source_location": {
+    "page": 5,
+    "section": "Standard Premium Guidelines:"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 8.0,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919256.472123
+}

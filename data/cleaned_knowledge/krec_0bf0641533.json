@@ -1,0 +1,39 @@
+{
+  "record_id": "krec_0bf0641533",
+  "source_doc_id": "doc_a62dad42a2",
+  "title": "Darwix Equipment Financing & Machinery Leasing — Program Overview and Eligibility",
+  "cleaned_content": "Program Overview and Eligibility\nDarwix Equipment Financing enables commercial businesses to acquire heavy machinery, medical devices, commercial vehicles, technology servers, and kitchen hardware without depleting operational capital.\nFacility Range:\n,000 up to ,000,000.\nRepayment Terms:\n24 to 84 months (2 to 7 years), tailored to the equipment's useful economic life.\nStarting Rates:\n5.99% APR for prime credit tiers.\nDown Payment:\nAs low as zsh down for creditworthy guarantors.",
+  "original_content_hash": "ff05dc10ae0b1f38faf4ece5ccc8e7a9efa66be6c14789dfb5b5198eb6c4b808",
+  "cleaned_content_hash": "c5dbc0e7af670b402427f0ad653055b3144fdf151c9b839fbbc2d2230b23fa06",
+  "category": "product",
+  "product": "Equipment Financing",
+  "source": "equipment_financing_portal.html",
+  "source_location": {
+    "page": 1,
+    "section": "Program Overview and Eligibility"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [
+      "Equipment Financing"
+    ],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": 5.99,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790917135.929129
+}

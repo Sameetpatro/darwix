@@ -1,0 +1,52 @@
+{
+  "record_id": "krec_3797cdb6f7",
+  "source_doc_id": "doc_e7f656d122",
+  "title": "Darwix Commercial Lending Handbook - 2026",
+  "cleaned_content": "Darwix Commercial Lending Handbook - 2026\nSection 1: General Business Loan Eligibility Thresholds\nThis policy outlines the official underwriting thresholds for all commercial credit facilities.\n1. Minimum Operating History: The borrowing business must have at least 6 months of verifiable operating history for\nshort-term working capital loans, and a minimum of 12 to 24 months for prime commercial term loans.\n2. Minimum Gross Revenue: Businesses must demonstrate minimum average monthly gross revenues of ,000 (,000\nannualized), verified via 3 to 6 months of official business checking bank statements.\n3. Geographic Eligibility: The borrower entity must be registered and actively operating within any of the 50 United\nStates or the District of Columbia. Foreign entities are strictly ineligible.",
+  "original_content_hash": "b47da1d849665b218ef20a482661cd542be56713e7e9d4974bd10aba113ecd35",
+  "cleaned_content_hash": "3cb47a6d0a7d16574f88deafc2ebbaa9d7ab48eed729743e013f645203c06f89",
+  "category": "qualification",
+  "product": "Term Loan",
+  "source": "loan_policy_handbook.pdf",
+  "source_location": {
+    "page": 1,
+    "section": "Darwix Commercial Lending Handbook - 2026"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [
+      "Term Loan",
+      "Working Capital Loan"
+    ],
+    "entity_types": [],
+    "time_in_business_months": 6,
+    "time_in_business_display": "6 months (0.5 years)",
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [
+    {
+      "conflict_id": "conf_e5ca98a7",
+      "field": "min_months_in_business",
+      "product": "Term Loan",
+      "conflicting_record_id": "doc_6bbdb31443",
+      "this_value": 6,
+      "conflicting_value": 24,
+      "description": "Discrepancy in months in business for Term Loan: Current record specifies 6, whereas record 'doc_6bbdb31443' specifies 24.",
+      "severity": "high",
+      "detected_at": 1790921921.04704
+    }
+  ],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790921921.047424
+}

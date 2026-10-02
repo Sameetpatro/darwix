@@ -1,0 +1,37 @@
+{
+  "record_id": "krec_955b1b0477",
+  "source_doc_id": "doc_e399204423",
+  "title": "Ph Insurance Faqs Objections — Section 3: Human Escalation & Support Triggers",
+  "cleaned_content": "## Section 3: Human Escalation & Support Triggers\n- When the caller asks to speak to an agent, financial advisor, or manager (*\"Gusto ko pong makausap ang financial advisor\"*, *\"pwede po ba ahente\"*, *\"speak to human representative\"*):\n  - Agent warmly confirms: *\"Sige po, ikokonekta ko po kayo agad sa isa sa aming licensed Financial Advisors sa Darwix Life Bancassurance. Sandali lamang po habang inililipat ko ang inyong tawag.\"*",
+  "original_content_hash": "f0761eb649aab226503e9ee43e8df20ce9ccdfb47ec9deb87baf0321ee37002a",
+  "cleaned_content_hash": "23addd4c0946e5dfdcb9248221e5ca589444a65ded8c5028c8fad4468dd605e3",
+  "category": "other",
+  "product": null,
+  "source": "ph_insurance_faqs_objections.md",
+  "source_location": {
+    "page": 12,
+    "section": "Section 3: Human Escalation & Support Triggers"
+  },
+  "version": "1.0",
+  "effective_date": null,
+  "normalized_entities": {
+    "loan_products": [],
+    "entity_types": [],
+    "time_in_business_months": null,
+    "time_in_business_display": null,
+    "min_revenue_monthly_usd": null,
+    "min_credit_score": null,
+    "min_loan_amount_usd": null,
+    "max_loan_amount_usd": null,
+    "min_apr": null,
+    "max_apr": null,
+    "repayment_frequency": null,
+    "prepayment_penalty_allowed": null,
+    "normalized_dates": []
+  },
+  "pii_audit": {},
+  "conflicts": [],
+  "is_duplicate": false,
+  "duplicate_of": null,
+  "created_at": 1790919279.346721
+}
